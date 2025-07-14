@@ -3,50 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miro Embedded</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Visualização do Miro</title>
     <style>
-        /* Custom styles for the iframe container */
-        .iframe-container {
-            position: relative;
-            width: 100%;
-            /* Maintain aspect ratio (e.g., 16:9 for 768x432) */
-            padding-top: 56.25%; /* (432 / 768) * 100% */
-            overflow: hidden;
-            border-radius: 0.5rem; /* Rounded corners */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
-        .iframe-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none; /* Remove default iframe border */
-            border-radius: 0.5rem; /* Rounded corners */
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .iframe-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            padding: 20px;
+            max-width: 100%;
+            width: fit-content;
+        }
+        
+        .miro-frame {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .miro-frame {
+                width: 100% !important;
+                height: 300px !important;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            body {
+                padding: 10px;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4 font-sans">
-    <div class="bg-white p-6 rounded-lg shadow-xl w-full max-w-4xl">
-        <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Visualização do Miro Board</h1>
-
-        <!-- Iframe Container for Responsiveness -->
-        <div class="iframe-container">
-            <iframe
-                src="https://miro.com/app/live-embed/uXjVJe6xKUk=/?embedMode=view_only_without_ui&moveToViewport=-34154,-24457,135191,127349&embedId=300737962797"
-                frameborder="0"
-                scrolling="no"
-                allow="fullscreen; clipboard-read; clipboard-write"
-                allowfullscreen
-                title="Miro Board Embedded">
-            </iframe>
-        </div>
-
-        <p class="text-gray-600 text-sm mt-6 text-center">
-            Este é um Miro board incorporado. Você pode interagir com ele conforme as permissões definidas.
-        </p>
+<body>
+    <div class="header">
+        <h1>📋 Visualização do Projeto</h1>
+        <p>Explore o conteúdo interativo do Miro abaixo</p>
+    </div>
+    
+    <div class="iframe-container">
+        <iframe 
+            class="miro-frame"
+            width="768" 
+            height="432" 
+            src="https://miro.com/app/live-embed/uXjVJe6xKUk=/?embedMode=view_only_without_ui&moveToViewport=-34154,-24457,135191,127349&embedId=300737962797" 
+            frameborder="0" 
+            scrolling="no" 
+            allow="fullscreen; clipboard-read; clipboard-write" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    
+    <div class="footer">
+        <p>💡 Use os controles do Miro para navegar e explorar o conteúdo</p>
     </div>
 </body>
 </html>
