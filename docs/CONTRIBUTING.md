@@ -1,4 +1,4 @@
-# 🤝 **CONTRIBUTING - Guia de Contribuição**
+# 🤝 **CONTRIBUTING - Python Data Driven Visualization Journey**
 
 ## **Bem-vindo aos Contribuidores!** 🎉
 

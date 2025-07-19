@@ -1,6 +1,6 @@
-# 🎨 **Assets - Recursos Visuais do Projeto**
+# 🎨 **Assets - Python Data Driven Visualization Journey**
 
-Este diretório contém todos os recursos visuais e arquivos de referência utilizados no desenvolvimento e documentação do projeto Py_Vy_000.
+Este diretório contém todos os recursos visuais e arquivos de referência utilizados no desenvolvimento e documentação do Python Data Driven Visualization Journey.
 
 ## 📁 **Estrutura de Assets**
 

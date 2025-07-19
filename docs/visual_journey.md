@@ -1,4 +1,4 @@
-# 📸 **Jornada Visual do Projeto Py_Vy_000**
+# 📸 **Jornada Visual - Python Data Driven Visualization Journey**
 
 Uma documentação visual completa da evolução dos dashboards, desde as referências iniciais até os resultados finais.
 

@@ -1,4 +1,4 @@
-# 📋 **CHANGELOG - Histórico de Versões**
+# 📋 **CHANGELOG - Python Data Driven Visualization Journey**
 
 ## **v3.0.0 (Atual)** - Smart Home Dashboard 🏠
 *Data: 2024-01*

@@ -1,10 +1,11 @@
-# 🏗️ **Py_Vy_000: Plotly Dashboard Evolution**
+# 📊 **Python Data Driven Visualization Journey**
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue.svg)
 ![Dash](https://img.shields.io/badge/Dash-2.x-green.svg)
 ![Plotly](https://img.shields.io/badge/Plotly-5.x-orange.svg)
 ![ML](https://img.shields.io/badge/ML-Scikit--Learn-red.svg)
 ![Status](https://img.shields.io/badge/Status-Complete-success.svg)
+![Journey](https://img.shields.io/badge/Journey-V1→V2→V3-purple.svg)
 
 > **Uma jornada completa do desenvolvimento de dashboards Plotly/Dash: desde visualizações simples até análises complexas com Machine Learning**
 
@@ -61,8 +62,8 @@ O projeto foi guiado por referências visuais profissionais que definiram nossos
 
 ### **Instalação**
 ```bash
-git clone https://github.com/Genovese-Felipe/Py_Vy_000.git
-cd Py_Vy_000
+git clone https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey.git
+cd Python-Data-Driven-Visualization-Journey
 pip install -r requirements.txt
 ```
 
@@ -86,7 +87,7 @@ python dashboards/v3_smart_home/Plan_V3_funcional.py
 ## 📁 **Estrutura do Projeto**
 
 ```
-Py_Vy_000/
+Python-Data-Driven-Visualization-Journey/
 ├── 📊 dashboards/
 │   ├── 🌟 v1_simple/           # Dashboard básico com Sunburst
 │   ├── 🏗️ v2_construction/     # Dashboard de construção com filtros
@@ -206,7 +207,7 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 **Felipe Genovese**
 - GitHub: [@Genovese-Felipe](https://github.com/Genovese-Felipe)
-- Projeto: Py_Vy_000
+- Projeto: [Python Data Driven Visualization Journey](https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey)
 
 ---
 
@@ -215,7 +216,7 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 Para dúvidas, problemas ou sugestões:
 1. Consulte a [documentação](docs/)
 2. Verifique os [relatórios de erro](error_reports/)
-3. Abra uma [Issue](https://github.com/Genovese-Felipe/Py_Vy_000/issues)
+3. Abra uma [Issue](https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/issues)
 
 ---
 
