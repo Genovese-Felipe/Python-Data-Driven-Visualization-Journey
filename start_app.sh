@@ -1,6 +1,8 @@
-#!/bin/bash
-
 echo "🚀 Iniciando Explorador de Custos de Construção..."
+#!/bin/bash
+# Script de inicialização do app (PT)
+# App startup script (EN)
+echo "🚀 Iniciando Explorador de Custos de Construção... / Starting Construction Cost Explorer..."
 
 # Matar processos existentes na porta 8050
 pkill -f "python.*app"

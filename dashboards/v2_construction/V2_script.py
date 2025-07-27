@@ -1,3 +1,4 @@
+# Desenvolva o código de visualização (iterativo e orientado por guias)
 # Develop Visualization Code (Iterative & Guideline-Driven)
 
 from dash import Dash, dcc, html
@@ -7,9 +8,11 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.colors
 
-# Based on the selected dataset, use the hierarchical cost data.
-# This data structure is already defined in previous cells, but I will include it here
-# for completeness as per the learning from the AssertionError in the previous task.
+# Baseado no dataset selecionado, use os dados hierárquicos de custo (PT)
+# Based on the selected dataset, use the hierarchical cost data (EN)
+# Esta estrutura de dados já está definida em células anteriores, mas será incluída aqui
+# para completude, conforme aprendizado do erro anterior (PT)
+# This data structure is already defined above, but included here for completeness (EN)
 
 data = [
     # Pillar 1: Project Design

@@ -1,3 +1,12 @@
+# 📚 **Documentação Técnica / Technical Documentation - Py_Vy_000**
+# 🇧🇷 **Português** | 🇺🇸 **English**
+
+<!--
+Palavras-chave/Keywords: documentação técnica, technical documentation, arquitetura, architecture, Python, Dash, Plotly, deployment, produção, production, docker, ambiente, environment, configuração, configuration, dependências, dependencies
+-->
+
+<details>
+<summary><strong>🇧🇷 Português (clique para expandir)</strong></summary>
 # 📚 **Documentação Técnica - Py_Vy_000**
 
 ## 🎯 **Arquitetura do Projeto**
@@ -135,3 +144,69 @@ tail -f /var/log/dash_app.log
 htop  # CPU/Memory usage
 netstat -tulpn | grep :8053  # Port status
 ```
+
+<details open>
+<summary><strong>🇺🇸 English (click to expand)</strong></summary>
+
+# 📚 **Technical Documentation - Py_Vy_000**
+
+## 🎯 **Project Architecture**
+
+### **Technical Structure**
+```
+Py_Vy_000/
+├── dashboards/           # Dash apps organized by version
+├── docs/                 # Technical documentation and guides
+├── error_reports/        # Problem analysis and solutions
+├── ai_learning_guides/   # Instructions for AI models
+├── assets/               # Static resources (HTML, images)
+├── tema1/ & tema2/       # Legacy code (kept for reference)
+└── index/                # Main HTML dashboard
+```
+
+### **Main Dependencies**
+| Library | Version | Purpose |
+|---------|---------|---------|
+| `dash` | 2.16.1 | Main web framework |
+| `plotly` | 5.17.0 | Interactive visualizations |
+| `pandas` | 2.1.4 | Data manipulation |
+| `scikit-learn` | 1.3.2 | Machine Learning (V3) |
+
+## 🚀 **Deployment**
+
+### **Local Development**
+```bash
+python dashboards/v1_simple/sunburst_cost_explorer_funcional.py
+python dashboards/v2_construction/V2_script.py  
+python dashboards/v3_smart_home/Plan_V3_funcional.py
+```
+
+### **Production (Gunicorn)**
+```bash
+gunicorn --bind 0.0.0.0:8080 dashboards.v3_smart_home.Plan_V3_funcional:app
+```
+
+### **Docker (Optional)**
+```dockerfile
+FROM python:3.12-slim
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+EXPOSE 8053
+CMD ["python", "dashboards/v3_smart_home/Plan_V3_funcional.py"]
+```
+
+## 🔧 **Environment Settings**
+
+### **Environment Variables**
+```bash
+export DASH_DEBUG=True          # For development
+export DASH_HOST=0.0.0.0        # Default host
+export DASH_PORT=8053           # Default port V3
+```
+
+### **Performance**
+- **Threads**: Dash uses automatic threading
+- **Memory**: ~100MB per active dashboard
+
+</details>

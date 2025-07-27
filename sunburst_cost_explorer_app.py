@@ -1,7 +1,15 @@
 
-# Advanced Residential Construction Cost Explorer with Enhanced Plotly Visualization
-# Baseado nas melhores práticas dos guias Plotly para Python
-# Aplicando técnicas avançadas de visualização conforme os guias XML
+"""
+App Dash principal para explorar custos com Sunburst (PT)
+Main Dash app to explore costs with Sunburst (EN)
+
+Explorador Avançado de Custos de Construção Residencial com Visualização Plotly Aprimorada (PT)
+Advanced Residential Construction Cost Explorer with Enhanced Plotly Visualization (EN)
+Baseado nas melhores práticas dos guias Plotly para Python (PT)
+Based on Plotly best practices guides for Python (EN)
+Aplicando técnicas avançadas de visualização conforme os guias XML (PT)
+Applying advanced visualization techniques as per XML guides (EN)
+"""
 
 from dash import Dash, dcc, html, dash_table, callback
 from dash.dependencies import Input, Output, State

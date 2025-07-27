@@ -1,4 +1,9 @@
+
 # Relatório de Melhorias Implementadas - Sunburst Cost Explorer
+# 🇧🇷 **Português** | 🇺🇸 **English**
+
+<details>
+<summary><strong>🇧🇷 Português (clique para expandir)</strong></summary>
 
 ## Análise dos Guias Plotly Aplicada
 
@@ -55,6 +60,77 @@ metrics = {
 - **Cores consistentes**: Paleta profissional alinhada com o design
 
 #### **3. Treemap Hierárquico**
+
+</details>
+
+---
+
+<details open>
+<summary><strong>🇺🇸 English (click to expand)</strong></summary>
+
+# Improvements Report - Sunburst Cost Explorer
+
+## Analysis of Applied Plotly Guides
+
+This application was completely redesigned following best practices extracted from the three Plotly XML guides:
+
+### 1. **Advanced Pedagogical Structure** (advanced_pedagogical_plotly_guide.xml)
+- **Logical Progression**: Implementation of hierarchical levels 1 to 5 as specified
+- **Learning Objectives**: Each visualization has a clear educational purpose
+- **Progressive Difficulty**: Intuitive interface allows gradual exploration
+
+### 2. **Technical Fundamentals** (plotly_python_guide.xml)
+- **Plotly Express Integration**: Optimized use of px.treemap and px.sunburst
+- **Long-form vs Wide-form Data**: Data structure adapted for maximum efficiency
+- **Advanced Customization**: Application of professional layouts and styles
+
+### 3. **Structured Semantics** (semantic_plotly_guide.xml)
+- **Clear Categorization**: Organization by chart type and functionality
+- **Code Reuse**: Modular functions for different visualizations
+- **Consistent Patterns**: Uniform application of colors, fonts, and styles
+
+## Main Improvements Implemented
+
+### **A. Data Architecture**
+```python
+# 5-level hierarchical structure
+hierarchy_levels = {
+    1: 'pillar',      # Main pillars
+    2: 'area',        # Functional areas
+    3: 'service',     # Specific services
+    4: 'task',        # Detailed tasks
+    5: 'sub_task'     # Sub-tasks (leaves)
+}
+
+# Automatically calculated metrics
+metrics = {
+    'variance': 'cost - budgeted_cost',
+    'variance_percent': '(variance / budgeted_cost) * 100',
+    'status': 'Over/Under/On Budget',
+    'risk_level': 'High/Medium/Low Risk'
+}
+```
+
+### **B. Advanced Visualizations**
+
+#### **1. Interactive Sunburst**
+- **Configurable levels**: Slider to control depth (2-5 levels)
+- **Custom hover**: Detailed info with professional formatting
+- **Smart coloring**: Based on budget variance
+- **Responsiveness**: Adaptive layout for different screens
+
+#### **2. Comparative Bar Chart**
+- **Multiple metrics**: Actual cost vs. budget by pillar
+- **Informative texts**: Formatted values on bars
+- **Consistent colors**: Professional palette aligned with design
+
+#### **3. Hierarchical Treemap**
+- **Proportional visualization**: Size based on costs
+- **Color coding**: Budget variance percentage
+- **Diverging scale**: RdYlBu_r to highlight deviations
+```
+
+</details>
 - **Visualização proporcional**: Tamanho baseado em custos
 - **Codificação por cor**: Variação percentual do orçamento
 - **Escala divergente**: RdYlBu_r para destacar desvios

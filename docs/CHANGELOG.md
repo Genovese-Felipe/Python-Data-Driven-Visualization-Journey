@@ -1,4 +1,13 @@
+
 # 📋 **CHANGELOG - Python Data Driven Visualization Journey**
+# 🇧🇷 **Português** | 🇺🇸 **English**
+
+<!--
+Palavras-chave/Keywords: changelog, histórico de versões, release history, versionamento, Python, Dash, Plotly, evolução, evolução do projeto, project evolution, release notes, melhorias, improvements
+-->
+
+<details>
+<summary><strong>🇧🇷 Português (clique para expandir)</strong></summary>
 
 ## **v3.0.0 (Atual)** - Smart Home Dashboard 🏠
 *Data: 2024-01*
@@ -33,6 +42,75 @@
 ---
 
 ## **v2.0.0** - Construction Dashboard 🏗️
+
+</details>
+
+---
+
+<details open>
+<summary><strong>🇺🇸 English (click to expand)</strong></summary>
+
+# 📋 **CHANGELOG - Python Data Driven Visualization Journey**
+
+## **v3.0.0 (Current)** - Smart Home Dashboard 🏠
+*Date: 2024-01*
+
+### ✨ **New Features**
+- **Multifunctional Dashboard**: 4 integrated visualizations
+  - Sunburst of costs by category
+  - Geographic analysis with US maps
+  - Linear regression for energy savings  
+  - Feature importance (ML)
+
+- **Machine Learning**: sklearn integration
+  - Linear regression model
+  - Energy savings prediction
+  - Feature importance analysis
+
+- **Advanced Visualizations**: 
+  - Geo scatter for geographic distribution
+  - Custom tooltips with detailed data
+  - Smart color mapping
+
+### 🛠️ **Technical Improvements**
+- Single callback with multiple outputs
+- Optimized data structure
+- Code splitting by functionality
+
+### 📊 **Data**
+- 10 smart home residences
+- Real US geographic coordinates
+- Energy efficiency metrics
+
+---
+
+## **v2.0.0** - Construction Dashboard 🏗️
+*Date: 2024-01*
+
+### ✨ **New Features**
+- **Interactive Filters**: Cascading dropdown system
+  - Filter by Pillar (4 options)
+  - Filter by Category (dynamic)
+  - Filter by Item (dynamic)
+
+- **Advanced Visualization**:
+  - Sunburst with custom_color_map
+  - Detailed tooltips with values
+  - 3-level hierarchy
+
+### 📊 **Structured Data**
+- **4 Main Pillars**: Infrastructure, Finishes, Systems, Landscaping
+- **48 Categorized Items**: Proportional cost distribution
+- **Realistic Values**: Based on construction projects
+
+### 🛠️ **Architecture**
+- 2 main callbacks
+- Hierarchical cascading filtering
+- Responsive layout with 70/30 split
+
+---
+
+</details>
 *Data: 2024-01*
 
 ### ✨ **Novos Recursos**

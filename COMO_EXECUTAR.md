@@ -1,4 +1,9 @@
+
 # 🚀 INSTRUÇÕES PARA EXECUTAR O APLICATIVO
+# 🇧🇷 **Português** | 🇺🇸 **English**
+
+<details>
+<summary><strong>🇧🇷 Português (clique para expandir)</strong></summary>
 
 ## ✅ Status Atual
 - ✅ Ambiente Python configurado em: `/workspaces/Py_Vy_000/.venv/bin/python`
@@ -58,6 +63,76 @@ Após executar qualquer uma das opções acima:
 ### ✅ Melhorias Baseadas nos Guias Plotly:
 
 1. **Sunburst Interativo**
+
+</details>
+
+---
+
+<details open>
+<summary><strong>🇺🇸 English (click to expand)</strong></summary>
+
+# 🚀 INSTRUCTIONS TO RUN THE APPLICATION
+
+## ✅ Current Status
+- ✅ Python environment configured at: `/workspaces/Py_Vy_000/.venv/bin/python`
+- ✅ Dependencies installed: dash, plotly, pandas, numpy
+- ✅ Code checked and free of syntax errors
+- ✅ Improved app created following Plotly guides
+
+## 🎯 How to Run
+
+### Option 1: Full Application (Recommended)
+```bash
+cd /workspaces/Py_Vy_000
+/workspaces/Py_Vy_000/.venv/bin/python sunburst_cost_explorer_app.py
+```
+
+### Option 2: Simplified Version (For Testing)
+```bash
+cd /workspaces/Py_Vy_000
+/workspaces/Py_Vy_000/.venv/bin/python run_app.py
+```
+
+### Option 3: Automated Script
+```bash
+cd /workspaces/Py_Vy_000
+./start_app.sh
+```
+
+## 🌐 Accessing the Application
+After running any of the above options:
+1. Wait for the message: "Running on http://0.0.0.0:8050"
+2. Access: **http://localhost:8050**
+3. Or use VS Code's Simple Browser
+
+## 🛠️ Troubleshooting
+
+### If it doesn't open:
+1. Check if port 8050 is free:
+   ```bash
+   netstat -an | grep 8050
+   ```
+
+2. Kill previous processes:
+   ```bash
+   pkill -f python
+   ```
+
+3. Try another port:
+   - Edit the file and change `port=8050` to `port=8051`
+
+### Debug Logs:
+- The app runs in debug mode
+- Errors will appear in the terminal
+- Code changes are automatically reloaded
+
+## 📊 Implemented Features
+
+### ✅ Improvements Based on Plotly Guides:
+
+1. **Interactive Sunburst**
+
+</details>
    - Hierarquia de 5 níveis (Pillar → Area → Service → Task → Sub-task)
    - Hover personalizado com informações detalhadas
    - Controle de profundidade via slider

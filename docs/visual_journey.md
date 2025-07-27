@@ -1,4 +1,13 @@
-# 📸 **Jornada Visual - Python Data Driven Visualization Journey**
+
+# 📸 **Jornada Visual / Visual Journey - Python Data Driven Visualization Journey**
+# 🇧🇷 **Português** | 🇺🇸 **English**
+
+<!--
+Palavras-chave/Keywords: visualização, visual journey, evolução visual, screenshots, referência visual, visual reference, dashboard evolution, design, inspiração, inspiration, plotly, dash, data visualization, documentação visual, visual documentation
+-->
+
+<details>
+<summary><strong>🇧🇷 Português (clique para expandir)</strong></summary>
 
 Uma documentação visual completa da evolução dos dashboards, desde as referências iniciais até os resultados finais.
 
@@ -59,6 +68,75 @@ Uma documentação visual completa da evolução dos dashboards, desde as refer�
 
 ## 🚀 **Evolução do Desenvolvimento**
 
+</details>
+
+---
+
+<details open>
+<summary><strong>🇺🇸 English (click to expand)</strong></summary>
+
+# 📸 **Visual Journey - Python Data Driven Visualization Journey**
+
+A complete visual documentation of the dashboards' evolution, from initial references to final results.
+
+## 🎨 **Initial Visual References**
+
+### **Reference Image 1: Hierarchical Sunburst**
+![Reference 1](../assets/reference_images/Imagem_Referencia_1.png)
+
+**Analyzed Features:**
+- Hierarchical structure with multiple levels
+- Harmonious color palette
+- Informative labels on each segment
+- Center with aggregated information
+- Detailed tooltips
+
+**Project Application:**
+- Basis for V1 - Simple Dashboard
+- Inspiration for V2 data structure
+- Color standard used in all versions
+
+---
+
+### **Reference Image 2: Scientific Analysis**
+![Reference 2](../assets/reference_images/Imagem_Referencia_2.jpg)
+
+**Analyzed Features:**
+- Heatmap with correlations
+- Multiple coordinated charts
+- Professional scientific interface
+- Integrated statistical analysis
+- Responsive layout
+
+**Project Application:**
+- Inspiration for V3 - Machine Learning
+- Basis for correlation analysis
+- Professional interface design
+- Integration of multiple visualizations
+
+---
+
+### **Reference Image 3: Business Dashboard**
+![Reference 3](../assets/reference_images/Imagem_Referencia_3.png)
+
+**Analyzed Features:**
+- Sunburst with business data
+- Centralized metrics (2,253K Total Sales)
+- Clear hierarchy: Technology > Office Supplies > Furniture
+- Well-distributed percentages
+- Clean and professional interface
+
+**Project Application:**
+- Model for V2 data structure
+- Basis for centralized metrics
+- Inspiration for informative tooltips
+- Hierarchy standard applied
+
+---
+
+## 🚀 **Development Evolution**
+
+</details>
 ### **Processo de Inspiração → Implementação**
 
 ```mermaid

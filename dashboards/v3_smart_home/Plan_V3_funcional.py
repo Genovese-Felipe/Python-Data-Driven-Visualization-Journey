@@ -3,6 +3,9 @@
 """
 Plan V3 - Smart Home Installation Analytics Dashboard
 Versão corrigida e funcional
+
+Plan V3 - Painel Analítico de Instalação Smart Home
+Corrected and functional version
 """
 
 from dash import Dash, dcc, html, Input, Output
@@ -12,8 +15,9 @@ import plotly.graph_objects as go
 from sklearn.linear_model import LinearRegression
 import numpy as np
 
-# ===== DADOS SIMULADOS =====
-# Baseados no Plan_Data_V3.py mas integrados no próprio arquivo
+# ===== DADOS SIMULADOS / SIMULATED DATA =====
+# Baseados no Plan_Data_V3.py mas integrados no próprio arquivo (PT)
+# Based on Plan_Data_V3.py but integrated in this file (EN)
 
 data = {
     'Region': ['North', 'North', 'North', 'South', 'South', 'South', 'East', 'East', 'West', 'West'],
@@ -29,12 +33,14 @@ data = {
 
 df_complex = pd.DataFrame(data)
 
-# ===== ANÁLISE PREDITIVA =====
-# Preparar dados para predição de economia de energia
+# ===== ANÁLISE PREDITIVA / PREDICTIVE ANALYSIS =====
+# Preparar dados para predição de economia de energia (PT)
+# Prepare data for energy savings prediction (EN)
 X = df_complex[['Installation_Cost', 'Number_of_Devices', 'Customer_Satisfaction']]
 y = df_complex['Annual_Energy_Savings']
 
-# Treinar modelo de regressão linear
+# Treinar modelo de regressão linear (PT)
+# Train linear regression model (EN)
 model = LinearRegression()
 model.fit(X, y)
 

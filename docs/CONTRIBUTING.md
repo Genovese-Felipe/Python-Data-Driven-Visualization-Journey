@@ -1,4 +1,13 @@
+
 # 🤝 **CONTRIBUTING - Python Data Driven Visualization Journey**
+# 🇧🇷 **Português** | 🇺🇸 **English**
+
+<!--
+Palavras-chave/Keywords: contribuição, contribution, open source, colaboração, collaboration, pull request, bug report, feature request, boas práticas, best practices, Python, Dash, Plotly, data visualization, documentação, documentation
+-->
+
+<details>
+<summary><strong>🇧🇷 Português (clique para expandir)</strong></summary>
 
 ## **Bem-vindo aos Contribuidores!** 🎉
 
@@ -6,6 +15,76 @@ Este projeto foi desenvolvido de forma colaborativa entre humano e IA, resultand
 
 ## 🎯 **Como Contribuir**
 
+</details>
+
+---
+
+<details open>
+<summary><strong>🇺🇸 English (click to expand)</strong></summary>
+
+# 🤝 **CONTRIBUTING - Python Data Driven Visualization Journey**
+
+## **Welcome, Contributors!** 🎉
+
+This project was collaboratively developed between human and AI, resulting in **3 functional Dash dashboards** with increasing complexity. Contributions are welcome!
+
+## 🎯 **How to Contribute**
+
+### **1. Report Bugs** 🐛
+```markdown
+**Bug Report Template:**
+- Dashboard Version: [V1/V2/V3]
+- Python Version: [3.12.x]
+- Dash Version: [2.16.1]
+- Error Message: [Paste full traceback]
+- Steps to Reproduce: [Detailed steps]
+- Expected vs Actual: [What should happen vs what happened]
+```
+
+### **2. Suggest Improvements** 💡
+```markdown
+**Feature Request Template:**
+- Dashboard Target: [V1/V2/V3 or New version]
+- Use Case: [Why is it needed]
+- Implementation Ideas: [How it can be done]
+- Alternative Solutions: [Other approaches]
+```
+
+### **3. Contribute Code** 💻
+
+#### **Development Environment Setup:**
+```bash
+# Clone the repository
+git clone <repository-url>
+cd Py_Vy_000
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# venv\Scripts\activate   # Windows
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Test if everything works
+python dashboards/v1_simple/sunburst_cost_explorer_funcional.py
+```
+
+#### **Code Standards:**
+
+**✅ Best Practices:**
+```python
+# Organized imports
+import dash
+from dash import dcc, html, Input, Output, callback
+import plotly.express as px
+import plotly.graph_objects as go
+import pandas as pd
+
+# Useful comments
+```
+
+</details>
 ### **1. Reportar Bugs** 🐛
 ```markdown
 **Template de Bug Report:**

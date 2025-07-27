@@ -1,8 +1,13 @@
+
 # 🚀 **API REFERENCE - Referência Técnica**
+# 🇧🇷 **Português** | 🇺🇸 **English**
 
-## **Core Functions**
+<details>
+<summary><strong>🇧🇷 Português (clique para expandir)</strong></summary>
 
-### **Data Processing**
+## **Funções Principais**
+
+### **Processamento de Dados**
 
 #### `create_sunburst_data()`
 ```python
@@ -57,6 +62,86 @@ def generate_smart_home_data():
 ### **Machine Learning**
 
 #### `train_energy_model(data)`
+
+</details>
+
+---
+
+<details open>
+<summary><strong>🇺🇸 English (click to expand)</strong></summary>
+
+# 🚀 **API REFERENCE - Technical Reference**
+
+## **Core Functions**
+
+### **Data Processing**
+
+#### `create_sunburst_data()`
+```python
+def create_sunburst_data():
+    """
+    Creates hierarchical data for sunburst visualization
+    
+    Returns:
+        list: List of dictionaries with parent-child structure
+        
+    Example:
+        data = create_sunburst_data()
+        # [{'ids': 'total', 'labels': 'Total', 'parents': '', 'values': 100}]
+    """
+```
+
+#### `process_construction_data()`
+```python
+def process_construction_data():
+    """
+    Processes construction data for cascading filters
+    
+    Returns:
+        pandas.DataFrame: DataFrame structured by pillar/category/item
+        
+    Columns:
+        - pillar: Main category (Infrastructure, Finishes, etc)
+        - category: Specific subcategory
+        - item: Individual cost item
+        - value: Monetary value in R$
+    """
+```
+
+#### `generate_smart_home_data()`
+```python
+def generate_smart_home_data():
+    """
+    Generates smart home dataset for ML analysis
+    
+    Returns:
+        pandas.DataFrame: Dataset with features for machine learning
+        
+    Features:
+        - area_m2: Home area in square meters
+        - num_devices: Number of IoT devices
+        - initial_consumption: Energy consumption before (kWh)
+        - savings_percent: Savings achieved (%)
+        - lat/lon: Geographic coordinates
+    """
+```
+
+### **Machine Learning**
+
+#### `train_energy_model(data)`
+```python
+def train_energy_model(data):
+    """
+    Trains a regression model to predict energy savings
+    
+    Args:
+        data (pandas.DataFrame): Input features and target
+    Returns:
+        model: Trained regression model
+    """
+```
+
+</details>
 ```python
 def train_energy_model(data):
     """

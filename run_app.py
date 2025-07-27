@@ -1,6 +1,11 @@
-#!/usr/bin/env python3
 
-print("🚀 Iniciando Explorador Avançado de Custos de Construção...")
+#!/usr/bin/env python3
+"""
+Executa o aplicativo Dash simplificado (PT)
+Runs the simplified Dash app (EN)
+"""
+
+print("🚀 Iniciando Explorador Avançado de Custos de Construção... / Starting Advanced Construction Cost Explorer...")
 
 try:
     from dash import Dash, html, dcc, callback, dash_table
