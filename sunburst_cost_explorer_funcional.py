@@ -1,8 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Sunburst Cost Explorer - Versão Funcional
-Baseado nos dados extraídos do HTML de referência
+"""A simple, functional Dash application for exploring construction costs.
+
+This script creates a standalone Dash dashboard that displays a hierarchical
+sunburst chart of construction cost data. The data is hardcoded into the
+script and is based on a reference HTML file.
+
+The dashboard features:
+- A main title and a descriptive subtitle.
+- A sunburst chart visualizing the cost distribution.
+- A set of summary metric cards showing total cost, number of cost items,
+  and the largest single cost.
+
+This application is a functional version of the sunburst cost explorer.
 """
 
 import dash
@@ -22,23 +32,27 @@ colors = ["#d62728","#1f77b4","#ff7f0e","#ff7f0e","#d62728","#2ca02c","#2ca02c",
 
 # Inicialização do app Dash
 app = dash.Dash(__name__)
+# The main Dash application instance for the functional sunburst explorer.
 app.title = "🏗️ Explorador de Custos de Construção - Sunburst"
 
 # Layout da aplicação
 app.layout = html.Div([
+    # The main container for the dashboard's layout.
     html.Div([
+        # The main title of the dashboard.
         html.H1("🏗️ Explorador de Custos de Construção", 
                 style={'textAlign': 'center', 'color': '#2c3e50', 'marginBottom': '30px'}),
         
+        # A subtitle describing the dashboard's purpose.
         html.Div([
             html.P("Análise interativa de custos hierárquicos de construção residencial", 
                    style={'textAlign': 'center', 'color': '#7f8c8d', 'fontSize': '18px'})
         ], style={'marginBottom': '30px'}),
         
-        # Gráfico Sunburst principal
+        # Placeholder for the main sunburst chart.
         dcc.Graph(id='sunburst-chart'),
         
-        # Métricas resumidas
+        # Placeholder for the summary metrics cards.
         html.Div(id='summary-metrics', style={'marginTop': '30px'}),
         
     ], style={
@@ -55,8 +69,19 @@ app.layout = html.Div([
     Input('sunburst-chart', 'id')  # Trigger inicial
 )
 def create_sunburst_chart(_):
-    """Cria o gráfico sunburst com os dados funcionais."""
-    
+    """Creates and configures the sunburst chart.
+
+    This function generates a Plotly Sunburst chart using pre-defined
+    hierarchical data. It sets the chart's labels, parents, and values,
+    and styles the hover template and layout for a clean presentation.
+
+    Args:
+        _: A dummy input to trigger the callback upon app load.
+
+    Returns:
+        go.Figure: A Plotly Figure object containing the configured
+                   sunburst chart.
+    """
     fig = go.Figure(go.Sunburst(
         labels=labels,
         parents=parents,
@@ -89,8 +114,20 @@ def create_sunburst_chart(_):
     Input('sunburst-chart', 'id')  # Trigger inicial
 )
 def create_summary_metrics(_):
-    """Cria métricas resumidas dos custos."""
-    
+    """Creates a set of summary metric cards.
+
+    This function calculates key financial metrics from the dataset,
+    such as total cost, the number of cost items, and the single largest
+    cost. It then formats these metrics into a series of styled HTML
+    Divs to be displayed as summary cards.
+
+    Args:
+        _: A dummy input to trigger the callback upon app load.
+
+    Returns:
+        html.Div: A Dash HTML Div component containing the styled
+                  summary metrics.
+    """
     total_cost = sum(values)
     
     return html.Div([

@@ -1,14 +1,20 @@
 
-"""
-App Dash principal para explorar custos com Sunburst (PT)
-Main Dash app to explore costs with Sunburst (EN)
+"""An advanced, multi-tab Dash dashboard for in-depth cost analysis.
 
-Explorador Avançado de Custos de Construção Residencial com Visualização Plotly Aprimorada (PT)
-Advanced Residential Construction Cost Explorer with Enhanced Plotly Visualization (EN)
-Baseado nas melhores práticas dos guias Plotly para Python (PT)
-Based on Plotly best practices guides for Python (EN)
-Aplicando técnicas avançadas de visualização conforme os guias XML (PT)
-Applying advanced visualization techniques as per XML guides (EN)
+This script creates a sophisticated, standalone Dash application for exploring
+a detailed construction cost dataset. It is the most feature-rich dashboard
+in the repository, designed to showcase a variety of advanced visualization
+and interaction techniques based on Plotly best practices.
+
+The dashboard features:
+- A professional header and a detailed control panel with filters for
+  metric, pillar, and hierarchy depth.
+- A grid of summary metric cards providing a high-level financial overview.
+- A tabbed interface to switch between four different visualization modes:
+  1.  **Sunburst Chart**: For hierarchical cost analysis.
+  2.  **Bar Chart**: To compare actual vs. budgeted costs.
+  3.  **Treemap**: To visualize budget variance across all project components.
+  4.  **Detailed Table**: An interactive data table with sorting and filtering.
 """
 
 from dash import Dash, dcc, html, dash_table, callback
@@ -73,7 +79,21 @@ pillar_colors = {
 
 # Função para criar hierarquia conforme especificado nos guias
 def create_hierarchy_paths(df):
-	"""Cria caminhos hierárquicos para sunburst seguindo as melhores práticas dos guias."""
+	"""Creates a hierarchical DataFrame for sunburst and treemap charts.
+
+    This function transforms a flat DataFrame into a hierarchical structure
+    suitable for Plotly's sunburst and treemap visualizations. It generates
+    unique IDs for each level of the hierarchy (Pillar, Area, Service, Task,
+    Sub-task) and defines their parent-child relationships.
+
+    Args:
+        df (pd.DataFrame): The input DataFrame containing the flat cost data.
+
+    Returns:
+        pd.DataFrame: A new DataFrame with a hierarchical structure, including
+                      'ids', 'labels', 'parents', and aggregated values for
+                      each level.
+    """
 	df = df.copy()
 	df['ids'] = df['pillar'] + ' - ' + df['area'] + ' - ' + df['service'] + ' - ' + df['task'] + ' - ' + df['sub_task']
 	df['parents'] = df['pillar'] + ' - ' + df['area'] + ' - ' + df['service'] + ' - ' + df['task']
@@ -148,10 +168,13 @@ def create_hierarchy_paths(df):
 	return pd.DataFrame(hierarchy_data)
 # Inicializar aplicativo Dash com customizações avançadas
 app = Dash(__name__, suppress_callback_exceptions=True)
+# The main Dash application instance for the advanced sunburst cost explorer.
 app.title = "Advanced Construction Cost Explorer"
 
 # CSS customizado conforme as melhores práticas dos guias
 app.layout = html.Div([
+    # The main container for the advanced sunburst cost explorer's layout.
+
 	# Header principal com estilo profissional
 	html.Div([
 		html.H1(
@@ -185,6 +208,7 @@ app.layout = html.Div([
 	
 	# Painel de controles principais
 	html.Div([
+        # Dropdown to select the metric for analysis.
 		html.Div([
 			html.Label("Selecionar Métrica para Análise:", 
 					  style={'fontWeight': 'bold', 'marginBottom': '10px', 'fontFamily': 'Arial, sans-serif'}),
@@ -200,6 +224,7 @@ app.layout = html.Div([
 			),
 		], style={'width': '30%', 'display': 'inline-block', 'marginRight': '5%'}),
 		
+        # Dropdown to filter by project pillar.
 		html.Div([
 			html.Label("Filtrar por Pilar:", 
 					  style={'fontWeight': 'bold', 'marginBottom': '10px', 'fontFamily': 'Arial, sans-serif'}),
@@ -212,6 +237,7 @@ app.layout = html.Div([
 			),
 		], style={'width': '30%', 'display': 'inline-block', 'marginRight': '5%'}),
 		
+        # Slider to control the depth of the hierarchical visualizations.
 		html.Div([
 			html.Label("Nível de Detalhe:", 
 					  style={'fontWeight': 'bold', 'marginBottom': '10px', 'fontFamily': 'Arial, sans-serif'}),
@@ -233,8 +259,9 @@ app.layout = html.Div([
 		'border': '1px solid #dee2e6'
 	}),
 	
-	# Métricas resumo em cards
+	# Grid of summary metric cards.
 	html.Div([
+        # Card for Total Cost.
 		html.Div([
 			html.H3(f"${df_budget['cost'].sum():,.0f}", 
 				   style={'color': '#3498db', 'margin': '0', 'fontSize': '2em'}),
@@ -246,6 +273,7 @@ app.layout = html.Div([
 			'border': '1px solid #e9ecef'
 		}, className='metric-card'),
 		
+        # Card for Total Budget.
 		html.Div([
 			html.H3(f"${df_budget['budgeted_cost'].sum():,.0f}", 
 				   style={'color': '#95a5a6', 'margin': '0', 'fontSize': '2em'}),
@@ -257,6 +285,7 @@ app.layout = html.Div([
 			'border': '1px solid #e9ecef'
 		}, className='metric-card'),
 		
+        # Card for Total Variance.
 		html.Div([
 			html.H3(f"${df_budget['variance'].sum():,.0f}", 
 				   style={'color': '#e74c3c' if df_budget['variance'].sum() > 0 else '#27ae60', 
@@ -269,6 +298,7 @@ app.layout = html.Div([
 			'border': '1px solid #e9ecef'
 		}, className='metric-card'),
 		
+        # Card for Percent Variance.
 		html.Div([
 			html.H3(f"{(df_budget['variance'].sum()/df_budget['budgeted_cost'].sum()*100):+.1f}%", 
 				   style={'color': '#f39c12', 'margin': '0', 'fontSize': '2em'}),
@@ -286,7 +316,7 @@ app.layout = html.Div([
 		'marginBottom': '30px'
 	}),
 	
-	# Abas para diferentes visualizações
+	# Tabs to switch between different visualization types.
 	dcc.Tabs(id="visualization-tabs", value='sunburst-tab', children=[
 		dcc.Tab(label='Análise Sunburst', value='sunburst-tab', style={'fontFamily': 'Arial, sans-serif'}),
 		dcc.Tab(label='Comparação por Barras', value='bar-tab', style={'fontFamily': 'Arial, sans-serif'}),
@@ -294,10 +324,10 @@ app.layout = html.Div([
 		dcc.Tab(label='Tabela Detalhada', value='table-tab', style={'fontFamily': 'Arial, sans-serif'}),
 	], style={'marginBottom': '20px'}),
 	
-	# Container para conteúdo das abas
+	# Container where the selected tab's content will be rendered.
 	html.Div(id='tab-content'),
 	
-	# Footer informativo
+	# Footer with links and version info.
 	html.Div([
 		html.P([
 			"Aplicativo desenvolvido seguindo as melhores práticas dos guias Plotly para Python | ",
@@ -326,7 +356,21 @@ app.layout = html.Div([
 hierarchy_df = create_hierarchy_paths(df_budget)
 
 def create_enhanced_sunburst(filtered_df):
-	"""Criar gráfico sunburst aprimorado com melhores práticas do Plotly"""
+	"""Creates an enhanced sunburst chart with detailed customizations.
+
+    This function generates a Plotly Sunburst chart from the filtered data.
+    It builds a hierarchical structure on the fly, applies custom colors
+    based on the project pillar, and configures a detailed hover template
+    and layout for a professional appearance.
+
+    Args:
+        filtered_df (pd.DataFrame): The DataFrame containing the data to be
+                                    visualized, already filtered by the user.
+
+    Returns:
+        dcc.Graph: A Dash Graph component containing the configured sunburst
+                   chart, or a Div with a message if the data is empty.
+    """
 	if filtered_df.empty:
 		return html.Div("📊 Nenhum dado disponível para os filtros selecionados", 
 					   style={'textAlign': 'center', 'padding': '50px', 'color': '#7f8c8d'})
@@ -414,7 +458,21 @@ def create_enhanced_sunburst(filtered_df):
 	return dcc.Graph(figure=fig, config={'displayModeBar': True, 'toImageButtonOptions': {'format': 'png', 'filename': 'sunburst_costs', 'height': 700, 'width': 1000, 'scale': 1}})
 
 def create_enhanced_treemap(filtered_df):
-	"""Criar treemap aprimorado seguindo as melhores práticas do Plotly"""
+	"""Creates an enhanced treemap to visualize budget variance.
+
+    This function generates a Plotly Treemap chart that displays hierarchical
+    cost data. The color of each section is determined by its budget
+    variance percentage, making it easy to spot areas that are over or
+    under budget.
+
+    Args:
+        filtered_df (pd.DataFrame): The pre-filtered DataFrame containing the
+                                    cost and budget data.
+
+    Returns:
+        dcc.Graph: A Dash Graph component with the configured treemap, or a
+                   Div with a message if the data is empty.
+    """
 	if filtered_df.empty:
 		return html.Div("📊 Nenhum dado disponível para os filtros selecionados", 
 					   style={'textAlign': 'center', 'padding': '50px', 'color': '#7f8c8d'})
@@ -473,7 +531,21 @@ def create_enhanced_treemap(filtered_df):
 	return dcc.Graph(figure=fig, config={'displayModeBar': True, 'toImageButtonOptions': {'format': 'png', 'filename': 'treemap_costs', 'height': 700, 'width': 1200, 'scale': 1}})
 
 def create_detailed_table(filtered_df):
-	"""Criar tabela detalhada com DataTable do Dash"""
+	"""Creates a detailed, interactive table of the cost data.
+
+    This function takes the filtered data and formats it for display in a
+    Dash DataTable. It selects relevant columns, formats monetary values
+    as strings, and sets up conditional styling to highlight rows based
+    on their budget status.
+
+    Args:
+        filtered_df (pd.DataFrame): The pre-filtered DataFrame to be
+                                    displayed in the table.
+
+    Returns:
+        html.Div: A Div component containing the styled DataTable, or a
+                  message if the input DataFrame is empty.
+    """
 	if filtered_df.empty:
 		return html.Div("📊 Nenhum dado disponível para os filtros selecionados", 
 					   style={'textAlign': 'center', 'padding': '50px', 'color': '#7f8c8d'})
@@ -535,7 +607,22 @@ def create_detailed_table(filtered_df):
 	])
 
 def create_financial_dashboard(filtered_df):
-	"""Criar dashboard financeiro com múltiplos gráficos"""
+	"""Creates a comprehensive financial dashboard with multiple subplots.
+
+    This function generates a 2x2 dashboard containing four different
+    visualizations:
+    1. A pie chart showing cost distribution by pillar.
+    2. A bar chart showing the count of items by budget status.
+    3. A horizontal bar chart of the top 10 highest-cost sub-tasks.
+    4. A scatter plot comparing actual cost vs. budgeted cost.
+
+    Args:
+        filtered_df (pd.DataFrame): The pre-filtered DataFrame to be visualized.
+
+    Returns:
+        dcc.Graph: A Dash Graph component containing the complete financial
+                   dashboard, or a Div with a message if the data is empty.
+    """
 	if filtered_df.empty:
 		return html.Div("📊 Nenhum dado disponível para análise financeira", 
 					   style={'textAlign': 'center', 'padding': '50px', 'color': '#7f8c8d'})
@@ -639,7 +726,16 @@ def create_financial_dashboard(filtered_df):
 	return dcc.Graph(figure=fig, config={'displayModeBar': True})
 
 def create_variance_chart():
-	"""Criar gráfico de barras de variação por pilar"""
+	"""Creates a bar chart comparing actual vs. budgeted costs by pillar.
+
+    This function aggregates the total actual and budgeted costs for each
+    project pillar and generates a grouped bar chart to visualize the
+    differences. It provides a high-level overview of budget performance
+    across the main project areas.
+
+    Returns:
+        go.Figure: A Plotly Figure object containing the grouped bar chart.
+    """
 	variance_by_pillar = df_budget.groupby('pillar').agg({
 		'cost': 'sum',
 		'budgeted_cost': 'sum',
@@ -685,7 +781,21 @@ def create_variance_chart():
 	return fig
 
 def create_variance_chart_filtered(filtered_df):
-	"""Criar gráfico de barras de variação com dados filtrados"""
+	"""Creates a variance bar chart from a pre-filtered DataFrame.
+
+    This function is similar to `create_variance_chart` but operates on a
+    DataFrame that has already been filtered by the user. It generates a
+    grouped bar chart to compare actual vs. budgeted costs for the
+    selected subset of data.
+
+    Args:
+        filtered_df (pd.DataFrame): The DataFrame to visualize, already
+                                    filtered based on user selections.
+
+    Returns:
+        go.Figure: A Plotly Figure object containing the filtered bar chart,
+                   or a figure with an annotation if the data is empty.
+    """
 	if filtered_df.empty:
 		return go.Figure().add_annotation(
 			text="📊 Nenhum dado disponível para os filtros selecionados",
@@ -747,7 +857,24 @@ def create_variance_chart_filtered(filtered_df):
 	Input('depth-slider', 'value')
 )
 def update_tab_content(active_tab, selected_metric, pillar_filter, depth_level):
-	"""Atualiza o conteúdo das abas baseado nas seleções do usuário."""
+	"""Renders the content for the selected visualization tab.
+
+    This callback function is the central controller for the dashboard's
+    main content area. It filters the data based on the selected pillar
+    and depth, then calls the appropriate rendering function
+    (e.g., `create_enhanced_sunburst`, `create_detailed_table`) based on
+    which tab is currently active.
+
+    Args:
+        active_tab (str): The ID of the currently active dcc.Tab.
+        selected_metric (str): The metric selected for analysis.
+        pillar_filter (str): The pillar selected from the dropdown.
+        depth_level (int): The maximum hierarchy depth from the slider.
+
+    Returns:
+        html.Div or dcc.Graph: The Dash component to be displayed in the
+                               tab content area.
+    """
 	try:
 		# Filtrar dados conforme seleção
 		filtered_hierarchy = hierarchy_df.copy()

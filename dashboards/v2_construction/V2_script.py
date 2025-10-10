@@ -1,5 +1,17 @@
-# Desenvolva o código de visualização (iterativo e orientado por guias)
-# Develop Visualization Code (Iterative & Guideline-Driven)
+"""A Dash application for exploring construction costs with advanced filters.
+
+This script creates a standalone Dash dashboard that provides an interactive
+sunburst chart for exploring hierarchical construction cost data. It serves
+as the second version (V2) of the dashboard, introducing more advanced
+interactivity than the V1 dashboard.
+
+The dashboard features:
+- Cascading dropdown filters for 'Pillar', 'Area', and 'Service'.
+- A range slider to filter the data by cost.
+- A sunburst chart that dynamically updates based on the selected filters.
+- Detailed tooltips in the sunburst chart showing actual cost, budgeted
+  cost, and the variance between them.
+"""
 
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
@@ -97,6 +109,7 @@ data = [
 df_budget = pd.DataFrame(data)
 
 app = Dash(__name__)
+"""The main Dash application instance for the V2 dashboard."""
 
 # Get min and max cost for the range slider
 min_cost = df_budget['cost'].min()
@@ -104,7 +117,10 @@ max_cost = df_budget['cost'].max()
 
 # Define the layout based on identified requirements (filters, graph)
 app.layout = html.Div([
+    # The main container for the V2 dashboard layout.
     html.H1("Residential Construction: Hierarchical Cost Explorer"),
+
+    # Dropdown for filtering by project pillar.
     html.Label("Select Pillar:"),
     dcc.Dropdown(
         id='pillar-dropdown',
@@ -113,6 +129,8 @@ app.layout = html.Div([
         value='All'
     ),
     html.Br(),
+
+    # Dropdown for filtering by project area.
     html.Label("Select Area:"),
     dcc.Dropdown(
         id='area-dropdown',
@@ -121,6 +139,8 @@ app.layout = html.Div([
         value='All'
     ),
     html.Br(),
+
+    # Dropdown for filtering by project service.
     html.Label("Select Service:"),
     dcc.Dropdown(
         id='service-dropdown',
@@ -129,6 +149,8 @@ app.layout = html.Div([
         value='All'
     ),
     html.Br(),
+
+    # Range slider for filtering by cost.
     html.Label("Filter by Cost Range:"),
     dcc.RangeSlider(
         id='cost-range-slider',
@@ -139,6 +161,8 @@ app.layout = html.Div([
                int(max_cost): f'${int(max_cost):,}'},
         step=5000
     ),
+
+    # The main sunburst chart visualization.
     dcc.Graph(id='sunburst-chart')
 ])
 
@@ -153,6 +177,27 @@ app.layout = html.Div([
     Input('cost-range-slider', 'value')
 )
 def update_graph(selected_pillar, selected_area, selected_service, cost_range):
+    """Updates the sunburst chart and dropdowns based on user filters.
+
+    This callback function dynamically filters the construction cost data based
+    on the selected pillar, area, service, and cost range. It then
+    regenerates the sunburst chart with the filtered data and updates the
+    options for the 'Area' and 'Service' dropdowns to ensure they only
+    show relevant choices.
+
+    Args:
+        selected_pillar (str): The value from the 'Pillar' dropdown.
+        selected_area (str): The value from the 'Area' dropdown.
+        selected_service (str): The value from the 'Service' dropdown.
+        cost_range (list[int]): A list containing the min and max values
+                                 from the cost range slider.
+
+    Returns:
+        tuple: A tuple containing:
+            - go.Figure: The updated sunburst chart.
+            - list: The new options for the 'Area' dropdown.
+            - list: The new options for the 'Service' dropdown.
+    """
     filtered_df = df_budget.copy()
 
     # Determine options for Area dropdown based on selected Pillar
