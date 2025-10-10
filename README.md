@@ -119,7 +119,15 @@ Python-Data-Driven-Visualization-Journey/
 ├── 📊 dashboards/
 │   ├── 🌟 v1_simple/           # Dashboard básico com Sunburst
 │   ├── 🏗️ v2_construction/     # Dashboard de construção com filtros
+│   │   ├── data.csv            # Dados para o dashboard V2
+│   │   └── V2_script.py
 │   └── 🏡 v3_smart_home/       # Dashboard complexo com ML
+│       ├── data.csv            # Dados para o dashboard V3
+│       ├── model.py            # Modelo preditivo para o dashboard V3
+│       └── Plan_V3_funcional.py
+├── 📂 data/                    # Arquivos de dados para aplicações no diretório raiz
+│   ├── app_simples_data.csv
+│   └── run_app_data.csv
 ├── 📚 docs/                    # Documentação e guias
 ├── 🔴 error_reports/           # Relatórios de erros e lições aprendidas
 ├── 🤖 ai_learning_guides/      # Instruções para futuros modelos de IA
@@ -365,7 +373,15 @@ Python-Data-Driven-Visualization-Journey/
 ├── 📊 dashboards/
 │   ├── 🌟 v1_simple/           # Basic Sunburst dashboard
 │   ├── 🏗️ v2_construction/     # Construction dashboard with filters
+│   │   ├── data.csv            # Data for the V2 dashboard
+│   │   └── V2_script.py
 │   └── 🏡 v3_smart_home/       # Complex dashboard with ML
+│       ├── data.csv            # Data for the V3 dashboard
+│       ├── model.py            # Predictive model for the V3 dashboard
+│       └── Plan_V3_funcional.py
+├── 📂 data/                    # Data files for root-level applications
+│   ├── app_simples_data.csv
+│   └── run_app_data.csv
 ├── 📚 docs/                    # Documentation and guides
 ├── 🔴 error_reports/           # Error reports and lessons learned
 ├── 🤖 ai_learning_guides/      # Instructions for future AI models
