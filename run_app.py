@@ -27,18 +27,8 @@ try:
     
     print("✅ Todas as dependências carregadas com sucesso!")
     
-    # Dados principais (versão simplificada do original)
-    data = [
-        {'pillar': 'Project Design', 'area': 'Architecture', 'service': 'Blueprint Design', 'cost': 65000, 'budgeted_cost': 60000},
-        {'pillar': 'Project Design', 'area': 'Engineering', 'service': 'Structural Analysis', 'cost': 95000, 'budgeted_cost': 91000},
-        {'pillar': 'Management', 'area': 'Administration', 'service': 'Project Management', 'cost': 220000, 'budgeted_cost': 214000},
-        {'pillar': 'Management', 'area': 'Logistics', 'service': 'Supply Chain', 'cost': 125000, 'budgeted_cost': 120000},
-        {'pillar': 'Construction', 'area': 'Site & Foundation', 'service': 'Excavation & Grading', 'cost': 470000, 'budgeted_cost': 460000},
-        {'pillar': 'Construction', 'area': 'MEP Systems', 'service': 'Electrical', 'cost': 500000, 'budgeted_cost': 485000},
-        {'pillar': 'Finishing & Landscaping', 'area': 'Finishing', 'service': 'Cabinetry & Countertops', 'cost': 220000, 'budgeted_cost': 210000},
-    ]
-    
-    df = pd.DataFrame(data)
+    # Load data from the CSV file.
+    df = pd.read_csv('data/run_app_data.csv')
     df['variance'] = df['cost'] - df['budgeted_cost']
     df['variance_percent'] = (df['variance'] / df['budgeted_cost']) * 100
     

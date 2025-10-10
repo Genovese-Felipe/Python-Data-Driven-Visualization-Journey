@@ -1,0 +1,11 @@
+Region,City,Installation_Type,Installation_Cost,Annual_Energy_Savings,Number_of_Devices,Customer_Satisfaction,Latitude,Longitude
+North,Seattle,Solar Panels,15000,1800,8,4.2,47.6062,-122.3321
+North,Seattle,Smart Thermostat,8000,900,5,3.8,47.6062,-122.3321
+North,Portland,Solar Panels,18000,2100,10,4.5,45.5051,-122.6750
+South,Austin,Smart Thermostat,6000,750,4,4.0,30.2672,-97.7431
+South,Dallas,Security System,12000,800,12,4.3,32.7767,-96.7970
+South,Houston,Solar Panels,20000,2400,9,4.1,29.7604,-95.3698
+East,New York,Smart Thermostat,7500,850,6,3.9,40.7128,-74.0060
+East,Boston,Security System,14000,900,11,4.4,42.3601,-71.0589
+West,San Francisco,Solar Panels,22000,2600,12,4.6,37.7749,-122.4194
+West,Los Angeles,Smart Thermostat,9000,950,7,4.2,34.0522,-118.2437

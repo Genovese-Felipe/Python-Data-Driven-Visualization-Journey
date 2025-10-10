@@ -17,15 +17,8 @@ import plotly.express as px
 import pandas as pd
 import plotly.graph_objects as go
 
-# Dados simplificados para teste
-data_simples = [
-    {'categoria': 'Design', 'subcategoria': 'Arquitetura', 'valor': 100000, 'orcamento': 95000},
-    {'categoria': 'Design', 'subcategoria': 'Engenharia', 'valor': 150000, 'orcamento': 145000},
-    {'categoria': 'Construção', 'subcategoria': 'Fundação', 'valor': 300000, 'orcamento': 290000},
-    {'categoria': 'Construção', 'subcategoria': 'Estrutura', 'valor': 500000, 'orcamento': 510000},
-]
-
-df = pd.DataFrame(data_simples)
+# Load data from the CSV file.
+df = pd.read_csv('data/app_simples_data.csv')
 
 # Criar aplicativo
 app = Dash(__name__)

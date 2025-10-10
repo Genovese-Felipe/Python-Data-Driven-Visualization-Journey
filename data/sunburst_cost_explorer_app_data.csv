@@ -1,0 +1,23 @@
+pillar,area,service,task,sub_task,cost,budgeted_cost
+Construction,Superstructure,Framing & Steel,Wood & Steel Frame Erection,Wood Framing,280000,275000
+Construction,Superstructure,Framing & Steel,Wood & Steel Frame Erection,Steel Erection,200000,198000
+Construction,MEP Systems,Electrical,Complete Wiring & Fixtures,Wiring Installation,150000,145000
+Construction,MEP Systems,Electrical,Complete Wiring & Fixtures,Fixture Installation,90000,88000
+Construction,MEP Systems,Plumbing & HVAC,"Piping, Drains & Ductwork",Plumbing Installation,130000,128000
+Construction,MEP Systems,Plumbing & HVAC,"Piping, Drains & Ductwork",HVAC Installation,130000,125000
+Construction,Interior & Exterior,Drywall & Painting,Interior Walls and Ceilings,Drywall Installation,100000,98000
+Construction,Interior & Exterior,Drywall & Painting,Interior Walls and Ceilings,Painting,90000,88000
+Construction,Interior & Exterior,Flooring & Tiling,Hardwood and Ceramic Installation,Hardwood Installation,100000,95000
+Construction,Interior & Exterior,Flooring & Tiling,Hardwood and Ceramic Installation,Tiling,75000,73000
+Construction,Superstructure,Roofing,Shingle and Underlayment Installation,Underlayment,40000,38000
+Construction,Superstructure,Roofing,Shingle and Underlayment Installation,Shingle Installation,80000,78000
+Construction,Interior & Exterior,Window & Door Installation,Exterior and Interior Openings,Window Installation,50000,48000
+Construction,Interior & Exterior,Window & Door Installation,Exterior and Interior Openings,Door Installation,40000,38000
+Finishing & Landscaping,Finishing,Cabinetry & Countertops,Kitchen and Bathroom Fixtures,Cabinetry Installation,90000,88000
+Finishing & Landscaping,Finishing,Cabinetry & Countertops,Kitchen and Bathroom Fixtures,Countertop Installation,60000,58000
+Finishing & Landscaping,Finishing,Fixtures & Hardware,"Lighting, Faucets, and Door Knobs",Lighting Fixtures,35000,34000
+Finishing & Landscaping,Finishing,Fixtures & Hardware,"Lighting, Faucets, and Door Knobs",Faucets and Hardware,35000,33000
+Finishing & Landscaping,Landscaping,Hardscaping,"Patio, Walkways, and Retaining Walls",Patio and Walkway Construction,50000,48000
+Finishing & Landscaping,Landscaping,Hardscaping,"Patio, Walkways, and Retaining Walls",Retaining Wall Construction,30000,29000
+Finishing & Landscaping,Landscaping,Softscaping,"Lawn, Plants, and Trees",Lawn Installation,20000,19000
+Finishing & Landscaping,Landscaping,Softscaping,"Lawn, Plants, and Trees",Planting and Tree Installation,20000,18000

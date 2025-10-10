@@ -23,40 +23,14 @@ import plotly.graph_objects as go
 from sklearn.linear_model import LinearRegression
 import numpy as np
 
-# ===== DADOS SIMULADOS / SIMULATED DATA =====
-# Baseados no Plan_Data_V3.py mas integrados no próprio arquivo (PT)
-# Based on Plan_Data_V3.py but integrated in this file (EN)
+# Import the model training function from the new model.py file.
+from .model import train_energy_savings_model
 
-data = {
-    'Region': ['North', 'North', 'North', 'South', 'South', 'South', 'East', 'East', 'West', 'West'],
-    'City': ['Seattle', 'Seattle', 'Portland', 'Austin', 'Dallas', 'Houston', 'New York', 'Boston', 'San Francisco', 'Los Angeles'],
-    'Installation_Type': ['Solar Panels', 'Smart Thermostat', 'Solar Panels', 'Smart Thermostat', 'Security System', 'Solar Panels', 'Smart Thermostat', 'Security System', 'Solar Panels', 'Smart Thermostat'],
-    'Installation_Cost': [15000, 8000, 18000, 6000, 12000, 20000, 7500, 14000, 22000, 9000],
-    'Annual_Energy_Savings': [1800, 900, 2100, 750, 800, 2400, 850, 900, 2600, 950],
-    'Number_of_Devices': [8, 5, 10, 4, 12, 9, 6, 11, 12, 7],
-    'Customer_Satisfaction': [4.2, 3.8, 4.5, 4.0, 4.3, 4.1, 3.9, 4.4, 4.6, 4.2],
-    'Latitude': [47.6062, 47.6062, 45.5051, 30.2672, 32.7767, 29.7604, 40.7128, 42.3601, 37.7749, 34.0522],
-    'Longitude': [-122.3321, -122.3321, -122.6750, -97.7431, -96.7970, -95.3698, -74.0060, -71.0589, -122.4194, -118.2437]
-}
+# Load data from the CSV file.
+df_complex = pd.read_csv('dashboards/v3_smart_home/data.csv')
 
-df_complex = pd.DataFrame(data)
-
-# ===== ANÁLISE PREDITIVA / PREDICTIVE ANALYSIS =====
-# Preparar dados para predição de economia de energia (PT)
-# Prepare data for energy savings prediction (EN)
-X = df_complex[['Installation_Cost', 'Number_of_Devices', 'Customer_Satisfaction']]
-y = df_complex['Annual_Energy_Savings']
-
-# Treinar modelo de regressão linear (PT)
-# Train linear regression model (EN)
-model = LinearRegression()
-model.fit(X, y)
-
-# Importância das features (coeficientes absolutos)
-feature_importance = pd.DataFrame({
-    'feature': ['Installation Cost', 'Number of Devices', 'Customer Satisfaction'],
-    'importance': np.abs(model.coef_)
-}).sort_values('importance', ascending=False)
+# Train the model and get the feature importance.
+model, feature_importance = train_energy_savings_model(df_complex)
 
 # ===== APLICAÇÃO DASH =====
 app = Dash(__name__)
