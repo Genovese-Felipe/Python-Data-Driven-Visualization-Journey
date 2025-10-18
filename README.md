@@ -75,12 +75,12 @@ O projeto foi guiado por referências visuais profissionais que definiram nossos
 - ✅ Análise de custos de construção
 - ✅ Interface profissional
 
-### 🏡 **V3 - Smart Home Complexo**
-**Porta: 8053** | **Foco: ML & Análise Avançada**
-- ✅ **4 Visualizações**: Sunburst + Mapa + Scatter + ML
-- ✅ **Machine Learning**: Análise preditiva de economia de energia
-- ✅ **Mapas Geográficos**: Coordenadas reais dos EUA
-- ✅ **Design Moderno**: Cards responsivos com styling avançado
+### ⚖️ **V4 - Painel Jurídico**
+**Porta: 8054** | **Foco: Análise de Custos Jurídicos**
+- ✅ Hierarquia de Casos: Tipo de Caso → Área de Atuação → Serviço
+- ✅ Filtros dinâmicos para análise detalhada
+- ✅ Visualização de honorários e horas estimadas
+- ✅ Interface limpa e profissional para uso jurídico
 
 ---
 
@@ -107,6 +107,10 @@ python dashboards/v2_construction/V2_script.py
 # V3 - Smart Home Complexo
 python dashboards/v3_smart_home/Plan_V3_funcional.py
 # Acesse: http://localhost:8053
+
+# V4 - Painel Jurídico
+python dashboards/v4_juridical/V4_juridical_dashboard.py
+# Acesse: http://localhost:8054
 ```
 
 ---
@@ -119,7 +123,8 @@ Python-Data-Driven-Visualization-Journey/
 ├── 📊 dashboards/
 │   ├── 🌟 v1_simple/           # Dashboard básico com Sunburst
 │   ├── 🏗️ v2_construction/     # Dashboard de construção com filtros
-│   └── 🏡 v3_smart_home/       # Dashboard complexo com ML
+│   ├── 🏡 v3_smart_home/       # Dashboard complexo com ML
+│   └── ⚖️ v4_juridical/       # Dashboard jurídico com análise de custos
 ├── 📚 docs/                    # Documentação e guias
 ├── 🔴 error_reports/           # Relatórios de erros e lições aprendidas
 ├── 🤖 ai_learning_guides/      # Instruções para futuros modelos de IA
