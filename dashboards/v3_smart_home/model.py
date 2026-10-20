@@ -33,8 +33,11 @@ def train_energy_savings_model(df):
     model = LinearRegression()
     model.fit(X, y)
 
+    # Coefficients are demonstration-only and have different physical units.
+    # Do not interpret absolute magnitudes as standardized model importance.
     feature_importance = pd.DataFrame({
         'feature': ['Installation Cost', 'Number of Devices', 'Customer Satisfaction'],
+        'feature': X.columns.tolist(),
         'importance': np.abs(model.coef_)
     }).sort_values('importance', ascending=False)
 
