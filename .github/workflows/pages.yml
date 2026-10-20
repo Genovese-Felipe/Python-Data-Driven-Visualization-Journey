@@ -5,6 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -18,7 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate source HTML
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate offline dashboards (datasets, parity, JS syntax)
+        run: python tools/validate_portfolio.py
+      - name: Validate legacy Pages HTML
         shell: bash
         run: |
           set -euo pipefail
@@ -32,9 +38,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p _site
-          cp index/*.html _site/
-          cp index/principal.html _site/index.html
+          mkdir -p _site/legacy
+          cp index.html dashboard_v1.html dashboard_v2.html dashboard_v3.html _site/
+          cp index/*.html _site/legacy/
+          cp index/principal.html _site/legacy/index.html
           touch _site/.nojekyll
           test -s _site/index.html
       - uses: actions/upload-artifact@v4
@@ -51,7 +58,7 @@ jobs:
       id-token: write
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url ${{
     steps:
       - uses: actions/download-artifact@v4
         with:
