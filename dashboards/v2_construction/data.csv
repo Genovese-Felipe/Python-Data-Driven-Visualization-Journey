@@ -1,0 +1,50 @@
+pillar,area,service,task,sub_task,cost,budgeted_cost
+Project Design,Architecture,Blueprint Design,Initial Schematics & 3D Model,Site Survey,15000,14000
+Project Design,Architecture,Blueprint Design,Initial Schematics & 3D Model,Conceptual Design,20000,18000
+Project Design,Architecture,Blueprint Design,Initial Schematics & 3D Model,Detailed Drawings,30000,28000
+Project Design,Engineering,Structural Analysis,Foundation & Frame Calculations,Soil Testing,25000,24000
+Project Design,Engineering,Structural Analysis,Foundation & Frame Calculations,Load Bearing Calculations,35000,33000
+Project Design,Engineering,Structural Analysis,Foundation & Frame Calculations,Frame Design,35000,34000
+Project Design,Engineering,MEP Engineering,HVAC & Electrical Plans,HVAC Design,40000,38000
+Project Design,Engineering,MEP Engineering,HVAC & Electrical Plans,Electrical Design,45000,43000
+Project Design,Architecture,Interior Design,Material Selection & Layout,Finish Selection,20000,19000
+Project Design,Architecture,Interior Design,Material Selection & Layout,Layout Planning,20000,18000
+Project Design,Engineering,Civil Engineering,Drainage & Grading Plan,Drainage Design,15000,14000
+Project Design,Engineering,Civil Engineering,Drainage & Grading Plan,Grading Plan,15000,13000
+Management,Administration,Project Management,On-Site Supervision & Reporting,Daily Supervision,70000,68000
+Management,Administration,Project Management,On-Site Supervision & Reporting,Progress Reporting,60000,58000
+Management,Administration,Permits & Legal,City & Environmental Approvals,Permit Application,50000,48000
+Management,Administration,Permits & Legal,City & Environmental Approvals,Environmental Review,40000,38000
+Management,Logistics,Supply Chain,Material Sourcing & Delivery,Material Sourcing,35000,33000
+Management,Logistics,Supply Chain,Material Sourcing & Delivery,Delivery Coordination,35000,34000
+Management,Administration,Financial Management,Budget Tracking & Invoicing,Budget Monitoring,30000,29000
+Management,Administration,Financial Management,Budget Tracking & Invoicing,Invoicing,30000,28000
+Management,Logistics,Equipment Rental,Heavy Machinery & Tools,Machinery Rental,30000,29000
+Management,Logistics,Equipment Rental,Heavy Machinery & Tools,Tool Rental,25000,24000
+Construction,Site & Foundation,Excavation & Grading,Earthwork and Site Prep,Excavation,80000,78000
+Construction,Site & Foundation,Excavation & Grading,Earthwork and Site Prep,Grading,80000,79000
+Construction,Site & Foundation,Concrete Work,Foundation Pouring & Curing,Formwork,100000,98000
+Construction,Site & Foundation,Concrete Work,Foundation Pouring & Curing,Pouring,150000,148000
+Construction,Site & Foundation,Concrete Work,Foundation Pouring & Curing,Curing,60000,58000
+Construction,Superstructure,Framing & Steel,Wood & Steel Frame Erection,Wood Framing,280000,275000
+Construction,Superstructure,Framing & Steel,Wood & Steel Frame Erection,Steel Erection,200000,198000
+Construction,MEP Systems,Electrical,Complete Wiring & Fixtures,Wiring Installation,150000,145000
+Construction,MEP Systems,Electrical,Complete Wiring & Fixtures,Fixture Installation,90000,88000
+Construction,MEP Systems,Plumbing & HVAC,Piping, Drains & Ductwork,Plumbing Installation,130000,128000
+Construction,MEP Systems,Plumbing & HVAC,Piping, Drains & Ductwork,HVAC Installation,130000,125000
+Construction,Interior & Exterior,Drywall & Painting,Interior Walls and Ceilings,Drywall Installation,100000,98000
+Construction,Interior & Exterior,Drywall & Painting,Interior Walls and Ceilings,Painting,90000,88000
+Construction,Interior & Exterior,Flooring & Tiling,Hardwood and Ceramic Installation,Hardwood Installation,100000,95000
+Construction,Interior & Exterior,Flooring & Tiling,Hardwood and Ceramic Installation,Tiling,75000,73000
+Construction,Superstructure,Roofing,Shingle and Underlayment Installation,Underlayment,40000,38000
+Construction,Superstructure,Roofing,Shingle and Underlayment Installation,Shingle Installation,80000,78000
+Construction,Interior & Exterior,Window & Door Installation,Exterior and Interior Openings,Window Installation,50000,48000
+Construction,Interior & Exterior,Window & Door Installation,Exterior and Interior Openings,Door Installation,40000,38000
+Finishing & Landscaping,Finishing,Cabinetry & Countertops,Kitchen and Bathroom Fixtures,Cabinetry Installation,90000,88000
+Finishing & Landscaping,Finishing,Cabinetry & Countertops,Kitchen and Bathroom Fixtures,Countertop Installation,60000,58000
+Finishing & Landscaping,Finishing,Fixtures & Hardware,Lighting, Faucets, and Door Knobs,Lighting Fixtures,35000,34000
+Finishing & Landscaping,Finishing,Fixtures & Hardware,Lighting, Faucets, and Door Knobs,Faucets and Hardware,35000,33000
+Finishing & Landscaping,Landscaping,Hardscaping,Patio, Walkways, and Retaining Walls,Patio and Walkway Construction,50000,48000
+Finishing & Landscaping,Landscaping,Hardscaping,Patio, Walkways, and Retaining Walls,Retaining Wall Construction,30000,29000
+Finishing & Landscaping,Landscaping,Softscaping,Lawn, Plants, and Trees,Lawn Installation,20000,19000
+Finishing & Landscaping,Landscaping,Softscaping,Lawn, Plants, and Trees,Planting and Tree Installation,20000,18000

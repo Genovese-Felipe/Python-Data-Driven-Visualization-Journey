@@ -1,5 +1,18 @@
-# Sunburst Cost Explorer - VERSÃO SIMPLES E FUNCIONAL
-# Criada para garantir que TUDO funcione perfeitamente
+"""A simple, functional, multi-tab Dash dashboard for cost exploration.
+
+This script creates a standalone Dash application that serves as a simplified
+but fully functional version of the cost explorer. It is designed to be a
+clear and straightforward example of a multi-tab Dash application.
+
+The dashboard features:
+- A simple header and control panel with a pillar filter and a depth slider.
+- A set of summary metric cards for a high-level overview.
+- A tabbed interface to switch between four different visualization types:
+  1.  **Sunburst Chart**: For hierarchical cost analysis.
+  2.  **Bar Chart**: To compare actual vs. budgeted costs.
+  3.  **Treemap**: To visualize cost distribution.
+  4.  **Data Table**: To view the raw data.
+"""
 
 from dash import Dash, dcc, html, dash_table
 from dash.dependencies import Input, Output
@@ -41,7 +54,20 @@ df['status'] = df['variance'].apply(lambda x: 'Over Budget' if x > 0 else 'Under
 
 # ===== FUNÇÕES =====
 def create_sunburst(filtered_df):
-    """Cria gráfico sunburst SIMPLES mas FUNCIONANDO"""
+    """Creates a simple, functional sunburst chart.
+
+    This function builds a hierarchical structure from the filtered
+    DataFrame and generates a Plotly Sunburst chart to visualize the
+    cost distribution.
+
+    Args:
+        filtered_df (pd.DataFrame): The pre-filtered DataFrame to be
+                                    visualized.
+
+    Returns:
+        dcc.Graph: A Dash Graph component containing the sunburst chart,
+                   or a Div with a message if the data is empty.
+    """
     if filtered_df.empty:
         return html.Div("📊 Sem dados para mostrar", style={'textAlign': 'center', 'padding': '50px'})
     
@@ -117,7 +143,20 @@ def create_sunburst(filtered_df):
     return dcc.Graph(figure=fig)
 
 def create_bar_chart(filtered_df):
-    """Cria gráfico de barras SIMPLES mas FUNCIONANDO"""
+    """Creates a simple bar chart comparing costs by pillar.
+
+    This function aggregates the cost and budget data by pillar from the
+    filtered DataFrame and generates a grouped bar chart to compare
+    the totals.
+
+    Args:
+        filtered_df (pd.DataFrame): The pre-filtered DataFrame to be
+                                    visualized.
+
+    Returns:
+        dcc.Graph: A Dash Graph component containing the bar chart, or a
+                   Div with a message if the data is empty.
+    """
     if filtered_df.empty:
         return html.Div("📊 Sem dados para mostrar", style={'textAlign': 'center', 'padding': '50px'})
     
@@ -141,7 +180,20 @@ def create_bar_chart(filtered_df):
     return dcc.Graph(figure=fig)
 
 def create_treemap(filtered_df):
-    """Cria treemap SIMPLES mas FUNCIONANDO"""
+    """Creates a simple treemap to visualize cost variance.
+
+    This function generates a Plotly Treemap from the filtered DataFrame,
+    with the color of each section determined by its budget variance
+    percentage.
+
+    Args:
+        filtered_df (pd.DataFrame): The pre-filtered DataFrame to be
+                                    visualized.
+
+    Returns:
+        dcc.Graph: A Dash Graph component containing the treemap, or a
+                   Div with a message if the data is empty.
+    """
     if filtered_df.empty:
         return html.Div("📊 Sem dados para mostrar", style={'textAlign': 'center', 'padding': '50px'})
     
@@ -158,7 +210,20 @@ def create_treemap(filtered_df):
     return dcc.Graph(figure=fig)
 
 def create_table(filtered_df):
-    """Cria tabela SIMPLES mas FUNCIONANDO"""
+    """Creates a simple, interactive data table.
+
+    This function takes the filtered DataFrame and displays it in a
+    Dash DataTable. It includes basic formatting for numeric columns
+    and allows for native sorting.
+
+    Args:
+        filtered_df (pd.DataFrame): The pre-filtered DataFrame to be
+                                    displayed.
+
+    Returns:
+        html.Div: A Div component containing the DataTable, or a message
+                  if the DataFrame is empty.
+    """
     if filtered_df.empty:
         return html.Div("📊 Sem dados para mostrar", style={'textAlign': 'center', 'padding': '50px'})
     
@@ -263,6 +328,24 @@ app.layout = html.Div([
      Input('depth-slider-simple', 'value')]
 )
 def update_content(active_tab, pillar_filter, depth_level):
+    """Renders the content for the selected visualization tab.
+
+    This callback function serves as the main controller for the dashboard.
+    It filters the data based on the selected pillar and then calls the
+    appropriate function to render the content (sunburst, bar chart,
+    treemap, or table) based on the active tab.
+
+    Args:
+        active_tab (str): The value of the currently active tab.
+        pillar_filter (str): The pillar selected from the dropdown.
+        depth_level (int): The selected depth from the slider (not used
+                           in this simplified version but kept for
+                           structural consistency).
+
+    Returns:
+        html.Div or dcc.Graph: The component to be displayed in the
+                               main content area.
+    """
     # Filtrar dados
     filtered_df = df.copy()
     
