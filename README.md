@@ -131,14 +131,11 @@ Python-Data-Driven-Visualization-Journey/
 │   ├── 🏗️ v2_construction/     # Dashboard de construção com filtros
 │   │   ├── data.csv            # Dados para o dashboard V2
 │   │   └── V2_script.py
-│   └── 🏡 v3_smart_home/       # Dashboard complexo com ML
-│       ├── data.csv            # Dados para o dashboard V3
-│       ├── model.py            # Modelo preditivo para o dashboard V3
-│       └── Plan_V3_funcional.py
+│   ├── 🏡 v3_smart_home/       # Dashboard complexo com ML
+│   │   ├── data.csv            # Dados para o dashboard V3
+│   │   ├── model.py            # Modelo preditivo para o dashboard V3
+│   │   └── Plan_V3_funcional.py
 │   └── ⚖️ v4_juridical/        # Dashboard jurídico (honorários)
-│       ├── data.csv            # Dados para o dashboard V3
-│       ├── model.py            # Modelo preditivo para o dashboard V3
-│       └── Plan_V3_funcional.py
 ├── 📂 data/                    # Arquivos de dados para aplicações no diretório raiz
 │   ├── app_simples_data.csv
 │   └── run_app_data.csv
@@ -399,14 +396,11 @@ Python-Data-Driven-Visualization-Journey/
 │   ├── 🏗️ v2_construction/     # Construction dashboard with filters
 │   │   ├── data.csv            # Data for the V2 dashboard
 │   │   └── V2_script.py
-│   └── 🏡 v3_smart_home/       # Complex dashboard with ML
-│       ├── data.csv            # Data for the V3 dashboard
-│       ├── model.py            # Predictive model for the V3 dashboard
-│       └── Plan_V3_funcional.py
+│   ├── 🏡 v3_smart_home/       # Complex dashboard with ML
+│   │   ├── data.csv            # Data for the V3 dashboard
+│   │   ├── model.py            # Predictive model for the V3 dashboard
+│   │   └── Plan_V3_funcional.py
 │   └── ⚖️ v4_juridical/        # Juridical dashboard (fees)
-│       ├── data.csv            # Data for the V3 dashboard
-│       ├── model.py            # Predictive model for the V3 dashboard
-│       └── Plan_V3_funcional.py
 ├── 📂 data/                    # Data files for root-level applications
 │   ├── app_simples_data.csv
 │   └── run_app_data.csv
