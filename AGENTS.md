@@ -11,3 +11,4 @@ V1 website demo reuses V2 data to repair the invalid legacy V1 parent graph; do 
 GitHub Pages is static: HTML/JS can filter, chart and export in the browser, but cannot run a Python Dash server, train a model, or expose arbitrary authenticated Python execution. Use a separate trusted compute environment and explicit API if dynamic execution is required.
 
 Repository updates: use feature branches, tests and draft PR; do not push directly to main or auto-merge. An unrelated series of main changes appeared during this audit; reconcile before integrating. Protect personal or commercial documents before any public publication.
+Regeneration in CI: python scripts/generate_pages.py && python scripts/verify_pages.py. The generator reads literal V2 source safely using AST and supports both the legacy V3 inline literal and the newer dashboards/v3_smart_home/data.csv format; generated CSV and HTML remain browser-side only.
