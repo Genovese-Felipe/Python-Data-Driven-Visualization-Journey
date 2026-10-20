@@ -1,0 +1,144 @@
+{
+  "metadata": {
+    "project": "Python Data Driven Visualization Journey",
+    "schema_version": "1.0",
+    "source_commit": "859aa2882b290268d46d7027b4eb437cb844914b",
+    "source_files": {
+      "construction": "dashboards/v2_construction/V2_script.py",
+      "smart_home": "dashboards/v3_smart_home/Plan_V3_funcional.py"
+    },
+    "data_status": "demonstrative/illustrative; not verified actual expenditure nor independently observed devices",
+    "currency": "USD as historically displayed; not independently verified",
+    "construction_records": 49,
+    "construction_total": 3085000,
+    "construction_budget": 2988000,
+    "smart_home_records": 10,
+    "notes": [
+      "Cost and budget may represent illustrative examples, not actual finance records.",
+      "Original V1 arrays have 97 labels/parents but 53 values; V1 web reconstruction uses V2 normalized hierarchy.",
+      "V3 original model has 10 observations and no held-out validation; no predictive claims are published."
+    ]
+  },
+  "records": [
+    {
+      "id": "S001",
+      "Region": "North",
+      "City": "Seattle",
+      "Installation_Type": "Solar Panels",
+      "Installation_Cost": 15000,
+      "Annual_Energy_Savings": 1800,
+      "Number_of_Devices": 8,
+      "Customer_Satisfaction": 4.2,
+      "Latitude": 47.6062,
+      "Longitude": -122.3321
+    },
+    {
+      "id": "S002",
+      "Region": "North",
+      "City": "Seattle",
+      "Installation_Type": "Smart Thermostat",
+      "Installation_Cost": 8000,
+      "Annual_Energy_Savings": 900,
+      "Number_of_Devices": 5,
+      "Customer_Satisfaction": 3.8,
+      "Latitude": 47.6062,
+      "Longitude": -122.3321
+    },
+    {
+      "id": "S003",
+      "Region": "North",
+      "City": "Portland",
+      "Installation_Type": "Solar Panels",
+      "Installation_Cost": 18000,
+      "Annual_Energy_Savings": 2100,
+      "Number_of_Devices": 10,
+      "Customer_Satisfaction": 4.5,
+      "Latitude": 45.5051,
+      "Longitude": -122.675
+    },
+    {
+      "id": "S004",
+      "Region": "South",
+      "City": "Austin",
+      "Installation_Type": "Smart Thermostat",
+      "Installation_Cost": 6000,
+      "Annual_Energy_Savings": 750,
+      "Number_of_Devices": 4,
+      "Customer_Satisfaction": 4,
+      "Latitude": 30.2672,
+      "Longitude": -97.7431
+    },
+    {
+      "id": "S005",
+      "Region": "South",
+      "City": "Dallas",
+      "Installation_Type": "Security System",
+      "Installation_Cost": 12000,
+      "Annual_Energy_Savings": 800,
+      "Number_of_Devices": 12,
+      "Customer_Satisfaction": 4.3,
+      "Latitude": 32.7767,
+      "Longitude": -96.797
+    },
+    {
+      "id": "S006",
+      "Region": "South",
+      "City": "Houston",
+      "Installation_Type": "Solar Panels",
+      "Installation_Cost": 20000,
+      "Annual_Energy_Savings": 2400,
+      "Number_of_Devices": 9,
+      "Customer_Satisfaction": 4.1,
+      "Latitude": 29.7604,
+      "Longitude": -95.3698
+    },
+    {
+      "id": "S007",
+      "Region": "East",
+      "City": "New York",
+      "Installation_Type": "Smart Thermostat",
+      "Installation_Cost": 7500,
+      "Annual_Energy_Savings": 850,
+      "Number_of_Devices": 6,
+      "Customer_Satisfaction": 3.9,
+      "Latitude": 40.7128,
+      "Longitude": -74.006
+    },
+    {
+      "id": "S008",
+      "Region": "East",
+      "City": "Boston",
+      "Installation_Type": "Security System",
+      "Installation_Cost": 14000,
+      "Annual_Energy_Savings": 900,
+      "Number_of_Devices": 11,
+      "Customer_Satisfaction": 4.4,
+      "Latitude": 42.3601,
+      "Longitude": -71.0589
+    },
+    {
+      "id": "S009",
+      "Region": "West",
+      "City": "San Francisco",
+      "Installation_Type": "Solar Panels",
+      "Installation_Cost": 22000,
+      "Annual_Energy_Savings": 2600,
+      "Number_of_Devices": 12,
+      "Customer_Satisfaction": 4.6,
+      "Latitude": 37.7749,
+      "Longitude": -122.4194
+    },
+    {
+      "id": "S010",
+      "Region": "West",
+      "City": "Los Angeles",
+      "Installation_Type": "Smart Thermostat",
+      "Installation_Cost": 9000,
+      "Annual_Energy_Savings": 950,
+      "Number_of_Devices": 7,
+      "Customer_Satisfaction": 4.2,
+      "Latitude": 34.0522,
+      "Longitude": -118.2437
+    }
+  ]
+}
