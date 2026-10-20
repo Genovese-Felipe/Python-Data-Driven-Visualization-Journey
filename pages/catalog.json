@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "source_ref": "audit/pages-v4-review-20261019",
+  "data_type": "synthetic",
+  "currency": "unspecified",
+  "dashboards": [
+    {
+      "id": "v1",
+      "file": "v1.html",
+      "rows": 49,
+      "source": "dashboards/v2_construction/V2_script.py",
+      "reconstruction": true
+    },
+    {
+      "id": "v2",
+      "file": "v2.html",
+      "rows": 49,
+      "source": "dashboards/v2_construction/V2_script.py"
+    },
+    {
+      "id": "v3",
+      "file": "v3.html",
+      "rows": 10,
+      "source": "dashboards/v3_smart_home/Plan_V3_funcional.py"
+    }
+  ],
+  "datasets": [
+    "construction_costs.csv",
+    "smart_home.csv"
+  ]
+}
