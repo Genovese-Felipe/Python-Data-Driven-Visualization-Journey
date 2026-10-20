@@ -26,3 +26,5 @@ Static clients read catalog.json and the CSVs. Python-capable agents clone the r
 
 ## Known limits
 Full file inventory and focused critical-code inspection completed; visual review of binary images, comprehensive XML semantic review, full notebook reexecution and browser end-to-end checks remain open. No public Pages URL has been verified live.
+## Additional regression in newly changed main V3
+The current main V3 script imports `from .model import train_energy_savings_model` but the legacy README instructs users to run that file directly as `python dashboards/v3_smart_home/Plan_V3_funcional.py`. Direct execution lacks a package context and normally raises `ImportError: attempted relative import with no known parent package`. The relative `pd.read_csv('dashboards/v3_smart_home/data.csv')` also depends on the caller's working directory. Proposed fix: choose module entry point (`python -m dashboards.v3_smart_home.Plan_V3_funcional` plus packages where required), or absolute package imports; use `Path(__file__).resolve().parent / 'data.csv'`; add CI smoke tests for both invocation paths before adopting the newly changed V3.
