@@ -1,49 +1,61 @@
-name: Publish dashboard portfolio to GitHub Pages
+name: Publish FGen unified VizLab portfolio
 
 on:
+  pull_request:
+    paths: ["vizlab/**", ".github/workflows/pages.yml"]
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+    paths: ["vizlab/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: pages-deployment
+  group: github-pages
   cancel-in-progress: true
 
 jobs:
-  validate-static:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate source HTML
-        shell: bash
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: vizlab/requirements.txt
+      - name: Install deterministic plotting dependencies
+        run: python -m pip install -r vizlab/requirements.txt
+      - name: Validate independent source datasets
+        run: python vizlab/build.py validate
+      - name: Export static HTML and documented JSON API
+        run: python vizlab/build.py build
+      - name: Verify page artifacts
         run: |
-          set -euo pipefail
-          for page in principal dashboard_v1 dashboard_v2 dashboard_v3; do
-            test -s "index/${page}.html"
+          test -s vizlab/site/index.html
+          for f in dashboard_v1 dashboard_v2 dashboard_v3 dashboard_v4 learning_map; do
+            test -s "vizlab/site/${f}.html"
           done
-          grep -q "dashboard_v1.html" index/principal.html
-          grep -q "dashboard_v2.html" index/principal.html
-          grep -q "dashboard_v3.html" index/principal.html
-      - name: Assemble Pages artifact
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p _site
-          cp index/*.html _site/
-          cp index/principal.html _site/index.html
-          touch _site/.nojekyll
-          test -s _site/index.html
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          for p in Path('vizlab/site').glob('*.html'):
+              if re.search(r'<script[^>]+src=["\x27]https?://',p.read_text(),re.I):
+                  raise SystemExit('External JS dependency: '+str(p))
+          PY
       - uses: actions/upload-artifact@v4
         with:
-          name: static-pages-preview
-          path: _site
+          name: vizlab-pr-preview
+          path: vizlab/site
+      - uses: actions/upload-pages-artifact@v4
+        if: github.event_name != 'pull_request'
+        with:
+          path: vizlab/site
+
   deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: validate-static
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -53,13 +65,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: static-pages-preview
-          path: _site
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v4
-        with:
-          path: _site
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4
+        id: deployment

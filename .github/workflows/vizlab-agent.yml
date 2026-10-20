@@ -1,0 +1,36 @@
+name: VizLab authorized agent operations
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: Safe predefined operation
+        required: true
+        type: choice
+        options: [catalog, validate, build]
+permissions:
+  contents: read
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r vizlab/requirements.txt
+      - name: Run allowlisted command
+        shell: bash
+        env:
+          OP: ${{ inputs.operation }}
+        run: |
+          set -euo pipefail
+          case "$OP" in
+            catalog|validate|build) python vizlab/build.py "$OP" > agent_result.json ;;
+            *) echo "Unsupported operation" >&2; exit 2 ;;
+          esac
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vizlab-agent-result
+          path: |
+            agent_result.json
+            vizlab/site/

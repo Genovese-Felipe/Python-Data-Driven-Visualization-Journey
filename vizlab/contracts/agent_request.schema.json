@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VizLab agent request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "operation"
+  ],
+  "properties": {
+    "operation": {
+      "type": "string",
+      "enum": [
+        "catalog",
+        "validate",
+        "build"
+      ]
+    },
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    }
+  }
+}
