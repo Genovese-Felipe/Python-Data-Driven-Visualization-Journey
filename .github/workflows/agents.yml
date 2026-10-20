@@ -1,0 +1,33 @@
+name: External agent read-only dataset execution
+on:
+  workflow_dispatch:
+    inputs:
+      dataset:
+        description: "Dataset identifier"
+        required: true
+        default: construction-v2
+        type: choice
+        options:
+          - construction-v2
+          - smart-home-v3
+permissions:
+  contents: read
+jobs:
+  query:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate CLI and data contracts
+        run: |
+          python scripts/validate_portfolio.py
+          python -m unittest discover -s tests -p 'test_agent_cli.py'
+      - name: Execute deterministic summary
+        run: python scripts/agent_cli.py summary --dataset "${{ inputs.dataset }}" > agent-result.json
+      - name: Upload result JSON artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-query-result-${{ github.run_id }}
+          path: agent-result.json
