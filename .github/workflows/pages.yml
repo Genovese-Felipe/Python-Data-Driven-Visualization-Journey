@@ -1,4 +1,4 @@
-name: Validate and publish static dashboards
+name: Validate and publish offline dashboard portfolio
 on:
   pull_request:
     branches: [main]
@@ -42,7 +42,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - name: Preserve legacy dashboards under /legacy
+        run: |
+          mkdir -p site/legacy
+          cp index/*.html site/legacy/
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: ./site
       - id: deployment

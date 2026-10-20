@@ -1,6 +1,6 @@
 {
   "repository": "Genovese-Felipe/Python-Data-Driven-Visualization-Journey",
-  "baseline": "859aa2882b290268d46d7027b4eb437cb844914b",
+  "baseline": "beff5d659349853040671722e9f345389fbdafe1",
   "as_of": "2026-10-19",
   "files": [
     {
@@ -11,7 +11,7 @@
       "evidence_level": "metadata",
       "finding": "55-byte environment setup",
       "proposal": "Smoke test Codespaces and pin toolchain",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/.devcontainer/devcontainer.json"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/.devcontainer/devcontainer.json"
     },
     {
       "path": ".github/workflows/pages.yml",
@@ -21,7 +21,7 @@
       "evidence_level": "metadata",
       "finding": "No source-specific finding; metadata reviewed",
       "proposal": "Check source/links/rights as appropriate",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/.github/workflows/pages.yml"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/.github/workflows/pages.yml"
     },
     {
       "path": ".gitignore",
@@ -31,7 +31,7 @@
       "evidence_level": "metadata",
       "finding": "429-byte ignore rules",
       "proposal": "Validate notebook outputs/secret/large-artifact ignores",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/.gitignore"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/.gitignore"
     },
     {
       "path": "ai_learning_guides/effective_prompt_engineering.md",
@@ -41,7 +41,7 @@
       "evidence_level": "verified",
       "finding": "Guidance against synthetic data yet actual examples include samples",
       "proposal": "Distinguish samples from user-provided real data",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/ai_learning_guides/effective_prompt_engineering.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/ai_learning_guides/effective_prompt_engineering.md"
     },
     {
       "path": "ai_learning_guides/plotly_dash_best_practices.md",
@@ -51,7 +51,7 @@
       "evidence_level": "verified",
       "finding": "Guide cautions use of fake data and deprecated run_server",
       "proposal": "Cross-link real code inconsistencies",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/ai_learning_guides/plotly_dash_best_practices.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/ai_learning_guides/plotly_dash_best_practices.md"
     },
     {
       "path": "app_simples.py",
@@ -61,7 +61,7 @@
       "evidence_level": "verified",
       "finding": "Legacy standalone variant run_server(debug=True)",
       "proposal": "Compatibility guard or move to examples",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/app_simples.py"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/app_simples.py"
     },
     {
       "path": "assets/README.md",
@@ -71,7 +71,7 @@
       "evidence_level": "verified",
       "finding": "Assets described; no audited license register",
       "proposal": "Add asset manifest attribution",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/assets/README.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/assets/README.md"
     },
     {
       "path": "assets/reference_images/Imagem_Referencia_1.png",
@@ -81,7 +81,7 @@
       "evidence_level": "metadata-only",
       "finding": "Reference image; content/license/EXIF not decoded",
       "proposal": "Inspect actual image and rights",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/assets/reference_images/Imagem_Referencia_1.png"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/assets/reference_images/Imagem_Referencia_1.png"
     },
     {
       "path": "assets/reference_images/Imagem_Referencia_2.jpg",
@@ -91,7 +91,7 @@
       "evidence_level": "metadata-only",
       "finding": "Reference image; content/license/EXIF not decoded",
       "proposal": "Inspect actual image and rights",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/assets/reference_images/Imagem_Referencia_2.jpg"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/assets/reference_images/Imagem_Referencia_2.jpg"
     },
     {
       "path": "assets/reference_images/Imagem_Referencia_3.png",
@@ -101,7 +101,7 @@
       "evidence_level": "metadata-only",
       "finding": "Reference image; content/license/EXIF not decoded",
       "proposal": "Inspect actual image and rights",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/assets/reference_images/Imagem_Referencia_3.png"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/assets/reference_images/Imagem_Referencia_3.png"
     },
     {
       "path": "assets/screenshots/dashboard_evolution.png",
@@ -111,7 +111,7 @@
       "evidence_level": "metadata-only",
       "finding": "Evolution screenshot; authenticity/alt text not confirmed",
       "proposal": "Check screenshot against reproducible render",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/assets/screenshots/dashboard_evolution.png"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/assets/screenshots/dashboard_evolution.png"
     },
     {
       "path": "COMO_EXECUTAR.md",
@@ -121,7 +121,7 @@
       "evidence_level": "verified",
       "finding": "Documents older runtime and dependencies",
       "proposal": "Update command matrix and success criteria",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/COMO_EXECUTAR.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/COMO_EXECUTAR.md"
     },
     {
       "path": "dashboards/v1_simple/README.md",
@@ -131,7 +131,7 @@
       "evidence_level": "verified",
       "finding": "Labels examples as real extracted HTML data",
       "proposal": "Document illustrative reference source",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/dashboards/v1_simple/README.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/dashboards/v1_simple/README.md"
     },
     {
       "path": "dashboards/v1_simple/sunburst_cost_explorer_funcional.py",
@@ -141,7 +141,7 @@
       "evidence_level": "verified",
       "finding": "97 labels/97 parents/53 values; inconsistent sunburst vectors",
       "proposal": "Normalize node IDs; validate amounts and parent sums",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/dashboards/v1_simple/sunburst_cost_explorer_funcional.py"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/dashboards/v1_simple/sunburst_cost_explorer_funcional.py"
     },
     {
       "path": "dashboards/v2_construction/README.md",
@@ -151,7 +151,7 @@
       "evidence_level": "verified",
       "finding": "Dashboard claims advanced cascading filters",
       "proposal": "Verify callbacks and service range behavior",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/dashboards/v2_construction/README.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/dashboards/v2_construction/README.md"
     },
     {
       "path": "dashboards/v2_construction/V2_script.py",
@@ -161,7 +161,7 @@
       "evidence_level": "verified",
       "finding": "49 source records; cost 3,085,000 budget 2,988,000",
       "proposal": "Materialize canonical data JSON; fix hovertemplate and tests",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/dashboards/v2_construction/V2_script.py"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/dashboards/v2_construction/V2_script.py"
     },
     {
       "path": "dashboards/v3_smart_home/Plan_Data_V3.py",
@@ -171,7 +171,7 @@
       "evidence_level": "verified",
       "finding": "Same blob SHA as root Plan_Data_V3.py; random demo data",
       "proposal": "Choose single canonical data generator; seeded samples",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/dashboards/v3_smart_home/Plan_Data_V3.py"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/dashboards/v3_smart_home/Plan_Data_V3.py"
     },
     {
       "path": "dashboards/v3_smart_home/Plan_V3_funcional.py",
@@ -181,7 +181,7 @@
       "evidence_level": "verified",
       "finding": "10 illustrative rows; linear model without held-out evaluation",
       "proposal": "Baseline LOOCV/external validation; avoid predictive claims",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/dashboards/v3_smart_home/Plan_V3_funcional.py"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/dashboards/v3_smart_home/Plan_V3_funcional.py"
     },
     {
       "path": "dashboards/v3_smart_home/Plan_V3.py",
@@ -191,7 +191,7 @@
       "evidence_level": "verified",
       "finding": "Unverified notebook-origin variant; numerical features one-hot encoded",
       "proposal": "Use numerical features directly; add model tests",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/dashboards/v3_smart_home/Plan_V3.py"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/dashboards/v3_smart_home/Plan_V3.py"
     },
     {
       "path": "dashboards/v3_smart_home/Plan_V3.txt",
@@ -201,7 +201,7 @@
       "evidence_level": "verified",
       "finding": "Includes AI planning traces and tentative dataset search",
       "proposal": "Move to research/archive and label hypotheses",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/dashboards/v3_smart_home/Plan_V3.txt"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/dashboards/v3_smart_home/Plan_V3.txt"
     },
     {
       "path": "dashboards/v3_smart_home/README.md",
@@ -211,7 +211,7 @@
       "evidence_level": "verified",
       "finding": "V3 ML/map claims above sample data trust level",
       "proposal": "Mark prototype + sample validation criteria",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/dashboards/v3_smart_home/README.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/dashboards/v3_smart_home/README.md"
     },
     {
       "path": "docs/advanced_pedagogical_plotly_guide.xml",
@@ -221,7 +221,7 @@
       "evidence_level": "sampled",
       "finding": "409 KB pedagogical XML; no schema validation run",
       "proposal": "Validate XML parsing and links",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/docs/advanced_pedagogical_plotly_guide.xml"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/docs/advanced_pedagogical_plotly_guide.xml"
     },
     {
       "path": "docs/API_REFERENCE.md",
@@ -231,7 +231,7 @@
       "evidence_level": "verified",
       "finding": "Function names referenced without verification against implementation",
       "proposal": "Generate docs from code/AST",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/docs/API_REFERENCE.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/docs/API_REFERENCE.md"
     },
     {
       "path": "docs/AUDITORIA_PAGES_2026-10-19.md",
@@ -241,7 +241,7 @@
       "evidence_level": "metadata",
       "finding": "No source-specific finding; metadata reviewed",
       "proposal": "Check source/links/rights as appropriate",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/docs/AUDITORIA_PAGES_2026-10-19.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/docs/AUDITORIA_PAGES_2026-10-19.md"
     },
     {
       "path": "docs/CHANGELOG.md",
@@ -251,7 +251,7 @@
       "evidence_level": "verified",
       "finding": "Legacy notes reference prior fixes",
       "proposal": "Append change/issue evidence, links to commits",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/docs/CHANGELOG.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/docs/CHANGELOG.md"
     },
     {
       "path": "docs/CONTRIBUTING.md",
@@ -261,7 +261,7 @@
       "evidence_level": "verified",
       "finding": "Contributor instructions may not match current CI",
       "proposal": "Document PR gates and test commands",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/docs/CONTRIBUTING.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/docs/CONTRIBUTING.md"
     },
     {
       "path": "docs/plotly_python_guide.xml",
@@ -271,7 +271,7 @@
       "evidence_level": "partial",
       "finding": "2.82 MB guide exceeded full-text response limit",
       "proposal": "Stream/validate locally and review embedded URLs",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/docs/plotly_python_guide.xml"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/docs/plotly_python_guide.xml"
     },
     {
       "path": "docs/semantic_plotly_guide.xml",
@@ -281,7 +281,7 @@
       "evidence_level": "sampled",
       "finding": "978 KB semantic guide; not independently schema-validated",
       "proposal": "Validate XML parsing and canonical terms",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/docs/semantic_plotly_guide.xml"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/docs/semantic_plotly_guide.xml"
     },
     {
       "path": "docs/technical_documentation.md",
@@ -291,7 +291,7 @@
       "evidence_level": "verified",
       "finding": "Gunicorn deployment command and Docker instruction lack implementation validation",
       "proposal": "Smoke-test server target and deployment mode",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/docs/technical_documentation.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/docs/technical_documentation.md"
     },
     {
       "path": "docs/visual_journey.md",
@@ -301,7 +301,7 @@
       "evidence_level": "verified",
       "finding": "Narrative claims example→real; screenshot links",
       "proposal": "Distinguish illustrative data and visual verification",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/docs/visual_journey.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/docs/visual_journey.md"
     },
     {
       "path": "error_reports/complete_error_analysis.md",
@@ -311,7 +311,7 @@
       "evidence_level": "verified",
       "finding": "Records old problems but does not prove they stay resolved",
       "proposal": "Add regression tests linked to each failure",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/error_reports/complete_error_analysis.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/error_reports/complete_error_analysis.md"
     },
     {
       "path": "index/dashboard_v1.html",
@@ -321,7 +321,7 @@
       "evidence_level": "verified",
       "finding": "53-node truncated V1; legacy external unversioned Plotly",
       "proposal": "Rebuild coherent hierarchy + pin/vendor dependencies",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/index/dashboard_v1.html"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/index/dashboard_v1.html"
     },
     {
       "path": "index/dashboard_v2.html",
@@ -331,7 +331,7 @@
       "evidence_level": "verified",
       "finding": "23 HTML aggregates, cost 4,730,000 budget 4,557,000; diverges from Python",
       "proposal": "Regenerate from canonical V2 data",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/index/dashboard_v2.html"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/index/dashboard_v2.html"
     },
     {
       "path": "index/dashboard_v3.html",
@@ -341,7 +341,7 @@
       "evidence_level": "verified",
       "finding": "Inline example data and legacy external JS; ML copy overclaims",
       "proposal": "Mark synthetic / validate ML / offline bundle",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/index/dashboard_v3.html"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/index/dashboard_v3.html"
     },
     {
       "path": "index/principal.html",
@@ -351,7 +351,7 @@
       "evidence_level": "verified",
       "finding": "Portal under index/principal.html, absent Pages source-root entry",
       "proposal": "Deploy self-contained site/index.html via Actions",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/index/principal.html"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/index/principal.html"
     },
     {
       "path": "LICENSE",
@@ -361,7 +361,7 @@
       "evidence_level": "metadata",
       "finding": "No source-specific finding; metadata reviewed",
       "proposal": "Check source/links/rights as appropriate",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/LICENSE"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/LICENSE"
     },
     {
       "path": "Plan_Data_V3.py",
@@ -371,7 +371,7 @@
       "evidence_level": "verified",
       "finding": "Duplicated generator; random demo data",
       "proposal": "De-duplicate; seed RNG and document provenance",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/Plan_Data_V3.py"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/Plan_Data_V3.py"
     },
     {
       "path": "Plan_V3_funcional.py",
@@ -381,7 +381,7 @@
       "evidence_level": "verified",
       "finding": "Distinct root variant, similar Smart Home scenario",
       "proposal": "Consolidate entrypoints with subdirectory version",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/Plan_V3_funcional.py"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/Plan_V3_funcional.py"
     },
     {
       "path": "Plotly_Guides/About_Guides_XLMextratction.md",
@@ -391,7 +391,7 @@
       "evidence_level": "verified",
       "finding": "Near-empty 1 byte placeholder",
       "proposal": "Remove or populate with extraction methodology",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/Plotly_Guides/About_Guides_XLMextratction.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/Plotly_Guides/About_Guides_XLMextratction.md"
     },
     {
       "path": "Python_colab_tutorial_Part_1_V001.ipynb",
@@ -401,7 +401,7 @@
       "evidence_level": "verified",
       "finding": "214 cells; 1 cached error output",
       "proposal": "Clean-run, sanitize outputs, pin kernels",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/Python_colab_tutorial_Part_1_V001.ipynb"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/Python_colab_tutorial_Part_1_V001.ipynb"
     },
     {
       "path": "python-colab.ipynb",
@@ -411,7 +411,7 @@
       "evidence_level": "verified",
       "finding": "180 cells; 2 cached error outputs",
       "proposal": "Clean-run, sanitize outputs, pin kernels",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/python-colab.ipynb"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/python-colab.ipynb"
     },
     {
       "path": "README_VISUAL_PROPOSTA.md",
@@ -421,7 +421,7 @@
       "evidence_level": "metadata",
       "finding": "No source-specific finding; metadata reviewed",
       "proposal": "Check source/links/rights as appropriate",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/README_VISUAL_PROPOSTA.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/README_VISUAL_PROPOSTA.md"
     },
     {
       "path": "README.md",
@@ -431,7 +431,7 @@
       "evidence_level": "verified",
       "finding": "Claims real data and three fully functional dashboards; old links",
       "proposal": "Align claims with examples, sources, reproducible tests",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/README.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/README.md"
     },
     {
       "path": "RELATORIO_MELHORIAS.md",
@@ -441,7 +441,7 @@
       "evidence_level": "verified",
       "finding": "Descriptions of changes not fully matched with smoke tests",
       "proposal": "Map each change to code+test",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/RELATORIO_MELHORIAS.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/RELATORIO_MELHORIAS.md"
     },
     {
       "path": "RELEASE_NOTES.md",
@@ -451,7 +451,7 @@
       "evidence_level": "verified",
       "finding": "Legacy release notes claim all real functioning results",
       "proposal": "Retain historical release; append errata/provenance",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/RELEASE_NOTES.md"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/RELEASE_NOTES.md"
     },
     {
       "path": "requirements.txt",
@@ -461,7 +461,7 @@
       "evidence_level": "verified",
       "finding": "Pinned Dash 2.16.1 and older libraries; optional/dev mixed",
       "proposal": "Separate runtime/development requirements; test supported Python versions",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/requirements.txt"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/requirements.txt"
     },
     {
       "path": "run_app.py",
@@ -471,7 +471,7 @@
       "evidence_level": "verified",
       "finding": "Legacy run_server, debug=True, binds 0.0.0.0",
       "proposal": "Restrict debug, secure host and smoke-test Dash",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/run_app.py"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/run_app.py"
     },
     {
       "path": "start_app.sh",
@@ -481,7 +481,7 @@
       "evidence_level": "verified",
       "finding": "Shell starts old app; lacks known runtime verification",
       "proposal": "Add fail-fast and port healthcheck",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/start_app.sh"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/start_app.sh"
     },
     {
       "path": "sunburst_app_simples_funcionando.py",
@@ -491,7 +491,7 @@
       "evidence_level": "verified",
       "finding": "Second simplified root app",
       "proposal": "Archive/alias; preserve educational history",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/sunburst_app_simples_funcionando.py"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/sunburst_app_simples_funcionando.py"
     },
     {
       "path": "sunburst_cost_explorer_app.py",
@@ -501,7 +501,7 @@
       "evidence_level": "verified",
       "finding": "Long standalone root app; version overlap",
       "proposal": "Consolidate shared data/callback functions",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/sunburst_cost_explorer_app.py"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/sunburst_cost_explorer_app.py"
     },
     {
       "path": "sunburst_cost_explorer_funcional.py",
@@ -511,7 +511,7 @@
       "evidence_level": "verified",
       "finding": "Root variant with two callbacks",
       "proposal": "Reduce duplication; determine canonical entrypoint",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/sunburst_cost_explorer_funcional.py"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/sunburst_cost_explorer_funcional.py"
     },
     {
       "path": "tema1/chart1.py",
@@ -521,7 +521,7 @@
       "evidence_level": "verified",
       "finding": "Explicitly generated fictitious sales",
       "proposal": "Keep demo label, seed, schema",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/tema1/chart1.py"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/tema1/chart1.py"
     },
     {
       "path": "tema2/chart2.py",
@@ -531,7 +531,7 @@
       "evidence_level": "verified",
       "finding": "Explicitly generated fictitious financial data",
       "proposal": "Keep demo label, seed, schema",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/tema2/chart2.py"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/tema2/chart2.py"
     },
     {
       "path": "test_app.py",
@@ -541,7 +541,7 @@
       "evidence_level": "verified",
       "finding": "Absolute /workspaces/Py_Vy_000 sys.path",
       "proposal": "Use portable imports and pytest",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/test_app.py"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/test_app.py"
     },
     {
       "path": "test_dash_simple.py",
@@ -551,7 +551,7 @@
       "evidence_level": "verified",
       "finding": "Example server named test, no pytest assertions",
       "proposal": "Convert to explicit smoke test",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/test_dash_simple.py"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/test_dash_simple.py"
     },
     {
       "path": "v006_rvw.ipynb",
@@ -561,7 +561,15 @@
       "evidence_level": "verified",
       "finding": "237 cells; 3 cached error outputs; embedded external Colab link points to another repository",
       "proposal": "Review provenance, clean outputs and repository references",
-      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/859aa2882b290268d46d7027b4eb437cb844914b/v006_rvw.ipynb"
+      "source_url": "https://github.com/Genovese-Felipe/Python-Data-Driven-Visualization-Journey/blob/beff5d659349853040671722e9f345389fbdafe1/v006_rvw.ipynb"
     }
+  ],
+  "previous_main_base": "859aa2882b290268d46d7027b4eb437cb844914b",
+  "current_main": "beff5d659349853040671722e9f345389fbdafe1",
+  "main_advanced_during_review": true,
+  "changed_files_since_previous_main": [
+    ".github/workflows/pages.yml",
+    "README_VISUAL_PROPOSTA.md",
+    "docs/AUDITORIA_PAGES_2026-10-19.md"
   ]
 }
