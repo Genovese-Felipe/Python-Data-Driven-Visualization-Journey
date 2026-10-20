@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auditoria Integral + Dashboards — Visualization Journey</title>
+<style>
+:root{--bg:#0d1117;--panel:#161b22;--panel2:#1c2330;--line:#2d333b;--txt:#e6edf3;--mut:#8b949e;--red:#f85149;--orange:#d29922;--yellow:#e3b341;--blue:#58a6ff;--green:#3fb950;--purple:#bc8cff;--cyan:#39d2c0;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--txt);padding:18px}
+h1{font-size:1.35rem;font-weight:600}
+h2{font-size:1.05rem;font-weight:600;margin:14px 0 8px}
+a{color:var(--blue);text-decoration:none}
+.sub{color:var(--mut);font-size:.82rem;margin-top:4px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:16px 0}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center}
+.kpi b{font-size:1.5rem;display:block}
+.kpi span{color:var(--mut);font-size:.75rem}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.tab{background:var(--panel);border:1px solid var(--line);color:var(--mut);padding:8px 14px;border-radius:20px;cursor:pointer;font-size:.85rem}
+.tab.on{background:#1f6feb33;color:#fff;border-color:#1f6feb}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.fbtn{background:var(--panel2);border:1px solid var(--line);color:var(--mut);padding:5px 12px;border-radius:16px;cursor:pointer;font-size:.78rem}
+.fbtn.on{color:#fff;border-color:#1f6feb;background:#1f6feb33}
+input[type=text]{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:6px 10px;border-radius:8px;font-size:.8rem;flex:1;min-width:160px}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+th{color:var(--mut);text-align:left;padding:6px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--panel)}
+td{padding:6px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:hover td{background:#1c233080}
+.badge{padding:2px 8px;border-radius:10px;font-size:.7rem;font-weight:600;white-space:nowrap}
+.bC{background:#f8514922;color:var(--red)}.bA{background:#d2992222;color:var(--yellow)}.bM{background:#58a6ff22;color:var(--blue)}.bB{background:#8b949e22;color:var(--mut)}.bI{background:#bc8cff22;color:var(--purple)}
+.ev{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.ev .card{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:8px;padding:10px;font-size:.8rem}
+.ev .card b{color:var(--red)}
+.ev .ok{border-left-color:var(--green)}.ev .ok b{color:var(--green)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.pill{display:inline-block;background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:3px 10px;font-size:.72rem;color:var(--mut);margin:2px}
+code{background:var(--panel2);padding:1px 6px;border-radius:5px;font-size:.74rem;color:var(--cyan);font-family:Consolas,monospace}
+pre{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px;overflow:auto;font-size:.74rem;color:var(--cyan);font-family:Consolas,monospace;margin:8px 0}
+.step{display:flex;gap:10px;margin:8px 0;font-size:.82rem}
+.step i{background:#1f6feb33;color:var(--blue);border-radius:50%;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:.75rem;font-weight:700}
+footer{color:var(--mut);font-size:.72rem;margin-top:16px;text-align:center}
+.legend{font-size:.72rem;color:var(--mut);margin-top:6px}
+select{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:6px;border-radius:8px;font-size:.8rem}
+.svgwrap{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px;margin-top:8px}
+@media(max-width:600px){td:nth-child(6),th:nth-child(6){display:none}}
+</style>
+</head>
+<body>
+<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:flex-start">
+  <div>
+    <h1>Auditoria Integral + Dashboards — Python-Data-Driven-Visualization-Journey</h1>
+    <div class="sub">Arquivo por arquivo · cross multi-domain (estrutura × código × dados/ML × Pages × CI × docs × segurança × cross-repo) · 2026-10-20 · base <code>main @ 2048653</code> (preservada) · branch de revisão <code>audit/integral-pages-readme-2026-10-20</code> · datasets sintéticos rotulados</div>
+  </div>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><b style="color:var(--cyan)">59</b><span>arquivos auditados</span></div>
+  <div class="kpi"><b style="color:var(--txt)">26</b><span>achados (P01–P26)</span></div>
+  <div class="kpi"><b style="color:var(--red)">4</b><span>críticos</span></div>
+  <div class="kpi"><b style="color:var(--yellow)">8</b><span>altos</span></div>
+  <div class="kpi"><b style="color:var(--blue)">8</b><span>médios</span></div>
+  <div class="kpi"><b style="color:var(--mut)">4</b><span>baixos</span></div>
+  <div class="kpi"><b style="color:var(--purple)">2</b><span>info cross-repo</span></div>
+  <div class="kpi"><b style="color:var(--green)">8</b><span>correções já na branch</span></div>
+</div>
+
+<div class="tabs" id="tabs"></div>
+
+<div id="tab-matriz" class="tabc">
+  <div class="panel">
+    <div class="filters" id="sevFilters"></div>
+    <div class="filters">
+      <select id="domSel"></select>
+      <input type="text" id="q" placeholder="Buscar por arquivo, problema ou correção…">
+    </div>
+    <div style="overflow:auto;max-height:65vh">
+      <table>
+        <thead><tr><th>ID</th><th>Grav</th><th>Domínio</th><th>Arquivo(s)</th><th>Problema</th><th>Correção proposta</th><th>Fase</th></tr></thead>
+        <tbody id="mtxBody"></tbody>
+      </table>
+    </div>
+    <div class="legend">Fase 1 = já aplicada na branch de revisão · Fase 2 = PR pós-revisão · Fase 3 = higiene · Fase 4 = consolidação cross-repo</div>
+  </div>
+</div>
+
+<div id="tab-dash" class="tabc" style="display:none">
+  <div class="grid2">
+    <div class="panel">
+      <h2>V2 — Custos de construção (49 linhas, data.csv canônico)</h2>
+      <div class="sub">Filtro por pilar · donut por custo · top 8 sub-tarefas · variância custo × orçamento</div>
+      <div class="filters"><select id="pilarSel"></select></div>
+      <div class="kpis" id="v2Kpis"></div>
+      <div class="svgwrap"><svg id="donut" width="100%" height="230" viewBox="0 0 320 230"></svg><div class="legend" id="donutLeg"></div></div>
+      <div class="svgwrap"><svg id="bars" width="100%" height="240" viewBox="0 0 340 240"></svg><div class="legend">Top 8 sub-tarefas por custo (US$) · barra inferior: orçamento (vermelho = acima do orçamento)</div></div>
+    </div>
+    <div class="panel">
+      <h2>V3 — Smart Home (10 linhas, dataset toy rotulado)</h2>
+      <div class="sub">Dispersão custo × economia anual · linha OLS simples computada em runtime (R² no rodapé)</div>
+      <div class="kpis" id="v3Kpis"></div>
+      <div class="svgwrap"><svg id="scatter" width="100%" height="300" viewBox="0 0 340 300"></svg><div class="legend" id="scLeg"></div></div>
+      <h2>Feature importance — bruto vs padronizado (evidência P12)</h2>
+      <div class="svgwrap"><svg id="imp" width="100%" height="190" viewBox="0 0 340 190"></svg><div class="legend">|coef| bruto (método do repo) inverte o ranking correto: padronizado, Custo domina (1,31) e Satisfação cai para 0,09</div></div>
+    </div>
+  </div>
+  <div class="panel">
+    <h2>V1 — Série embutida em index/dashboard_v1.html (sem desenhar: hierarquia quebrada, P05)</h2>
+    <div class="ev">
+      <div class="card"><b>53 pontos</b> na série embutida (labels/parents/values).</div>
+      <div class="card"><b>US$ 11.575.000</b> soma real da série — card do site afirma US$ 10,8M (+7,2% de divergência, P06).</div>
+      <div class="card"><b>US$ 2.025.000</b> maior valor da série — card afirma “maior custo individual US$ 600K” (P06).</div>
+      <div class="card"><b>parents = caminhos “A/B/C/D”</b> que não correspondem a labels: sunburst órfão (P05). Correção: uma linha por nível.</div>
+    </div>
+  </div>
+</div>
+
+<div id="tab-evid" class="tabc" style="display:none">
+  <div class="panel">
+    <h2>Evidências determinísticas (cálculo executado, não estimado)</h2>
+    <div class="ev">
+      <div class="card"><b>P01 —</b> numpy 1.25.2 não tem wheels para Python 3.12 exigido pelo README; install quebra. Correção aplicada: numpy==1.26.4.</div>
+      <div class="card"><b>P03 —</b> test_app.py faz sys.path.append('/workspaces/Py_Vy_000') (codespace antigo) → ImportError em qualquer outro ambiente. Corrigido na branch.</div>
+      <div class="card"><b>P04 —</b> os 4 index/*.html carregam cdn.plot.ly/plotly-latest.min.js (endpoint descontinuado pela Plotly) → risco de renderizar só o placeholder.</div>
+      <div class="card"><b>P06 —</b> KPIs hardcoded divergem dos dados embutidos: soma +7,2%; máximo da série 3,4× maior que o card. Guard de soma adicionado aos testes.</div>
+      <div class="card"><b>P12 —</b> V3 OLS (n=10, in-sample): R²=0,970. Ranking bruto |coef|: Satisfação 245,1 &gt; Custo 171,9 &gt; Dispositivos 151,5. Padronizado: Custo 1,31 &gt; Dispositivos 0,59 &gt; Satisfação 0,086. Ranking do repo está invertido.</div>
+      <div class="card"><b>V2 dados —</b> 49 linhas · custo US$ 3.085.000 · orçamento US$ 2.988.000 · variância +3,25% · Construction 2.025.000 · Management 405.000 · Finishing 340.000 · Design 315.000.</div>
+      <div class="card ok"><b>P02/P19 —</b> CI inexistente no main; branch adiciona ci.yml (pytest 3.11/3.12, compileall, guard de CDN e de integridade das páginas).</div>
+      <div class="card ok"><b>Pages —</b> workflow pages.yml do main já é Actions-based e correto; URL pública após merge: genovese-felipe.github.io/Python-Data-Driven-Visualization-Journey/</div>
+    </div>
+  </div>
+</div>
+
+<div id="tab-pages" class="tabc" style="display:none">
+  <div class="panel">
+    <h2>Receita GitHub Pages (repo já tem pages.yml correto)</h2>
+    <div class="step"><i>1</i><span>Settings → Pages → Source: <b>GitHub Actions</b> (não “Deploy from branch”).</span></div>
+    <div class="step"><i>2</i><span>Mergear a branch de revisão: ci.yml (testes + guards) passa a rodar junto com pages.yml (deploy).</span></div>
+    <div class="step"><i>3</i><span>Fix CDN (P04): trocar <code>plotly-latest.min.js</code> por <code>plotly-2.35.2.min.js</code> nos 4 HTML de index/ — guard do CI bloqueia regressão.</span></div>
+    <div class="step"><i>4</i><span>Adicionar <code>index/audit_hub.html</code> ao loop de validação e ao _site no pages.yml (este arquivo).</span></div>
+    <div class="step"><i>5</i><span>Fase 3: 404.html, robots.txt e favicon no _site; excluir docs/*.xml (4,2 MB) e notebooks do site.</span></div>
+    <pre>URL: https://genovese-felipe.github.io/Python-Data-Driven-Visualization-Journey/
+(principal.html → index.html · .nojekyll · deploy via actions/deploy-pages@v4)</pre>
+    <h2>Não fazer</h2>
+    <div class="sub">Não servir os 4,2 MB de docs/*.xml · não publicar notebooks com outputs · não usar “latest” em CDN.</div>
+  </div>
+</div>
+
+<div id="tab-road" class="tabc" style="display:none">
+  <div class="grid2">
+    <div class="panel">
+      <h2>Plano de implementação (main preservada)</h2>
+      <div class="step"><i>1</i><span><b>Fase 1 — aplicado nesta branch:</b> docs de auditoria, README.proposed.md, GITHUB_PAGES.md, consolidação cross-repo, ci.yml, tests/test_smoke.py, test_app.py corrigido, requirements.txt corrigido, audit_hub.html.</span></div>
+      <div class="step"><i>2</i><span><b>Fase 2 — PR pós-revisão:</b> CDN versionado, hierarquia do sunburst reconstruída, KPIs computados, README promovido, duplicatas da raiz em legacy/, notebooks limpos, XML em LFS, model.py com scaler + holdout.</span></div>
+      <div class="step"><i>3</i><span><b>Fase 3 — higiene:</b> .gitignore, start_app.sh, devcontainer, mapa de portas, 404/robots, SECURITY.md, deletar branches stale (18 hoje).</span></div>
+      <div class="step"><i>4</i><span><b>Fase 4 — consolidação cross-repo:</b> hub público único com dashboards self-contained e blocos “regen” AI-executáveis.</span></div>
+      <pre>git fetch origin
+git checkout audit/integral-pages-readme-2026-10-20
+# revisar docs/audit/AUDITORIA_INTEGRAL_2026-10-20.md
+# abrir PR draft → main (não mergear sem revisar P04/P05)</pre>
+    </div>
+    <div class="panel">
+      <h2>Correções de código já aplicadas na branch</h2>
+      <table><thead><tr><th>Arquivo</th><th>Antes</th><th>Depois</th></tr></thead><tbody>
+        <tr><td><code>requirements.txt</code></td><td>numpy==1.25.2 (quebra em 3.12)</td><td>numpy==1.26.4 + jupyter-dash</td></tr>
+        <tr><td><code>test_app.py</code></td><td>sys.path hardcoded + script sem assert</td><td>pytest real sem path absoluto</td></tr>
+        <tr><td><code>tests/test_smoke.py</code></td><td>—</td><td>schema V2/V3, guard de soma, import dos apps, guard de CDN</td></tr>
+        <tr><td><code>.github/workflows/ci.yml</code></td><td>—</td><td>pytest 3.11/3.12 + compileall + pages-guard</td></tr>
+        <tr><td><code>docs/audit/…</code></td><td>auditoria stale (base 859aa28)</td><td>auditoria versionada na base atual</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</div>
+
+<div id="tab-xrepo" class="tabc" style="display:none">
+  <div class="panel">
+    <h2>Cross-repo — cruzamento dos 3 repositórios</h2>
+    <table><thead><tr><th>Repo</th><th>Natureza</th><th>Estado</th><th>Papel no hub</th></tr></thead><tbody>
+      <tr><td><b>Journey</b> (este)</td><td>jornada V1–V3 Plotly/Dash + site estático</td><td>auditado aqui — P01–P26</td><td>dashboards journey + portfólio</td></tr>
+      <tr><td><b>Plotly Predictive Analytics Dashboard</b></td><td>dashboard_app v2: 240 projetos sintéticos, holdout, export HTML, CI 3.10/3.12</td><td>auditado 2026-10-19 (main @ 53a1db0): callback <code>Output("project-table","data")</code> quebrado; site/docs vendem a v1 (25 projetos, R$ 15,2M, “real-time”)</td><td>construction analytics 240 projetos</td></tr>
+      <tr><td><b>PythonDataScienceHandbook</b></td><td>fork do handbook (texto CC-BY-NC-ND, código MIT)</td><td>referência</td><td>consulta apenas; não copiar texto</td></tr>
+    </tbody></table>
+    <h2>Padrões de defeito comuns (cross-domain)</h2>
+    <span class="pill">overclaim de dados sintéticos</span><span class="pill">docs vendem versão antiga</span><span class="pill">KPIs hardcoded divergentes</span><span class="pill">sem guard de CI no frontend</span><span class="pill">CDN “latest”</span>
+    <h2>Proposta — hub consolidado “Genovese Visual Analytics”</h2>
+    <pre>visual-analytics-hub/
+├─ index.html               # hub self-contained, zero build
+├─ dashboards/
+│  ├─ journey-v1.html       # sunburst (dados inline)
+│  ├─ journey-v2.html       # filtros cascata (49 linhas inline)
+│  ├─ journey-v3.html       # scatter + OLS (10 linhas inline)
+│  └─ construction-240.html # export do dashboard_app (Predictive)
+├─ audit/
+│  ├─ matrix.json           # matriz machine-readable (P01–P26 + P01–P12 do Predictive)
+│  └─ audit_hub.html        # este dashboard
+├─ .github/workflows/       # ci (pytest + guards) + pages (deploy)
+└─ README.md                # tabela verdade por repo</pre>
+    <div class="sub">Regras: todo dashboard self-contained com dados inline · bloco JSON-LD “regen” (fonte, data, comando que regenera) para execução por IA externa · dados sintéticos rotulados no cabeçalho · CI bloqueia plotly-latest e KPI divergente.</div>
+  </div>
+</div>
+
+<footer>Gerado por auditoria determinística · dados: dashboards/v2_construction/data.csv (49 linhas), dashboards/v3_smart_home/data.csv (10 linhas), série embutida de index/dashboard_v1.html (53 valores) · OLS via equações normais · zero dependências externas (self-contained)</footer>
+
+<script>
+var MATRIX=[
+["P01","Critica","Deps/CI","requirements.txt","numpy==1.25.2 sem wheels para Python 3.12 exigido pelo README; pip install quebra","numpy==1.26.4 (aplicado na branch)","1"],
+["P02","Critica","CI",".github/","sem workflow de testes; pytest declarado e nunca executado; test_*.py são scripts sem assert","ci.yml + tests/test_smoke.py (aplicado)","1"],
+["P03","Critica","Codigo","test_app.py","sys.path.append('/workspaces/Py_Vy_000') hardcoded quebra fora do codespace antigo","remover path e converter em pytest real (aplicado)","1"],
+["P04","Critica","Pages","index/*.html","CDN plotly-latest.min.js descontinuado; dashboards podem renderizar só o placeholder","fixar plotly-2.35.2.min.js; guard no CI","2"],
+["P05","Alta","Pages","index/dashboard_v1.html","parents do sunburst são caminhos 'A/B/C/D', não labels; hierarquia órfã","uma linha por nível (id/parent/value)","2"],
+["P06","Alta","Dados/Web","index/dashboard_v1.html","KPIs hardcoded divergem da série (soma +7,2%; máx 2.025.000 vs 600K); typo 'MarchJEP'","computar KPIs dos dados; guard de soma","1-2"],
+["P07","Alta","Estrutura","raiz vs dashboards/","duplicatas divergentes (sunburst 14.682 vs 14.966 B; Plan_V3 11.005 vs 12.207 B)","canônico = dashboards/; raiz em legacy/","2"],
+["P08","Alta","Estrutura","raiz","notebooks 747/165/119 KB com outputs na raiz","mover p/ notebooks/ e limpar outputs","2"],
+["P09","Alta","Estrutura","docs/*.xml","4,2 MB de XML versionados inflando clone","docs/guides/ + Git LFS ou release asset","2"],
+["P10","Alta","Docs","README.md","overclaim ('dados reais', 'Status: Complete') e PT/EN duplicado integral","README.proposed.md com tabela verdade","2"],
+["P11","Alta","Docs","README.md × README_VISUAL_PROPOSTA.md","dois READMEs concorrentes; badges 3.12 × 3.11","consolidar no proposto","2"],
+["P12","Alta","ML","dashboards/v3_smart_home/model.py","n=10 sem holdout; importance=|coef| bruto → ranking invertido (comprovado)","StandardScaler + permutation importance; disclaimer toy","2"],
+["P13","Media","Codigo","dashboards/v2_construction/V2_script.py","jupyter_mode='inline' exige jupyter-dash (ausente)","dep adicionada na branch (jupyter-dash==0.4.2)","1"],
+["P14","Media","Estrutura",".gitignore","linha 1 órfã; tema1/*.html não cobre outputs reais (raiz); lib/, parts/ perigosos","limpar e corrigir padrões","3"],
+["P15","Media","Codigo","start_app.sh","shebang fora da 1ª linha; sugere pkill -f python","shebang na linha 1; kill por PID","3"],
+["P16","Media","Estrutura",".devcontainer/devcontainer.json","55 B sem postCreateCommand (deps não instalam)","completar JSON","3"],
+["P17","Media","Codigo","app_simples.py, run_app.py","colisão de portas 8050 (V1 8052, V3 8053)","mapa de portas único documentado","3"],
+["P18","Media","Repositorio","branches","18 branches acumuladas (7 audit, 6 review, 2 copilot, codespace, feat, docs)","deletar pós-merge; protection na main","3"],
+["P19","Media","CI",".github/workflows/pages.yml","valida presença, não links nem consistência de dados","link-check + schema check no ci.yml (aplicado)","1"],
+["P20","Media","Pages","index/","sem 404.html, robots.txt, favicon","adicionar ao _site","3"],
+["P21","Baixa","Estrutura","Plotly_Guides/About_Guides_XLMextratction.md","1 byte; nome com typo","preencher ou remover","3"],
+["P22","Baixa","Docs","docs/AUDITORIA_PAGES_2026-10-19.md","referencia base 859aa28 (main já em 2048653)","auditorias versionadas em docs/audit/ (aplicado)","1"],
+["P23","Baixa","Dados","data/, scripts","4+ CSVs sobrepostos e dados hardcoded nos scripts","fonte única data/ + schema.md","3"],
+["P24","Baixa","Seguranca","repo","sem SECURITY.md (nenhum segredo encontrado nos arquivos lidos)","adicionar SECURITY.md leve","3"],
+["P25","Info","Cross-repo","PythonDataScienceHandbook","fork (texto CC-BY-NC-ND) — não copiar texto em repos próprios","usar como referência apenas","—"],
+["P26","Info","Cross-repo","Journey + Plotly Predictive","consolidação num hub Pages único, self-contained e AI-executável","ver docs/CONSOLIDACAO_MULTI_REPO_2026-10-20.md","4"]
+];
+var V2=[["Project Design","Site Survey",15000,14000],["Project Design","Conceptual Design",20000,18000],["Project Design","Detailed Drawings",30000,28000],["Project Design","Soil Testing",25000,24000],["Project Design","Load Bearing Calc",35000,33000],["Project Design","Frame Design",35000,34000],["Project Design","HVAC Design",40000,38000],["Project Design","Electrical Design",45000,43000],["Project Design","Finish Selection",20000,19000],["Project Design","Layout Planning",20000,18000],["Project Design","Drainage Design",15000,14000],["Project Design","Grading Plan",15000,13000],["Management","Daily Supervision",70000,68000],["Management","Progress Reporting",60000,58000],["Management","Permit Application",50000,48000],["Management","Environmental Review",40000,38000],["Management","Material Sourcing",35000,33000],["Management","Delivery Coordination",35000,34000],["Management","Budget Monitoring",30000,29000],["Management","Invoicing",30000,28000],["Management","Machinery Rental",30000,29000],["Management","Tool Rental",25000,24000],["Construction","Excavation",80000,78000],["Construction","Grading",80000,79000],["Construction","Formwork",100000,98000],["Construction","Pouring",150000,148000],["Construction","Curing",60000,58000],["Construction","Wood Framing",280000,275000],["Construction","Steel Erection",200000,198000],["Construction","Wiring Installation",150000,145000],["Construction","Fixture Installation",90000,88000],["Construction","Plumbing Installation",130000,128000],["Construction","HVAC Installation",130000,125000],["Construction","Drywall Installation",100000,98000],["Construction","Painting",90000,88000],["Construction","Hardwood Installation",100000,95000],["Construction","Tiling",75000,73000],["Construction","Underlayment",40000,38000],["Construction","Shingle Installation",80000,78000],["Construction","Window Installation",50000,48000],["Construction","Door Installation",40000,38000],["Finishing & Landscaping","Cabinetry Installation",90000,88000],["Finishing & Landscaping","Countertop Installation",60000,58000],["Finishing & Landscaping","Lighting Fixtures",35000,34000],["Finishing & Landscaping","Faucets and Hardware",35000,33000],["Finishing & Landscaping","Patio and Walkway",50000,48000],["Finishing & Landscaping","Retaining Wall",30000,29000],["Finishing & Landscaping","Lawn Installation",20000,19000],["Finishing & Landscaping","Planting and Trees",20000,18000]];
+var V3=[["Seattle","Solar Panels",15000,1800],["Seattle","Smart Thermostat",8000,900],["Portland","Solar Panels",18000,2100],["Austin","Smart Thermostat",6000,750],["Dallas","Security System",12000,800],["Houston","Solar Panels",20000,2400],["New York","Smart Thermostat",7500,850],["Boston","Security System",14000,900],["San Francisco","Solar Panels",22000,2600],["Los Angeles","Smart Thermostat",9000,950]];
+var PCOLORS={"Project Design":"#58a6ff","Management":"#bc8cff","Construction":"#39d2c0","Finishing & Landscaping":"#3fb950"};
+var fmt=function(n){return "$"+n.toLocaleString("pt-BR")};
+
+// tabs
+var T=[["matriz","Matriz P01–P26"],["dash","Dashboards V1–V3"],["evid","Evidências"],["pages","GitHub Pages"],["road","Roadmap"],["xrepo","Cross-repo"]];
+var tabsEl=document.getElementById("tabs");
+T.forEach(function(t,i){var b=document.createElement("div");b.className="tab"+(i==0?" on":"");b.textContent=t[1];b.onclick=function(){document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("on")});b.classList.add("on");document.querySelectorAll(".tabc").forEach(function(x){x.style.display="none"});document.getElementById("tab-"+t[0]).style.display="block";};tabsEl.appendChild(b);});
+
+// matrix filters
+var sev="All",dom="All",q="";
+var SEVS=["All","Critica","Alta","Media","Baixa","Info"];
+var sf=document.getElementById("sevFilters");
+SEVS.forEach(function(s){var b=document.createElement("div");b.className="fbtn"+(s=="All"?" on":"");b.textContent=s=="All"?"Tudo":s;b.onclick=function(){sev=s;document.querySelectorAll("#sevFilters .fbtn").forEach(function(x){x.classList.remove("on")});b.classList.add("on");render();};sf.appendChild(b);});
+var domSel=document.getElementById("domSel");
+["All"].concat(MATRIX.map(function(r){return r[2]}).filter(function(v,i,a){return a.indexOf(v)==i})).forEach(function(d){var o=document.createElement("option");o.value=o.textContent=d;domSel.appendChild(o);});
+domSel.onchange=function(){dom=domSel.value;render()};
+document.getElementById("q").oninput=function(){q=this.value.toLowerCase();render()};
+function render(){
+  var tb=document.getElementById("mtxBody");tb.innerHTML="";
+  MATRIX.forEach(function(r){
+    if(sev!="All"&&r[1]!=sev)return;
+    if(dom!="All"&&r[2]!=dom)return;
+    if(q&&r.join(" ").toLowerCase().indexOf(q)<0)return;
+    var tr=document.createElement("tr");
+    var cls=r[1]=="Critica"?"bC":r[1]=="Alta"?"bA":r[1]=="Media"?"bM":r[1]=="Info"?"bI":"bB";
+    tr.innerHTML="<td><code>"+r[0]+"</code></td><td><span class='badge "+cls+"'>"+r[1]+"</span></td><td>"+r[2]+"</td><td>"+r[3]+"</td><td>"+r[4]+"</td><td>"+r[5]+"</td><td>"+r[6]+"</td>";
+    tb.appendChild(tr);
+  });
+  if(!tb.children.length)tb.innerHTML="<tr><td colspan='7' style='color:var(--mut)'>Nenhum achado com esses filtros.</td></tr>";
+}
+render();
+
+// V2 interactive
+var pilar="All";
+var ps=document.getElementById("pilarSel");
+["All"].concat(Object.keys(PCOLORS)).forEach(function(p){var o=document.createElement("option");o.value=o.textContent=p;ps.appendChild(o);});
+function v2(){
+  var rows=V2.filter(function(r){return pilar=="All"||r[0]==pilar});
+  var tc=0,tb2=0;rows.forEach(function(r){tc+=r[2];tb2+=r[3]});
+  document.getElementById("v2Kpis").innerHTML=
+    "<div class='kpi'><b style='color:var(--cyan)'>"+rows.length+"</b><span>linhas</span></div>"+
+    "<div class='kpi'><b style='color:var(--cyan)'>"+fmt(tc)+"</b><span>custo</span></div>"+
+    "<div class='kpi'><b style='color:var(--mut)'>"+fmt(tb2)+"</b><span>orçamento</span></div>"+
+    "<div class='kpi'><b style='color:var(--"+(tc>tb2?"red":"green")+")'>"+((tc-tb2)/tb2*100).toFixed(2)+"%</b><span>variância</span></div>";
+  var byp={};rows.forEach(function(r){byp[r[0]]=(byp[r[0]]||0)+r[2]});
+  var tot=Object.values(byp).reduce(function(a,b){return a+b},0)||1;
+  var svg=document.getElementById("donut");svg.innerHTML="";
+  var a0=-Math.PI/2,cx=160,cy=115;
+  var ns="http://www.w3.org/2000/svg";
+  Object.keys(byp).forEach(function(k){
+    var ang=byp[k]/tot*Math.PI*2;
+    var x1=cx+95*Math.cos(a0),y1=cy+95*Math.sin(a0),x2=cx+95*Math.cos(a0+ang),y2=cy+95*Math.sin(a0+ang);
+    var big=ang>Math.PI?1:0;
+    var p=document.createElementNS(ns,"path");
+    p.setAttribute("d","M "+cx+" "+cy+" L "+x1+" "+y1+" A 95 95 0 "+big+" 1 "+x2+" "+y2+" Z");
+    p.setAttribute("fill",PCOLORS[k]);
+    p.setAttribute("opacity","0.85");
+    var t=document.createElementNS(ns,"title");t.textContent=k+": "+fmt(byp[k]);p.appendChild(t);
+    svg.appendChild(p);
+    a0+=ang;
+  });
+  var c=document.createElementNS(ns,"circle");c.setAttribute("cx",cx);c.setAttribute("cy",cy);c.setAttribute("r",52);c.setAttribute("fill","#161b22");svg.appendChild(c);
+  var tx=document.createElementNS(ns,"text");tx.setAttribute("x",cx);tx.setAttribute("y",cy-2);tx.setAttribute("text-anchor","middle");tx.setAttribute("fill","#e6edf3");tx.setAttribute("font-size","13");tx.textContent=fmt(tot);svg.appendChild(tx);
+  var tx2=document.createElementNS(ns,"text");tx2.setAttribute("x",cx);tx2.setAttribute("y",cy+16);tx2.setAttribute("text-anchor","middle");tx2.setAttribute("fill","#8b949e");tx2.setAttribute("font-size","10");tx2.textContent="custo total";svg.appendChild(tx2);
+  document.getElementById("donutLeg").innerHTML=Object.keys(byp).map(function(k){return "<span class='pill' style='border-color:"+PCOLORS[k]+"'>"+k+" · "+(byp[k]/tot*100).toFixed(1)+"%</span>"}).join("");
+  var top=rows.slice().sort(function(a,b){return b[2]-a[2]}).slice(0,8);
+  var mx=top[0][2];
+  var bs=document.getElementById("bars");bs.innerHTML="";
+  top.forEach(function(r,i){
+    var y=8+i*29;
+    var lb=document.createElementNS(ns,"text");lb.setAttribute("x",0);lb.setAttribute("y",y+12);lb.setAttribute("fill","#8b949e");lb.setAttribute("font-size","9");var s=r[1];if(s.length>18)s=s.slice(0,17)+"…";lb.textContent=s;bs.appendChild(lb);
+    var bg=document.createElementNS(ns,"rect");bg.setAttribute("x",110);bg.setAttribute("y",y);bg.setAttribute("width",190);bg.setAttribute("height",16);bg.setAttribute("fill","#1c2330");bg.setAttribute("rx",3);bs.appendChild(bg);
+    var rc=document.createElementNS(ns,"rect");rc.setAttribute("x",110);rc.setAttribute("y",y);rc.setAttribute("width",Math.max(2,r[2]/mx*190));rc.setAttribute("height",16);rc.setAttribute("fill",PCOLORS[r[0]]);rc.setAttribute("rx",3);rc.setAttribute("opacity","0.9");
+    var t2=document.createElementNS(ns,"title");t2.textContent=r[1]+": "+fmt(r[2])+" (orç. "+fmt(r[3])+(r[2]>r[3]?" · acima do orçamento":"")+")";rc.appendChild(t2);
+    bs.appendChild(rc);
+    var bb=document.createElementNS(ns,"rect");bb.setAttribute("x",110);bb.setAttribute("y",y+16);bb.setAttribute("width",Math.max(1,r[3]/mx*190));bb.setAttribute("height",3);bb.setAttribute("fill",r[2]>r[3]?"#f85149":"#3fb950");bs.appendChild(bb);
+    var vt=document.createElementNS(ns,"text");vt.setAttribute("x",306);vt.setAttribute("y",y+12);vt.setAttribute("fill","#e6edf3");vt.setAttribute("font-size","9");vt.textContent=(r[2]/1000)+"k";bs.appendChild(vt);
+  });
+}
+ps.onchange=function(){pilar=ps.value;v2()};
+v2();
+
+// V3 scatter + OLS
+(function(){
+  var xs=V3.map(function(r){return r[2]}),ys=V3.map(function(r){return r[3]});
+  var n=xs.length,sx=xs.reduce(function(a,b){return a+b},0),sy=ys.reduce(function(a,b){return a+b},0);
+  var sxy=0,sxx=0;for(var i=0;i<n;i++){sxy+=xs[i]*ys[i];sxx+=xs[i]*xs[i]}
+  var b=sxy/sxx,a=sy/n-b*sx/n;
+  var ybar=sy/n,ssr=0,sst=0;for(i=0;i<n;i++){var yh=a+b*xs[i];ssr+=(ys[i]-yh)*(ys[i]-yh);sst+=(ys[i]-ybar)*(ys[i]-ybar)}
+  var r2=1-ssr/sst;
+  document.getElementById("v3Kpis").innerHTML=
+    "<div class='kpi'><b style='color:var(--cyan)'>10</b><span>linhas (toy)</span></div>"+
+    "<div class='kpi'><b style='color:var(--cyan)'>"+b.toFixed(2)+"</b><span>OLS slope (US$/US$)</span></div>"+
+    "<div class='kpi'><b style='color:var(--blue)'>"+r2.toFixed(3)+"</b><span>R² in-sample</span></div>"+
+    "<div class='kpi'><b style='color:var(--orange)'>sem holdout</b><span>risco P12</span></div>";
+  var ns="http://www.w3.org/2000/svg",sg=document.getElementById("scatter");
+  var X0=44,Y0=260,W=280,H=230,xmin=5000,xmax=22500,ymin=700,ymax=2700;
+  var gx=function(x){return X0+(x-xmin)/(xmax-xmin)*W},gy=function(y){return Y0-(y-ymin)/(ymax-ymin)*H};
+  [6000,10000,14000,18000,22000].forEach(function(v){var l=document.createElementNS(ns,"line");l.setAttribute("x1",gx(v));l.setAttribute("y1",Y0);l.setAttribute("x2",gx(v));l.setAttribute("y2",Y0-H);l.setAttribute("stroke","#2d333b");sg.appendChild(l);
+    var t=document.createElementNS(ns,"text");t.setAttribute("x",gx(v));t.setAttribute("y",Y0+12);t.setAttribute("fill","#8b949e");t.setAttribute("font-size","8");t.setAttribute("text-anchor","middle");t.textContent=(v/1000)+"k";sg.appendChild(t);});
+  [1000,1500,2000,2500].forEach(function(v){var l=document.createElementNS(ns,"line");l.setAttribute("x1",X0);l.setAttribute("y1",gy(v));l.setAttribute("x2",X0+W);l.setAttribute("y2",gy(v));l.setAttribute("stroke","#2d333b");sg.appendChild(l);
+    var t=document.createElementNS(ns,"text");t.setAttribute("x",X0-6);t.setAttribute("y",gy(v)+3);t.setAttribute("fill","#8b949e");t.setAttribute("font-size","8");t.setAttribute("text-anchor","end");t.textContent=v;sg.appendChild(t);});
+  var ln=document.createElementNS(ns,"line");ln.setAttribute("x1",gx(xmin));ln.setAttribute("y1",gy(a+b*xmin));ln.setAttribute("x2",gx(xmax));ln.setAttribute("y2",gy(a+b*xmax));ln.setAttribute("stroke","#f85149");ln.setAttribute("stroke-width","1.5");ln.setAttribute("stroke-dasharray","4 3");sg.appendChild(ln);
+  var TC={"Solar Panels":"#e3b341","Smart Thermostat":"#58a6ff","Security System":"#bc8cff"};
+  V3.forEach(function(r){var c=document.createElementNS(ns,"circle");c.setAttribute("cx",gx(r[2]));c.setAttribute("cy",gy(r[3]));c.setAttribute("r",5);c.setAttribute("fill",TC[r[1]]);c.setAttribute("opacity","0.9");
+    var t=document.createElementNS(ns,"title");t.textContent=r[0]+" · "+r[1]+": $"+r[2].toLocaleString("pt-BR")+" → $"+r[3].toLocaleString("pt-BR")+"/ano";c.appendChild(t);sg.appendChild(c);});
+  document.getElementById("scLeg").innerHTML=Object.keys(TC).map(function(k){return "<span class='pill' style='border-color:"+TC[k]+"'>"+k+"</span>"}).join("")+"<span class='pill' style='border-color:#f85149'>linha OLS</span>";
+  var imp=document.getElementById("imp");
+  var raw=[["Satisfação",245.1,"#f85149"],["Custo (k$)",171.9,"#f85149"],["Dispositivos",151.5,"#f85149"]];
+  var std=[["Custo",1.31,"#3fb950"],["Dispositivos",0.59,"#3fb950"],["Satisfação",0.086,"#3fb950"]];
+  imp.innerHTML="";
+  raw.forEach(function(r,i){var y=6+i*20;var t=document.createElementNS(ns,"text");t.setAttribute("x",0);t.setAttribute("y",y+11);t.setAttribute("fill","#8b949e");t.setAttribute("font-size","9");t.textContent="|coef| bruto · "+r[0];imp.appendChild(t);
+    var rc=document.createElementNS(ns,"rect");rc.setAttribute("x",130);rc.setAttribute("y",y);rc.setAttribute("width",Math.max(2,r[1]/245.1*100));rc.setAttribute("height",14);rc.setAttribute("fill",r[2]);rc.setAttribute("opacity","0.8");imp.appendChild(rc);
+    var v=document.createElementNS(ns,"text");v.setAttribute("x",236);v.setAttribute("y",y+11);v.setAttribute("fill","#e6edf3");v.setAttribute("font-size","9");v.textContent=r[1];imp.appendChild(v);});
+  std.forEach(function(r,i){var y=72+i*20;var t=document.createElementNS(ns,"text");t.setAttribute("x",0);t.setAttribute("y",y+11);t.setAttribute("fill","#8b949e");t.setAttribute("font-size","9");t.textContent="padronizado · "+r[0];imp.appendChild(t);
+    var rc=document.createElementNS(ns,"rect");rc.setAttribute("x",130);rc.setAttribute("y",y);rc.setAttribute("width",Math.max(2,r[1]/1.31*100));rc.setAttribute("height",14);rc.setAttribute("fill",r[2]);rc.setAttribute("opacity","0.85");imp.appendChild(rc);
+    var v=document.createElementNS(ns,"text");v.setAttribute("x",236);v.setAttribute("y",y+11);v.setAttribute("fill","#e6edf3");v.setAttribute("font-size","9");v.textContent=r[1];imp.appendChild(v);});
+})();
+</script>
+</body>
+</html>
