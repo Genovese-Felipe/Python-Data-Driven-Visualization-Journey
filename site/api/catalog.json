@@ -1,0 +1,36 @@
+{
+  "title": "FGen Labs Data Visualization Journey — static data catalog",
+  "version": "review-2026-10-19",
+  "data_quality": "illustrative, not externally validated",
+  "datasets": [
+    {
+      "id": "construction-v2",
+      "path": "./construction-v2.json",
+      "records": 49,
+      "source": "dashboards/v2_construction/V2_script.py",
+      "cost_total": 3085000,
+      "budget_total": 2988000,
+      "format": "JSON",
+      "units": "USD, illustrative"
+    },
+    {
+      "id": "smart-home-v3",
+      "path": "./smart-home-v3.json",
+      "records": 10,
+      "source": "dashboards/v3_smart_home/Plan_V3_funcional.py",
+      "format": "JSON",
+      "units": "USD, illustrative"
+    }
+  ],
+  "execution": {
+    "browser": "Static HTML/CSS/JS",
+    "python": "Clone repository and execute Dash apps on local/container/cloud Python runtime",
+    "github_pages_server_python": false
+  },
+  "limitations": [
+    "No live API",
+    "No real expenditure/energy outcome evidence",
+    "Predictive V3 model not validated",
+    "Schema preliminary; changes require versioning"
+  ]
+}
