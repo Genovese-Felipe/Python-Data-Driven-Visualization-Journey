@@ -3,7 +3,7 @@
 These tests verify that each dashboard module loads correctly, that the
 data sources are present and well-formed, and that the predictive model
 used by the V3 dashboard trains without errors. They must run from the
-repository root (enforced by the repo_root_cwd fixture below).
+repository root (enforced by the "repo_root_cwd" fixture below).
 """
 import importlib.util
 import sys
@@ -11,7 +11,7 @@ from pathlib import Path
 
 import pytest
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
 V1_PATH = REPO_ROOT / "dashboards" / "v1_simple" / "sunburst_cost_explorer_funcional.py"
 V2_PATH = REPO_ROOT / "dashboards" / "v2_construction" / "V2_script.py"
