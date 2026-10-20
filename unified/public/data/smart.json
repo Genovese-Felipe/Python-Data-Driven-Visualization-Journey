@@ -1,0 +1,67 @@
+{
+  "source_kind": "simulated",
+  "grain": "installation",
+  "currency": "USD",
+  "rows": [
+    [
+      "Seattle",
+      "Solar Panels",
+      15000,
+      1800
+    ],
+    [
+      "Seattle",
+      "Smart Thermostat",
+      8000,
+      900
+    ],
+    [
+      "Portland",
+      "Solar Panels",
+      18000,
+      2100
+    ],
+    [
+      "Austin",
+      "Smart Thermostat",
+      6000,
+      750
+    ],
+    [
+      "Dallas",
+      "Security System",
+      12000,
+      800
+    ],
+    [
+      "Houston",
+      "Solar Panels",
+      20000,
+      2400
+    ],
+    [
+      "New York",
+      "Smart Thermostat",
+      7500,
+      850
+    ],
+    [
+      "Boston",
+      "Security System",
+      14000,
+      900
+    ],
+    [
+      "San Francisco",
+      "Solar Panels",
+      22000,
+      2600
+    ],
+    [
+      "Los Angeles",
+      "Smart Thermostat",
+      9000,
+      950
+    ]
+  ]
+}
