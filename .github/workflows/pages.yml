@@ -1,0 +1,45 @@
+name: Static Pages · Visualization Journey
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Verify offline HTML
+        run: |
+          test -f site/index.html
+          python - <<'PY'
+          from pathlib import Path
+          for path in Path('site').glob('*.html'):
+              html = path.read_text(encoding='utf-8')
+              assert '<html' in html.lower()
+              assert '<script src=' not in html.lower(), path
+              assert '<link rel="stylesheet"' not in html.lower(), path
+              print(path, len(html), 'bytes')
+          PY
+      - name: Upload
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
