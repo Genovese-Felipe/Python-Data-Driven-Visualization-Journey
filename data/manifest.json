@@ -1,0 +1,20 @@
+{
+  "project": "Python Data Driven Visualization Journey",
+  "schema_version": "1.0",
+  "source_commit": "859aa2882b290268d46d7027b4eb437cb844914b",
+  "source_files": {
+    "construction": "dashboards/v2_construction/V2_script.py",
+    "smart_home": "dashboards/v3_smart_home/Plan_V3_funcional.py"
+  },
+  "data_status": "demonstrative/illustrative; not verified actual expenditure nor independently observed devices",
+  "currency": "USD as historically displayed; not independently verified",
+  "construction_records": 49,
+  "construction_total": 3085000,
+  "construction_budget": 2988000,
+  "smart_home_records": 10,
+  "notes": [
+    "Cost and budget may represent illustrative examples, not actual finance records.",
+    "Original V1 arrays have 97 labels/parents but 53 values; V1 web reconstruction uses V2 normalized hierarchy.",
+    "V3 original model has 10 observations and no held-out validation; no predictive claims are published."
+  ]
+}
