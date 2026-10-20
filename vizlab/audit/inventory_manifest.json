@@ -1,31 +1,37 @@
 {
-  "created": "2026-10-19",
-  "branches": {
-    "Python-Data-Driven-Visualization-Journey": "main",
-    "Python-Data-Plotly-Predictive-Analytics-Dashboard": "main",
-    "PythonDataScienceHandbook": "master"
+  "as_of": "2026-10-19",
+  "snapshot": "commit-anchored",
+  "repos": {
+    "Python-Data-Driven-Visualization-Journey": {
+      "commit": "beff5d659349853040671722e9f345389fbdafe1",
+      "files": 56
+    },
+    "Python-Data-Plotly-Predictive-Analytics-Dashboard": {
+      "commit": "53a1db0f2ee309ac7e9381349181da7fb2182d2f",
+      "files": 763
+    },
+    "PythonDataScienceHandbook": {
+      "commit": "d66231454ef753818dc9213c9b5942e067266966",
+      "files": 264
+    }
   },
-  "trees": {
-    "Python-Data-Driven-Visualization-Journey": "20486531a623c48e99bf6e529e13c28155b56603",
-    "Python-Data-Plotly-Predictive-Analytics-Dashboard": "53a1db0f2ee309ac7e9381349181da7fb2182d2f",
-    "PythonDataScienceHandbook": "d66231454ef753818dc9213c9b5942e067266966"
-  },
-  "totalFiles": 1089,
-  "byteTotal": 589571646,
+  "files": 1083,
+  "bytes": 589558142,
   "counts": {
-    "data": 80,
-    "ci_cd": 3,
+    "dataset": 75,
+    "deployment_ci": 3,
     "reference": 142,
-    "entrypoint_docs_dependencies": 50,
-    "executable_code": 150,
+    "docs_and_deps": 50,
+    "executable": 149,
     "notebook": 144,
-    "visual_asset": 90,
-    "structured_reference": 14,
-    "web_static": 134,
-    "pdf_reference": 278,
-    "serialized_model": 2,
-    "archive_or_link": 2
+    "image": 90,
+    "structured": 14,
+    "frontend": 134,
+    "pdf": 278,
+    "serialized_ml": 2,
+    "archive": 2
   },
-  "duplicateBlobGroups": 42,
-  "caveat": "Each file is cataloged via Git trees and SHA. audit_depth=manifest_only is not content review. Targeted code reviews have separate evidence files; PDFs/images are not semantically inspected."
+  "identicalBlobGroups": 42,
+  "method": "Git recursive tree entries, sha, size, path. Not a semantic or execution inspection of all files.",
+  "notes": "Branches can change. All catalog URLs use stable commit SHAs. PDF and image bodies not comprehensively analyzed."
 }
