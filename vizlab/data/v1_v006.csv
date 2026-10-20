@@ -1,0 +1,24 @@
+pillar,area,service,task,cost
+Project Design,Architecture,Blueprint Design,Initial Schematics & 3D Model,65000
+Project Design,Engineering,Structural Analysis,Foundation & Frame Calculations,95000
+Project Design,Engineering,MEP Engineering,HVAC & Electrical Plans,85000
+Project Design,Architecture,Interior Design,Material Selection & Layout,40000
+Project Design,Engineering,Civil Engineering,Drainage & Grading Plan,30000
+Management,Administration,Project Management,On-Site Supervision & Reporting,130000
+Management,Administration,Permits & Legal,City & Environmental Approvals,90000
+Management,Logistics,Supply Chain,Material Sourcing & Delivery,70000
+Management,Administration,Financial Management,Budget Tracking & Invoicing,60000
+Management,Logistics,Equipment Rental,Heavy Machinery & Tools,55000
+Construction,Site & Foundation,Excavation & Grading,Earthwork and Site Prep,160000
+Construction,Site & Foundation,Concrete Work,Foundation Pouring & Curing,310000
+Construction,Superstructure,Framing & Steel,Wood & Steel Frame Erection,480000
+Construction,MEP Systems,Electrical,Complete Wiring & Fixtures,240000
+Construction,MEP Systems,Plumbing & HVAC,Piping, Drains & Ductwork,260000
+Construction,Interior & Exterior,Drywall & Painting,Interior Walls and Ceilings,190000
+Construction,Interior & Exterior,Flooring & Tiling,Hardwood and Ceramic Installation,175000
+Construction,Superstructure,Roofing,Shingle and Underlayment Installation,120000
+Construction,Interior & Exterior,Window & Door Installation,Exterior and Interior Openings,90000
+Finishing & Landscaping,Finishing,Cabinetry & Countertops,Kitchen and Bathroom Fixtures,150000
+Finishing & Landscaping,Finishing,Fixtures & Hardware,Lighting, Faucets, and Door Knobs,70000
+Finishing & Landscaping,Landscaping,Hardscaping,Patio, Walkways, and Retaining Walls,80000
+Finishing & Landscaping,Landscaping,Softscaping,Lawn, Plants, and Trees,40000
