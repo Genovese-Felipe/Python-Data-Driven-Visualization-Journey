@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main, 'audit/**', 'review/**']
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Compile check
+        run: python -m compileall dashboards app_simples.py run_app.py test_app.py
+      - name: Tests
+        run: pytest -q
+  pages-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static pages integrity
+        run: |
+          set -euo pipefail
+          for page in principal dashboard_v1 dashboard_v2 dashboard_v3 audit_hub; do
+            test -s "index/${page}.html"
+          done
+          if grep -rn "plotly-latest" index/; then
+            echo 'CDN plotly-latest descontinuado (P04): fixar plotly-2.x'
+            exit 1
+          fi
+          grep -q "dashboard_v1.html" index/principal.html
+          grep -q "dashboard_v2.html" index/principal.html
+          grep -q "dashboard_v3.html" index/principal.html
