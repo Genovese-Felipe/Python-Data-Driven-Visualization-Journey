@@ -1,0 +1,28 @@
+name: FGen Unified Pages (reviewed)
+on:
+  push:
+    branches: [main]
+    paths: ['unified/public/**', '.github/workflows/unified-pages.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: unified-pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: unified/public
+      - id: deploy
+        uses: actions/deploy-pages@v4
