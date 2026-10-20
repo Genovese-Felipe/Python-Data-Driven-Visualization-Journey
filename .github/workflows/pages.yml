@@ -1,0 +1,71 @@
+name: Reviewed Dashboard Pages
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: reviewed-pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Bundle Plotly
+        run: python -m pip install plotly==6.5.2
+      - name: Verify source contract
+        run: python scripts/verify_pages.py
+      - name: Verify JavaScript syntax
+        run: node --check pages/assets/app.js
+      - name: Assemble offline-capable site
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          cp -a pages/. _site/
+          python - <<'PY'
+          from pathlib import Path
+          from plotly.offline import get_plotlyjs
+          target=Path('_site/assets/plotly.min.js')
+          target.write_text(get_plotlyjs(),encoding='utf-8')
+          assert target.stat().st_size>1_000_000
+          PY
+          touch _site/.nojekyll
+          test -s _site/index.html
+          test -s _site/v1.html
+          test -s _site/v2.html
+          test -s _site/v3.html
+      - name: Upload QA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dashboards-review-preview
+          path: _site
+      - name: Create deployment artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
