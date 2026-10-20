@@ -1,56 +1,68 @@
 #!/usr/bin/env python3
-"""Dependency-free audit of GitHub Pages assets and dataset parity."""
+"""Validate that main CSV sources, canonical JSON and standalone HTML agree."""
+import csv
 import json
-import ast
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-html = (ROOT / "index.html").read_text(encoding="utf-8")
-m = re.search(r'<script type="application/json" id="embedded-data">([\s\S]*?)</script>', html)
-assert m, "Missing embedded, offline JSON payload."
-embedded = json.loads(m.group(1))
-construction = json.loads((ROOT / "data/construction_v2.json").read_text(encoding="utf-8"))["records"]
-smart_home = json.loads((ROOT / "data/smart_home_v3.json").read_text(encoding="utf-8"))["records"]
+HTML = (ROOT / "index.html").read_text(encoding="utf-8")
+match = re.search(
+    r'<script type="application/json" id="embedded-data">([\s\S]*?)</script>', HTML
+)
+assert match, "Offline embedded JSON missing"
+embedded = json.loads(match.group(1))
+canonical_construction = json.loads(
+    (ROOT / "data/construction_v2.json").read_text(encoding="utf-8")
+)["records"]
+canonical_smart = json.loads(
+    (ROOT / "data/smart_home_v3.json").read_text(encoding="utf-8")
+)["records"]
 manifest = json.loads((ROOT / "data/manifest.json").read_text(encoding="utf-8"))
 
-assert embedded["construction"] == construction, "Embedded V2 data differ from canonical JSON."
-assert embedded["smart_home"] == smart_home, "Embedded V3 data differ from canonical JSON."
-assert len(construction) == manifest["construction_records"] == 49
-assert sum(row["cost"] for row in construction) == manifest["construction_total"] == 3085000
-assert sum(row["budgeted_cost"] for row in construction) == manifest["construction_budget"] == 2988000
-assert len(smart_home) == manifest["smart_home_records"] == 10
-assert len({row["id"] for row in construction}) == 49
-assert len({row["id"] for row in smart_home}) == 10
-assert all(row["cost"] >= 0 and row["budgeted_cost"] >= 0 for row in construction)
-assert all(-90 <= row["Latitude"] <= 90 and -180 <= row["Longitude"] <= 180 for row in smart_home)
-assert re.search(r'lang="pt-BR"', html)
-assert not re.search(r'<script\s+[^>]*src=', html, re.I), "External JS breaks offline availability."
-assert not re.search(r'<script[^>]+src\s*=\s*["\']http', html, re.I)
-# Read literal input tables from Python source WITHOUT importing or executing apps.
-def literal_source_assignment(file_path, variable="data"):
-    source = (ROOT / file_path).read_text(encoding="utf-8-sig")
-    module = ast.parse(source, filename=file_path)
-    for statement in module.body:
-        if isinstance(statement, ast.Assign) and any(
-            isinstance(t, ast.Name) and t.id == variable for t in statement.targets
-        ):
-            try:
-                return ast.literal_eval(statement.value)
-            except (ValueError, TypeError, SyntaxError):
-                continue
-    raise AssertionError(f"No literal {variable!r} data found in {file_path}")
+def csv_records(path, expected_headers):
+    with (ROOT / path).open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        assert reader.fieldnames == expected_headers, (path, reader.fieldnames)
+        rows = list(reader)
+    assert rows and all(None not in r and None not in r.values() for r in rows), (
+        path, "Malformed comma-separated fields"
+    )
+    return rows
 
-
-source_v2 = literal_source_assignment("dashboards/v2_construction/V2_script.py")
-source_v3 = literal_source_assignment("dashboards/v3_smart_home/Plan_V3_funcional.py")
-assert construction == [
-    {"id": f"C{i:03d}", **row}
-    for i, row in enumerate(source_v2, start=1)
-], "V2 Python records drifted from canonical JSON"
-expected_smart = [
-    {"id": f"S{i:03d}", **{key: values[i - 1] for key, values in source_v3.items()}}
-    for i in range(1, len(source_v3["City"]) + 1)
+v2_columns = ["pillar", "area", "service", "task", "sub_task", "cost", "budgeted_cost"]
+v2 = csv_records("dashboards/v2_construction/data.csv", v2_columns)
+reconciled_v2 = [
+    {"id": f"C{i:03d}", **{
+        k: int(value) if k in ("cost", "budgeted_cost") else value
+        for k, value in row.items()
+    }}
+    for i, row in enumerate(v2, 1)
 ]
-assert smart_home == expected_smart, "V3 Python rows drifted from canonical JSON"
-print("PASS: 49 construction records, 10 smart-home records, embedded/canonical parity, offline HTML.")
+assert len(v2) == 49
+assert reconciled_v2 == canonical_construction, "V2 CSV != JSON: audit source drift"
+assert embedded["construction"] == canonical_construction, "V2 inline HTML != JSON"
+assert sum(r["cost"] for r in reconciled_v2) == manifest["construction_total"] == 3085000
+assert sum(r["budgeted_cost"] for r in reconciled_v2) == manifest["construction_budget"] == 2988000
+
+v3_columns = ["Region", "City", "Installation_Type", "Installation_Cost", "Annual_Energy_Savings", "Number_of_Devices", "Customer_Satisfaction", "Latitude", "Longitude"]
+v3 = csv_records("dashboards/v3_smart_home/data.csv", v3_columns)
+int_keys = ("Installation_Cost", "Annual_Energy_Savings", "Number_of_Devices")
+float_keys = ("Customer_Satisfaction", "Latitude", "Longitude")
+reconciled_v3 = [
+    {"id": f"S{i:03d}", **{
+        k: int(value) if k in int_keys else (float(value) if k in float_keys else value)
+        for k, value in row.items()
+    }}
+    for i, row in enumerate(v3, 1)
+]
+assert len(v3) == 10
+assert reconciled_v3 == canonical_smart, "V3 CSV != JSON: audit source drift"
+assert embedded["smart_home"] == canonical_smart, "V3 inline HTML != JSON"
+assert len({r["id"] for r in reconciled_v2}) == 49
+assert len({r["id"] for r in reconciled_v3}) == 10
+assert all(0 <= r["cost"] and 0 <= r["budgeted_cost"] for r in reconciled_v2)
+assert all(-90 <= r["Latitude"] <= 90 and -180 <= r["Longitude"] <= 180 for r in reconciled_v3)
+assert not re.search(r'<script\s+[^>]*src\s*=', HTML, re.I), "CDN would break offline mode"
+assert "lang=\"pt-BR\"" in HTML
+print("PASS: CSV(49+10), JSON, embedded HTML, unique IDs, totals and no remote JS")
