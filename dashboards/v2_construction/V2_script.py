@@ -1,5 +1,17 @@
-# Desenvolva o código de visualização (iterativo e orientado por guias)
-# Develop Visualization Code (Iterative & Guideline-Driven)
+"""A Dash application for exploring construction costs with advanced filters.
+
+This script creates a standalone Dash dashboard that provides an interactive
+sunburst chart for exploring hierarchical construction cost data. It serves
+as the second version (V2) of the dashboard, introducing more advanced
+interactivity than the V1 dashboard.
+
+The dashboard features:
+- Cascading dropdown filters for 'Pillar', 'Area', and 'Service'.
+- A range slider to filter the data by cost.
+- A sunburst chart that dynamically updates based on the selected filters.
+- Detailed tooltips in the sunburst chart showing actual cost, budgeted
+  cost, and the variance between them.
+"""
 
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
@@ -8,95 +20,11 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.colors
 
-# Baseado no dataset selecionado, use os dados hierárquicos de custo (PT)
-# Based on the selected dataset, use the hierarchical cost data (EN)
-# Esta estrutura de dados já está definida em células anteriores, mas será incluída aqui
-# para completude, conforme aprendizado do erro anterior (PT)
-# This data structure is already defined above, but included here for completeness (EN)
-
-data = [
-    # Pillar 1: Project Design
-    {'pillar': 'Project Design', 'area': 'Architecture', 'service': 'Blueprint Design', 'task': 'Initial Schematics & 3D Model', 'sub_task': 'Site Survey', 'cost': 15000, 'budgeted_cost': 14000},
-    {'pillar': 'Project Design', 'area': 'Architecture', 'service': 'Blueprint Design', 'task': 'Initial Schematics & 3D Model', 'sub_task': 'Conceptual Design', 'cost': 20000, 'budgeted_cost': 18000},
-    {'pillar': 'Project Design', 'area': 'Architecture', 'service': 'Blueprint Design', 'task': 'Initial Schematics & 3D Model', 'sub_task': 'Detailed Drawings', 'cost': 30000, 'budgeted_cost': 28000},
-
-    {'pillar': 'Project Design', 'area': 'Engineering', 'service': 'Structural Analysis', 'task': 'Foundation & Frame Calculations', 'sub_task': 'Soil Testing', 'cost': 25000, 'budgeted_cost': 24000},
-    {'pillar': 'Project Design', 'area': 'Engineering', 'service': 'Structural Analysis', 'task': 'Foundation & Frame Calculations', 'sub_task': 'Load Bearing Calculations', 'cost': 35000, 'budgeted_cost': 33000},
-    {'pillar': 'Project Design', 'area': 'Engineering', 'service': 'Structural Analysis', 'task': 'Foundation & Frame Calculations', 'sub_task': 'Frame Design', 'cost': 35000, 'budgeted_cost': 34000},
-
-    {'pillar': 'Project Design', 'area': 'Engineering', 'service': 'MEP Engineering', 'task': 'HVAC & Electrical Plans', 'sub_task': 'HVAC Design', 'cost': 40000, 'budgeted_cost': 38000},
-    {'pillar': 'Project Design', 'area': 'Engineering', 'service': 'MEP Engineering', 'task': 'HVAC & Electrical Plans', 'sub_task': 'Electrical Design', 'cost': 45000, 'budgeted_cost': 43000},
-
-    {'pillar': 'Project Design', 'area': 'Architecture', 'service': 'Interior Design', 'task': 'Material Selection & Layout', 'sub_task': 'Finish Selection', 'cost': 20000, 'budgeted_cost': 19000},
-    {'pillar': 'Project Design', 'area': 'Architecture', 'service': 'Interior Design', 'task': 'Material Selection & Layout', 'sub_task': 'Layout Planning', 'cost': 20000, 'budgeted_cost': 18000},
-
-    {'pillar': 'Project Design', 'area': 'Engineering', 'service': 'Civil Engineering', 'task': 'Drainage & Grading Plan', 'sub_task': 'Drainage Design', 'cost': 15000, 'budgeted_cost': 14000},
-    {'pillar': 'Project Design', 'area': 'Engineering', 'service': 'Civil Engineering', 'task': 'Drainage & Grading Plan', 'sub_task': 'Grading Plan', 'cost': 15000, 'budgeted_cost': 13000},
-
-
-    # Pillar 2: Management & Logistics
-    {'pillar': 'Management', 'area': 'Administration', 'service': 'Project Management', 'task': 'On-Site Supervision & Reporting', 'sub_task': 'Daily Supervision', 'cost': 70000, 'budgeted_cost': 68000},
-    {'pillar': 'Management', 'area': 'Administration', 'service': 'Project Management', 'task': 'On-Site Supervision & Reporting', 'sub_task': 'Progress Reporting', 'cost': 60000, 'budgeted_cost': 58000},
-
-    {'pillar': 'Management', 'area': 'Administration', 'service': 'Permits & Legal', 'task': 'City & Environmental Approvals', 'sub_task': 'Permit Application', 'cost': 50000, 'budgeted_cost': 48000},
-    {'pillar': 'Management', 'area': 'Administration', 'service': 'Permits & Legal', 'task': 'City & Environmental Approvals', 'sub_task': 'Environmental Review', 'cost': 40000, 'budgeted_cost': 38000},
-
-    {'pillar': 'Management', 'area': 'Logistics', 'service': 'Supply Chain', 'task': 'Material Sourcing & Delivery', 'sub_task': 'Material Sourcing', 'cost': 35000, 'budgeted_cost': 33000},
-    {'pillar': 'Management', 'area': 'Logistics', 'service': 'Supply Chain', 'task': 'Material Sourcing & Delivery', 'sub_task': 'Delivery Coordination', 'cost': 35000, 'budgeted_cost': 34000},
-
-    {'pillar': 'Management', 'area': 'Administration', 'service': 'Financial Management', 'task': 'Budget Tracking & Invoicing', 'sub_task': 'Budget Monitoring', 'cost': 30000, 'budgeted_cost': 29000},
-    {'pillar': 'Management', 'area': 'Administration', 'service': 'Financial Management', 'task': 'Budget Tracking & Invoicing', 'sub_task': 'Invoicing', 'cost': 30000, 'budgeted_cost': 28000},
-
-    {'pillar': 'Management', 'area': 'Logistics', 'service': 'Equipment Rental', 'task': 'Heavy Machinery & Tools', 'sub_task': 'Machinery Rental', 'cost': 30000, 'budgeted_cost': 29000},
-    {'pillar': 'Management', 'area': 'Logistics', 'service': 'Equipment Rental', 'task': 'Heavy Machinery & Tools', 'sub_task': 'Tool Rental', 'cost': 25000, 'budgeted_cost': 24000},
-
-
-    # Pillar 3: Construction
-    {'pillar': 'Construction', 'area': 'Site & Foundation', 'service': 'Excavation & Grading', 'task': 'Earthwork and Site Prep', 'sub_task': 'Excavation', 'cost': 80000, 'budgeted_cost': 78000},
-    {'pillar': 'Construction', 'area': 'Site & Foundation', 'service': 'Excavation & Grading', 'task': 'Earthwork and Site Prep', 'sub_task': 'Grading', 'cost': 80000, 'budgeted_cost': 79000},
-
-    {'pillar': 'Construction', 'area': 'Site & Foundation', 'service': 'Concrete Work', 'task': 'Foundation Pouring & Curing', 'sub_task': 'Formwork', 'cost': 100000, 'budgeted_cost': 98000},
-    {'pillar': 'Construction', 'area': 'Site & Foundation', 'service': 'Concrete Work', 'task': 'Foundation Pouring & Curing', 'sub_task': 'Pouring', 'cost': 150000, 'budgeted_cost': 148000},
-    {'pillar': 'Construction', 'area': 'Site & Foundation', 'service': 'Concrete Work', 'task': 'Foundation Pouring & Curing', 'sub_task': 'Curing', 'cost': 60000, 'budgeted_cost': 58000},
-
-    {'pillar': 'Construction', 'area': 'Superstructure', 'service': 'Framing & Steel', 'task': 'Wood & Steel Frame Erection', 'sub_task': 'Wood Framing', 'cost': 280000, 'budgeted_cost': 275000},
-    {'pillar': 'Construction', 'area': 'Superstructure', 'service': 'Framing & Steel', 'task': 'Wood & Steel Frame Erection', 'sub_task': 'Steel Erection', 'cost': 200000, 'budgeted_cost': 198000},
-
-    {'pillar': 'Construction', 'area': 'MEP Systems', 'service': 'Electrical', 'task': 'Complete Wiring & Fixtures', 'sub_task': 'Wiring Installation', 'cost': 150000, 'budgeted_cost': 145000},
-    {'pillar': 'Construction', 'area': 'MEP Systems', 'service': 'Electrical', 'task': 'Complete Wiring & Fixtures', 'sub_task': 'Fixture Installation', 'cost': 90000, 'budgeted_cost': 88000},
-
-    {'pillar': 'Construction', 'area': 'MEP Systems', 'service': 'Plumbing & HVAC', 'task': 'Piping, Drains & Ductwork', 'sub_task': 'Plumbing Installation', 'cost': 130000, 'budgeted_cost': 128000},
-    {'pillar': 'Construction', 'area': 'MEP Systems', 'service': 'Plumbing & HVAC', 'task': 'Piping, Drains & Ductwork', 'sub_task': 'HVAC Installation', 'cost': 130000, 'budgeted_cost': 125000},
-
-    {'pillar': 'Construction', 'area': 'Interior & Exterior', 'service': 'Drywall & Painting', 'task': 'Interior Walls and Ceilings', 'sub_task': 'Drywall Installation', 'cost': 100000, 'budgeted_cost': 98000},
-    {'pillar': 'Construction', 'area': 'Interior & Exterior', 'service': 'Drywall & Painting', 'task': 'Interior Walls and Ceilings', 'sub_task': 'Painting', 'cost': 90000, 'budgeted_cost': 88000},
-
-    {'pillar': 'Construction', 'area': 'Interior & Exterior', 'service': 'Flooring & Tiling', 'task': 'Hardwood and Ceramic Installation', 'sub_task': 'Hardwood Installation', 'cost': 100000, 'budgeted_cost': 95000},
-    {'pillar': 'Construction', 'area': 'Interior & Exterior', 'service': 'Flooring & Tiling', 'task': 'Hardwood and Ceramic Installation', 'sub_task': 'Tiling', 'cost': 75000, 'budgeted_cost': 73000},
-
-    {'pillar': 'Construction', 'area': 'Superstructure', 'service': 'Roofing', 'task': 'Shingle and Underlayment Installation', 'sub_task': 'Underlayment', 'cost': 40000, 'budgeted_cost': 38000},
-    {'pillar': 'Construction', 'area': 'Superstructure', 'service': 'Roofing', 'task': 'Shingle and Underlayment Installation', 'sub_task': 'Shingle Installation', 'cost': 80000, 'budgeted_cost': 78000},
-
-    {'pillar': 'Construction', 'area': 'Interior & Exterior', 'service': 'Window & Door Installation', 'task': 'Exterior and Interior Openings', 'sub_task': 'Window Installation', 'cost': 50000, 'budgeted_cost': 48000},
-    {'pillar': 'Construction', 'area': 'Interior & Exterior', 'service': 'Window & Door Installation', 'task': 'Exterior and Interior Openings', 'sub_task': 'Door Installation', 'cost': 40000, 'budgeted_cost': 38000},
-
-
-    # New Pillar: Finishing & Landscaping
-    {'pillar': 'Finishing & Landscaping', 'area': 'Finishing', 'service': 'Cabinetry & Countertops', 'task': 'Kitchen and Bathroom Fixtures', 'sub_task': 'Cabinetry Installation', 'cost': 90000, 'budgeted_cost': 88000},
-    {'pillar': 'Finishing & Landscaping', 'area': 'Finishing', 'service': 'Cabinetry & Countertops', 'task': 'Kitchen and Bathroom Fixtures', 'sub_task': 'Countertop Installation', 'cost': 60000, 'budgeted_cost': 58000},
-
-    {'pillar': 'Finishing & Landscaping', 'area': 'Finishing', 'service': 'Fixtures & Hardware', 'task': 'Lighting, Faucets, and Door Knobs', 'sub_task': 'Lighting Fixtures', 'cost': 35000, 'budgeted_cost': 34000},
-    {'pillar': 'Finishing & Landscaping', 'area': 'Finishing', 'service': 'Fixtures & Hardware', 'task': 'Lighting, Faucets, and Door Knobs', 'sub_task': 'Faucets and Hardware', 'cost': 35000, 'budgeted_cost': 33000},
-
-    {'pillar': 'Finishing & Landscaping', 'area': 'Landscaping', 'service': 'Hardscaping', 'task': 'Patio, Walkways, and Retaining Walls', 'sub_task': 'Patio and Walkway Construction', 'cost': 50000, 'budgeted_cost': 48000},
-    {'pillar': 'Finishing & Landscaping', 'area': 'Landscaping', 'service': 'Hardscaping', 'task': 'Patio, Walkways, and Retaining Walls', 'sub_task': 'Retaining Wall Construction', 'cost': 30000, 'budgeted_cost': 29000},
-
-    {'pillar': 'Finishing & Landscaping', 'area': 'Landscaping', 'service': 'Softscaping', 'task': 'Lawn, Plants, and Trees', 'sub_task': 'Lawn Installation', 'cost': 20000, 'budgeted_cost': 19000},
-    {'pillar': 'Finishing & Landscaping', 'area': 'Landscaping', 'service': 'Softscaping', 'task': 'Lawn, Plants, and Trees', 'sub_task': 'Planting and Tree Installation', 'cost': 20000, 'budgeted_cost': 18000},
-]
-df_budget = pd.DataFrame(data)
+# Load data from the CSV file.
+df_budget = pd.read_csv('dashboards/v2_construction/data.csv')
 
 app = Dash(__name__)
+"""The main Dash application instance for the V2 dashboard."""
 
 # Get min and max cost for the range slider
 min_cost = df_budget['cost'].min()
@@ -104,7 +32,10 @@ max_cost = df_budget['cost'].max()
 
 # Define the layout based on identified requirements (filters, graph)
 app.layout = html.Div([
+    # The main container for the V2 dashboard layout.
     html.H1("Residential Construction: Hierarchical Cost Explorer"),
+
+    # Dropdown for filtering by project pillar.
     html.Label("Select Pillar:"),
     dcc.Dropdown(
         id='pillar-dropdown',
@@ -113,6 +44,8 @@ app.layout = html.Div([
         value='All'
     ),
     html.Br(),
+
+    # Dropdown for filtering by project area.
     html.Label("Select Area:"),
     dcc.Dropdown(
         id='area-dropdown',
@@ -121,6 +54,8 @@ app.layout = html.Div([
         value='All'
     ),
     html.Br(),
+
+    # Dropdown for filtering by project service.
     html.Label("Select Service:"),
     dcc.Dropdown(
         id='service-dropdown',
@@ -129,6 +64,8 @@ app.layout = html.Div([
         value='All'
     ),
     html.Br(),
+
+    # Range slider for filtering by cost.
     html.Label("Filter by Cost Range:"),
     dcc.RangeSlider(
         id='cost-range-slider',
@@ -139,6 +76,8 @@ app.layout = html.Div([
                int(max_cost): f'${int(max_cost):,}'},
         step=5000
     ),
+
+    # The main sunburst chart visualization.
     dcc.Graph(id='sunburst-chart')
 ])
 
@@ -153,6 +92,27 @@ app.layout = html.Div([
     Input('cost-range-slider', 'value')
 )
 def update_graph(selected_pillar, selected_area, selected_service, cost_range):
+    """Updates the sunburst chart and dropdowns based on user filters.
+
+    This callback function dynamically filters the construction cost data based
+    on the selected pillar, area, service, and cost range. It then
+    regenerates the sunburst chart with the filtered data and updates the
+    options for the 'Area' and 'Service' dropdowns to ensure they only
+    show relevant choices.
+
+    Args:
+        selected_pillar (str): The value from the 'Pillar' dropdown.
+        selected_area (str): The value from the 'Area' dropdown.
+        selected_service (str): The value from the 'Service' dropdown.
+        cost_range (list[int]): A list containing the min and max values
+                                 from the cost range slider.
+
+    Returns:
+        tuple: A tuple containing:
+            - go.Figure: The updated sunburst chart.
+            - list: The new options for the 'Area' dropdown.
+            - list: The new options for the 'Service' dropdown.
+    """
     filtered_df = df_budget.copy()
 
     # Determine options for Area dropdown based on selected Pillar

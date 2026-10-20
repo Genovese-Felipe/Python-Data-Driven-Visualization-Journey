@@ -1,8 +1,18 @@
 
 #!/usr/bin/env python3
-"""
-Executa o aplicativo Dash simplificado (PT)
-Runs the simplified Dash app (EN)
+"""An advanced Dash dashboard for exploring residential construction costs.
+
+This script creates a standalone Dash application that provides an interactive
+interface for analyzing a simplified construction cost dataset. It is designed
+to showcase best practices in building interactive Plotly dashboards.
+
+The dashboard features:
+- A clear header with a title and subtitle.
+- Summary metric cards for total cost, total budget, and total variance.
+- A dropdown filter to narrow the data by project pillar.
+- A sunburst chart for visualizing the hierarchical distribution of costs.
+- A bar chart that compares the actual cost vs. the budgeted cost for the
+  selected pillar(s).
 """
 
 print("🚀 Iniciando Explorador Avançado de Custos de Construção... / Starting Advanced Construction Cost Explorer...")
@@ -17,25 +27,19 @@ try:
     
     print("✅ Todas as dependências carregadas com sucesso!")
     
-    # Dados principais (versão simplificada do original)
-    data = [
-        {'pillar': 'Project Design', 'area': 'Architecture', 'service': 'Blueprint Design', 'cost': 65000, 'budgeted_cost': 60000},
-        {'pillar': 'Project Design', 'area': 'Engineering', 'service': 'Structural Analysis', 'cost': 95000, 'budgeted_cost': 91000},
-        {'pillar': 'Management', 'area': 'Administration', 'service': 'Project Management', 'cost': 220000, 'budgeted_cost': 214000},
-        {'pillar': 'Management', 'area': 'Logistics', 'service': 'Supply Chain', 'cost': 125000, 'budgeted_cost': 120000},
-        {'pillar': 'Construction', 'area': 'Site & Foundation', 'service': 'Excavation & Grading', 'cost': 470000, 'budgeted_cost': 460000},
-        {'pillar': 'Construction', 'area': 'MEP Systems', 'service': 'Electrical', 'cost': 500000, 'budgeted_cost': 485000},
-        {'pillar': 'Finishing & Landscaping', 'area': 'Finishing', 'service': 'Cabinetry & Countertops', 'cost': 220000, 'budgeted_cost': 210000},
-    ]
-    
-    df = pd.DataFrame(data)
+    # Load data from the CSV file.
+    df = pd.read_csv('data/run_app_data.csv')
     df['variance'] = df['cost'] - df['budgeted_cost']
     df['variance_percent'] = (df['variance'] / df['budgeted_cost']) * 100
     
     app = Dash(__name__)
+    """The main Dash application instance for the advanced cost explorer."""
     app.title = "Explorador de Custos de Construção"
     
     app.layout = html.Div([
+        # The main container for the app's layout.
+
+        # Header section with a title and subtitle.
         html.Div([
             html.H1("🏗️ Explorador Avançado de Custos de Construção Residencial",
                    style={'textAlign': 'center', 'color': '#2c3e50', 'marginBottom': '20px'}),
@@ -43,25 +47,28 @@ try:
                   style={'textAlign': 'center', 'color': '#7f8c8d', 'fontSize': '1.2em'})
         ], style={'backgroundColor': '#ecf0f1', 'padding': '30px', 'borderRadius': '10px', 'marginBottom': '20px'}),
         
-        # Cards de métricas
+        # Container for the summary metric cards.
         html.Div([
+            # Card for Total Cost.
             html.Div([
                 html.H3(f"${df['cost'].sum():,.0f}", style={'color': '#3498db', 'margin': '0', 'fontSize': '2em'}),
                 html.P("Custo Total Real", style={'margin': '5px 0 0 0', 'color': '#7f8c8d'})
             ], style={'textAlign': 'center', 'backgroundColor': '#ffffff', 'padding': '20px', 'borderRadius': '8px', 'width': '200px', 'margin': '10px', 'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'}),
             
+            # Card for Total Budget.
             html.Div([
                 html.H3(f"${df['budgeted_cost'].sum():,.0f}", style={'color': '#95a5a6', 'margin': '0', 'fontSize': '2em'}),
                 html.P("Orçamento Total", style={'margin': '5px 0 0 0', 'color': '#7f8c8d'})
             ], style={'textAlign': 'center', 'backgroundColor': '#ffffff', 'padding': '20px', 'borderRadius': '8px', 'width': '200px', 'margin': '10px', 'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'}),
             
+            # Card for Total Variance.
             html.Div([
                 html.H3(f"${df['variance'].sum():,.0f}", style={'color': '#e74c3c', 'margin': '0', 'fontSize': '2em'}),
                 html.P("Variação Total", style={'margin': '5px 0 0 0', 'color': '#7f8c8d'})
             ], style={'textAlign': 'center', 'backgroundColor': '#ffffff', 'padding': '20px', 'borderRadius': '8px', 'width': '200px', 'margin': '10px', 'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'}),
         ], style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '30px'}),
         
-        # Controles
+        # Container for the filter controls.
         html.Div([
             html.Label("Filtrar por Pilar:", style={'fontWeight': 'bold', 'marginBottom': '10px'}),
             dcc.Dropdown(
@@ -73,11 +80,11 @@ try:
             ),
         ], style={'width': '300px', 'margin': '0 auto', 'marginBottom': '30px'}),
         
-        # Gráficos
+        # Placeholders for the sunburst and bar charts.
         dcc.Graph(id='sunburst-chart'),
         dcc.Graph(id='bar-chart'),
         
-        # Status
+        # A simple status message at the bottom of the app.
         html.Div([
             html.P("✅ Aplicativo carregado com sucesso!", 
                    style={'textAlign': 'center', 'color': '#27ae60', 'fontSize': '18px', 'fontWeight': 'bold'}),
@@ -92,6 +99,21 @@ try:
         [Input('pillar-filter', 'value')]
     )
     def update_charts(pillar_filter):
+        """Updates the sunburst and bar charts based on the selected pillar.
+
+        This callback filters the DataFrame based on the pillar selected in the
+        dropdown. It then generates a new sunburst chart for hierarchical
+        cost distribution and a bar chart comparing actual vs. budgeted
+        costs for the filtered data.
+
+        Args:
+            pillar_filter (str): The pillar selected from the dropdown.
+
+        Returns:
+            tuple: A tuple containing two Plotly Figure objects:
+                - fig_sunburst: The updated sunburst chart.
+                - fig_bar: The updated bar chart.
+        """
         filtered_df = df if pillar_filter == 'all' else df[df['pillar'] == pillar_filter]
         
         # Sunburst
