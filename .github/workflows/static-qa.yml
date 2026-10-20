@@ -1,0 +1,46 @@
+name: Validate static dashboards
+on:
+  pull_request:
+    paths:
+      - 'site/**'
+      - '.github/workflows/static-qa.yml'
+  push:
+    branches: [audit/pages-selfcontained-20261019]
+    paths:
+      - 'site/**'
+      - '.github/workflows/static-qa.yml'
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify structure and financial totals
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json, re, subprocess, tempfile
+          base = Path('site')
+          pages = [base/'index.html',base/'dashboard_v1.html',base/'dashboard_v2.html',base/'dashboard_v3.html']
+          for page in pages:
+              txt = page.read_text(encoding='utf-8')
+              assert '<html' in txt.lower(), page
+              assert '<script src=' not in txt.lower(), page
+              assert '<link rel="stylesheet"' not in txt.lower(), page
+              scripts = re.findall(r'<script>(.*?)</script>', txt, re.S)
+              assert len(scripts) == 1, page
+              with tempfile.NamedTemporaryFile(mode='w', suffix='.js', encoding='utf-8') as f:
+                  f.write(scripts[0]); f.flush()
+                  subprocess.run(['node','--check',f.name],check=True)
+              v2 = json.loads(re.search(r'const V2=(\[.*?\]);',txt,re.S).group(1))
+              v3 = json.loads(re.search(r'const V3=(\[.*?\]);',txt,re.S).group(1))
+              assert len(v2)==23 and len(v3)==10
+              assert sum(row['cost'] for row in v2) == 4730000
+              assert sum(row['budget'] for row in v2) == 4557000
+              print(page,'OK')
+          PY
