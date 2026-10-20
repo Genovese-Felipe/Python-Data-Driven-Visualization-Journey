@@ -82,6 +82,12 @@ O projeto foi guiado por referências visuais profissionais que definiram nossos
 - ✅ **Mapas Geográficos**: Coordenadas reais dos EUA
 - ✅ **Design Moderno**: Cards responsivos com styling avançado
 
+### ⚖️ **V4 - Dashboard Jurídico**
+**Porta: 8054** | **Foco: Honorários & Hierarquia Jurídica**
+- ✅ Gráfico Sunburst de honorários por tipo de caso e área de atuação
+- ✅ Filtros em cascata (Tipo de Caso → Área → Serviço)
+- ✅ Dados jurídicos hierárquicos
+
 ---
 
 
@@ -107,6 +113,10 @@ python dashboards/v2_construction/V2_script.py
 # V3 - Smart Home Complexo
 python dashboards/v3_smart_home/Plan_V3_funcional.py
 # Acesse: http://localhost:8053
+
+# V4 - Dashboard Jurídico
+python dashboards/v4_juridical/V4_juridical_dashboard.py
+# Acesse: http://localhost:8054
 ```
 
 ---
@@ -122,6 +132,10 @@ Python-Data-Driven-Visualization-Journey/
 │   │   ├── data.csv            # Dados para o dashboard V2
 │   │   └── V2_script.py
 │   └── 🏡 v3_smart_home/       # Dashboard complexo com ML
+│       ├── data.csv            # Dados para o dashboard V3
+│       ├── model.py            # Modelo preditivo para o dashboard V3
+│       └── Plan_V3_funcional.py
+│   └── ⚖️ v4_juridical/        # Dashboard jurídico (honorários)
 │       ├── data.csv            # Dados para o dashboard V3
 │       ├── model.py            # Modelo preditivo para o dashboard V3
 │       └── Plan_V3_funcional.py
@@ -338,6 +352,12 @@ The project was guided by professional visual references that set our quality st
 - ✅ **Geographic Maps**: Real US coordinates
 - ✅ **Modern Design**: Responsive cards with advanced styling
 
+### ⚖️ **V4 - Juridical Dashboard**
+**Port: 8054** | **Focus: Legal Fees & Legal Hierarchy**
+- ✅ Sunburst chart of fees by case type and practice area
+- ✅ Cascading filters (Case Type → Area → Service)
+- ✅ Hierarchical legal data
+
 ---
 
 ## 🚀 **Quick Start**
@@ -362,6 +382,10 @@ python dashboards/v2_construction/V2_script.py
 # V3 - Complex Smart Home
 python dashboards/v3_smart_home/Plan_V3_funcional.py
 # Access: http://localhost:8053
+
+# V4 - Juridical Dashboard
+python dashboards/v4_juridical/V4_juridical_dashboard.py
+# Access: http://localhost:8054
 ```
 
 ---
@@ -376,6 +400,10 @@ Python-Data-Driven-Visualization-Journey/
 │   │   ├── data.csv            # Data for the V2 dashboard
 │   │   └── V2_script.py
 │   └── 🏡 v3_smart_home/       # Complex dashboard with ML
+│       ├── data.csv            # Data for the V3 dashboard
+│       ├── model.py            # Predictive model for the V3 dashboard
+│       └── Plan_V3_funcional.py
+│   └── ⚖️ v4_juridical/        # Juridical dashboard (fees)
 │       ├── data.csv            # Data for the V3 dashboard
 │       ├── model.py            # Predictive model for the V3 dashboard
 │       └── Plan_V3_funcional.py
