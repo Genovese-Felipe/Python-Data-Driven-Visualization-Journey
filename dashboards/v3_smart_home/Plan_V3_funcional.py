@@ -24,7 +24,12 @@ from sklearn.linear_model import LinearRegression
 import numpy as np
 
 # Import the model training function from the new model.py file.
-from .model import train_energy_savings_model
+# Works both as a direct script and as an imported module.
+try:
+    from .model import train_energy_savings_model
+except ImportError:
+    # Executed directly: python dashboards/v3_smart_home/Plan_V3_funcional.py
+    from model import train_energy_savings_model
 
 # Load data from the CSV file.
 df_complex = pd.read_csv('dashboards/v3_smart_home/data.csv')
