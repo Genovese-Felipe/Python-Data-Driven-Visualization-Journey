@@ -1,3 +1,26 @@
+# ◆ FGen Visual Analytics Lab — projeto unificado
+
+![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white) ![Plotly](https://img.shields.io/badge/Plotly-Offline-3F4F75) ![GitHub%20Pages](https://img.shields.io/badge/Pages-Review%20Stage-f0b550) ![License](https://img.shields.io/badge/License-MIT-2ea44f)
+
+**Quatro dashboards interativos + mapa de aprendizagem + API JSON estática.** Integração auditável de três repositórios sem substituir o legado nem misturar bases.
+
+| V1 | V2 | V3 | V4 | Learning Map |
+|---|---|---|---|---|
+| Custos hierárquicos | Construção | Smart Home | Predição PMO sintética | Fundamentos |
+| [HTML pós-build](vizlab/site/dashboard_v1.html) | [HTML pós-build](vizlab/site/dashboard_v2.html) | [HTML pós-build](vizlab/site/dashboard_v3.html) | [HTML pós-build](vizlab/site/dashboard_v4.html) | [Trilha](vizlab/site/learning_map.html) |
+
+> **Status:** revisão em PR draft; os links HTML são saídas de build, não páginas que já estejam publicadas. [Leia o README visual completo](vizlab/README.md), [veja a implementação](vizlab/build.py) e [acesse o inventário verificável dos três repositórios](vizlab/audit/FILE_INVENTORY_3_REPOS.csv).
+
+```bash
+python -m pip install -r vizlab/requirements.txt
+python vizlab/build.py validate
+python vizlab/build.py build
+```
+
+---
+
+<details><summary><strong>📜 Histórico original do repositório (clique para expandir)</strong></summary>
+
 
 
 # 📊 **Python Data Driven Visualization Journey**
@@ -502,4 +525,5 @@ For questions, issues, or suggestions:
 
 </div>
 
+</details>
 </details>
