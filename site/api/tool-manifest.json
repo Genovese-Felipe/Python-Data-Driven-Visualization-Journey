@@ -1,0 +1,45 @@
+{
+  "version": "review-2026-10-19",
+  "title": "FGen visualization portfolio external execution contract",
+  "kind": "static-raw-JSON-plus-safe-cli",
+  "public_when_published": false,
+  "note": "Pages must be activated after approved PR; repository branch files are accessible with GitHub permissions",
+  "datasets": [
+    {
+      "id": "construction-v2",
+      "relative_path": "api/construction-v2.json",
+      "record_count": 49
+    },
+    {
+      "id": "smart-home-v3",
+      "relative_path": "api/smart-home-v3.json",
+      "record_count": 10
+    }
+  ],
+  "agents": [
+    {
+      "id": "agent-cli",
+      "kind": "process",
+      "exec": "python scripts/agent_cli.py summary --dataset construction-v2",
+      "requires": "Python >=3.10, cloned repository"
+    },
+    {
+      "id": "agent-gh-actions",
+      "kind": "workflow_dispatch",
+      "path": ".github/workflows/agents.yml",
+      "requires": "GitHub Actions permission, job artifact download"
+    },
+    {
+      "id": "static-data",
+      "kind": "GET",
+      "path": "api/catalog.json",
+      "requires": "Pages deployment or GitHub API/raw access"
+    }
+  ],
+  "security": {
+    "no_secrets_in_browser": true,
+    "no_python_on_pages": true,
+    "read_only": true
+  },
+  "data_status": "illustrative, not externally validated"
+}
