@@ -1,3 +1,44 @@
+# Visual Analytics Lab · Python Data-Driven Visualization Journey
+
+**PT-BR** · [English / original documentation](#documentação-histórica--historical-documentation)
+
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white) ![Plotly](https://img.shields.io/badge/Plotly-Interactive-3F4F75?logo=plotly&logoColor=white) ![GitHub Pages](https://img.shields.io/badge/Pages-Review%20Pending-777777?logo=github) ![Data](https://img.shields.io/badge/Data-Synthetic-f59e0b)
+
+> Laboratório de **Data Storytelling, visualização hierárquica, custos de construção e análises Smart Home**, com histórico de experimentação Dash/Python e uma galeria estática para publicação no GitHub Pages.
+
+### Galeria de dashboards
+
+| V1 — Sunburst | V2 — Construção | V3 — Smart Home |
+|:---:|:---:|:---:|
+| [Visualizar estrutura](pages/v1.html) | [Analisar custos](pages/v2.html) | [Explorar instalações](pages/v3.html) |
+| 5 níveis hierárquicos | 49 folhas e 4 visualizações | 10 observações e 4 visualizações |
+| Reconstrução sobre dados V2 | Dados sintéticos rastreáveis | Dados sintéticos, sem acurácia ML validada |
+
+![Evolução visual documentada](assets/screenshots/dashboard_evolution.png)
+
+### Começar pelo navegador, Python ou IA externa
+
+- **Galeria gerada para Pages:** arquivo de entrada [pages/index.html](pages/index.html), mais [catálogo de dados JSON](pages/catalog.json).
+- **Dados em formato aberto:** [construction_costs.csv](pages/construction_costs.csv) e [smart_home.csv](pages/smart_home.csv). O modelo de dados é público e rotulado como sintético.
+- **Executar no ambiente local:** instale as dependências adequadas e execute o Dash de sua preferência conforme a seção histórica abaixo. GitHub Pages **não hospeda servidor Dash/Python**.
+- **Para agentes externos:** faça checkout, valide usando `python scripts/verify_pages.py`, interprete `pages/catalog.json` e consuma os CSVs. Não pressupor uma API dinâmica no Pages.
+
+**Atenção:** os links para arquivos HTML acima abrem o código na interface GitHub até que o workflow gere e implante o site. A URL pública prevista é `https://genovese-felipe.github.io/Python-Data-Driven-Visualization-Journey/` após revisão, merge e deploy bem-sucedido — **não considerada publicada nesta branch**.
+
+### Qualidade, transparência e auditoria
+
+A árvore Git histórica da V1 possui relações pai–filho inválidas. A galeria de revisão **não reutiliza os 53 valores legados como se fossem equivalentes aos 49 registros da V2**. Foram recalculados os nós agregadores com regras de aditividade. Nenhum conjunto representa custos reais do Apartamento 91.
+
+Leia a [matriz de revisão por arquivo](docs/AUDIT_FILE_BY_FILE_2026-10-19.md), o [workflow de Pages](.github/workflows/pages.yml) e as [notas de interoperabilidade](pages/catalog.json). A alteração em main requer aprovação e reconciliação de alterações concorrentes.
+
+---
+
+## Documentação histórica / Historical documentation
+
+O conteúdo abaixo é preservado para manter rastreabilidade da evolução, inclusive afirmações que exigem revisão contra testes atuais.
+
+<details><summary><strong>Mostrar documentação anterior / Expand prior documentation</strong></summary>
+
 
 
 # 📊 **Python Data Driven Visualization Journey**
@@ -502,4 +543,5 @@ For questions, issues, or suggestions:
 
 </div>
 
+</details>
 </details>
