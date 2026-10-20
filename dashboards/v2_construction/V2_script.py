@@ -17,11 +17,12 @@ from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
 import plotly.express as px
 import pandas as pd
+from pathlib import Path
 import plotly.graph_objects as go
 import plotly.colors
 
 # Load data from the CSV file.
-df_budget = pd.read_csv('dashboards/v2_construction/data.csv')
+df_budget = pd.read_csv(Path(__file__).resolve().with_name('data.csv'))
 
 app = Dash(__name__)
 """The main Dash application instance for the V2 dashboard."""
@@ -162,18 +163,13 @@ def update_graph(selected_pillar, selected_area, selected_service, cost_range):
         values='cost',
         color='pillar',  # Color by pillar using the discrete map
         color_discrete_map=custom_color_map,
-        custom_data=['cost', 'budgeted_cost'] # Include budget data for tooltips
+        custom_data=['cost', 'budgeted_cost'] # Raw leaf metadata; not aggregated at parent level
     )
 
     # Update trace settings based on guidelines (line thickness, textinfo, hovertemplate)
     fig.update_traces(
         textinfo='label+percent parent', # Keep simplified textinfo for clarity
-        hovertemplate='<b>%{label}</b><br><br>'
-                      '<b>Actual Cost:</b> $%{customdata[0]:,.0f}<br>'
-                      '<b>Budgeted Cost:</b> $%{customdata[1]:,.0f}<br>'
-                      '<b>Variance:</b> $%{(customdata[0] - customdata[1]):,.0f}<br>'
-                      '<b>Contribution to Parent:</b> %{percentParent:.2%}<br>'
-                      f'<b>Contribution to Total:</b> %{{percentRoot:.2%}}<extra></extra>',
+        hovertemplate='<b>%{label}</b><br>Custo agregado: $%{value:,.0f}<br>Participação no pai: %{percentParent:.2%}<extra></extra>',
         insidetextorientation='radial',
         textfont_size=10, # Reasonable text size
         marker=dict(line=dict(color='#ffffff', width=1)), # Reduced marker line width
@@ -191,4 +187,4 @@ def update_graph(selected_pillar, selected_area, selected_service, cost_range):
 
 # Run the Dash application (for Colab inline display)
 if __name__ == '__main__':
-    app.run(debug=True, jupyter_mode='inline')
+    app.run(debug=False, host='127.0.0.1', port=8050)
