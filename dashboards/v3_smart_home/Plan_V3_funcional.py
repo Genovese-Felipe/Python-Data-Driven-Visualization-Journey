@@ -22,12 +22,16 @@ import pandas as pd
 import plotly.graph_objects as go
 from sklearn.linear_model import LinearRegression
 import numpy as np
+from pathlib import Path
 
 # Import the model training function from the new model.py file.
-from .model import train_energy_savings_model
+if __package__:
+    from .model import train_energy_savings_model
+else:
+    from model import train_energy_savings_model
 
 # Load data from the CSV file.
-df_complex = pd.read_csv('dashboards/v3_smart_home/data.csv')
+df_complex = pd.read_csv(Path(__file__).resolve().with_name('data.csv'))
 
 # Train the model and get the feature importance.
 model, feature_importance = train_energy_savings_model(df_complex)
@@ -315,4 +319,4 @@ def update_dashboard(selected_region, selected_city, selected_type):
 
 # ===== EXECUÇÃO =====
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8053)
+    app.run(debug=False, host='127.0.0.1', port=8053)
