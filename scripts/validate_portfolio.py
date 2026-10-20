@@ -20,6 +20,7 @@ assert len(smart['records']) == 10
 with (root / 'dashboards/v2_construction/data.csv').open(encoding='utf-8', newline='') as fh:
     csv_rows = list(csv.DictReader(fh))
 assert len(csv_rows) == len(datasets['records'])
+assert all(None not in row and None not in row.values() for row in csv_rows), 'Malformed CSV row / unescaped delimiter'
 for row, original in zip(csv_rows, datasets['records']):
     assert row['pillar'] == original['pillar']
     assert row['service'] == original['service']
