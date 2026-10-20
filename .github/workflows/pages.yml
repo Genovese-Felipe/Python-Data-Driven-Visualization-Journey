@@ -1,0 +1,60 @@
+name: Quality and GitHub Pages
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate self-contained HTML and canonical datasets
+        run: python tools/validate_site.py
+      - name: Compile first-party Python sources
+        run: |
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+          failed = []
+          for p in sorted(Path('.').rglob('*.py')):
+              if '.git' in p.parts:
+                  continue
+              try:
+                  ast.parse(p.read_text(encoding='utf-8-sig'), filename=str(p))
+              except Exception as exc:
+                  failed.append(f'{p}: {exc}')
+          if failed:
+              raise SystemExit('\n'.join(failed))
+          print('PASS: Python source syntax')
+          PY
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: quality
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Stage only publishable artifacts
+        run: |
+          mkdir -p _site/data
+          cp index.html _site/index.html
+          cp data/*.json _site/data/
+          touch _site/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
